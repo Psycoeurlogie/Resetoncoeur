@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset ton cœur — L'art de revenir à toi | by Psycœurlogie</title>
+<meta name="description" content="Reset ton cœur est un projet pensé pour les femmes qui veulent revenir à elles. Ebooks, rituels et chemins pour le corps, le cœur et l'âme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* HERO ACCUEIL */
+  .home-hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 140px 0 80px;
+    position: relative;
+  }
+  .home-hero-bg {
+    position: absolute;
+    top: 50%; right: -10%;
+    transform: translateY(-50%);
+    width: 65vw; height: 65vw;
+    max-width: 800px; max-height: 800px;
+    background: radial-gradient(circle, var(--rose-soft) 0%, transparent 70%);
+    opacity: 0.45; filter: blur(80px);
+    z-index: 0;
+    animation: drift 25s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    0% { transform: translate(0, -50%) scale(1); }
+    100% { transform: translate(-40px, -55%) scale(1.1); }
+  }
+  .home-hero-content { position: relative; z-index: 2; max-width: 880px; }
+  .home-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7.5vw, 96px);
+    font-weight: 400; line-height: 1.02;
+    color: var(--burgundy-deep);
+    margin-bottom: 36px;
+    letter-spacing: -0.015em;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.15s forwards;
+  }
+  .home-hero h1 em { font-style: italic; color: var(--rose); font-weight: 300; }
+  .home-hero-sub {
+    font-size: 21px; line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 580px; margin-bottom: 56px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+  .home-hero .btn { opacity: 0; animation: fadeUp 1s ease 0.45s forwards; }
+  .home-hero-meta {
+    margin-top: 24px;
+    font-size: 13px; color: var(--ink-soft);
+    letter-spacing: 0.02em;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+  }
+
+  /* CITATION MANIFESTO */
+  .manifesto-section {
+    background: var(--ivory-deep);
+    text-align: center;
+    padding: 100px 0;
+  }
+  .manifesto-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.4;
+    color: var(--burgundy-deep);
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+  .manifesto-text::before, .manifesto-text::after {
+    content: '"';
+    font-size: 60px; color: var(--rose);
+    line-height: 0; vertical-align: middle;
+    margin: 0 8px; opacity: 0.6;
+  }
+  .manifesto-attr {
+    font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--rose);
+    font-weight: 500;
+  }
+
+  /* PRODUITS */
+  .products-section { padding: 140px 0; }
+  .products-intro { max-width: 720px; margin-bottom: 80px; }
+  .products-intro p {
+    font-size: 18px; color: var(--ink-soft);
+    line-height: 1.7; max-width: 580px;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .product-card {
+    background: var(--ivory);
+    border: 1px solid rgba(92, 42, 47, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    display: flex; flex-direction: column;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 40px 80px -20px rgba(92, 42, 47, 0.2);
+    border-color: var(--rose);
+  }
+  .product-cover {
+    aspect-ratio: 16/10;
+    position: relative; overflow: hidden;
+  }
+  .product-cover-1 {
+    background: linear-gradient(135deg, var(--rose-soft) 0%, var(--burgundy) 100%);
+  }
+  .product-cover-2 {
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);
+  }
+  .product-cover-inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--ivory); padding: 40px;
+    text-align: center;
+  }
+  .product-cover-inner::before {
+    content: '';
+    position: absolute; inset: 24px;
+    border: 1px solid rgba(247, 241, 234, 0.25);
+    border-radius: 4px;
+  }
+  .product-cover-symbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-style: italic;
+    line-height: 1; margin-bottom: 16px;
+    opacity: 0.8;
+  }
+  .product-cover-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 400;
+    margin-bottom: 8px; letter-spacing: 0.01em;
+  }
+  .product-cover-tag {
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; opacity: 0.85;
+  }
+
+  .product-info {
+    padding: 36px 32px 32px;
+    flex: 1;
+    display: flex; flex-direction: column;
+  }
+  .product-tag {
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--rose);
+    font-weight: 500; margin-bottom: 14px;
+  }
+  .product-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 500;
+    color: var(--burgundy-deep);
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+  .product-info p {
+    color: var(--ink-soft); font-size: 15px;
+    line-height: 1.7; margin-bottom: 24px;
+    flex: 1;
+  }
+  .product-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid rgba(92, 42, 47, 0.08);
+  }
+  .product-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-style: italic;
+    color: var(--burgundy);
+  }
+  .product-price.free { color: var(--rose); }
+  .product-link {
+    color: var(--burgundy); text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.03em;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: gap 0.3s;
+  }
+  .product-link:hover { gap: 12px; }
+
+  /* HERO PRODUCT — ebook mis en avant */
+  .hero-product {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 64px;
+    align-items: stretch;
+    background: var(--ivory);
+    border: 1px solid rgba(92, 42, 47, 0.12);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 80px;
+    box-shadow: 0 30px 80px -30px rgba(92, 42, 47, 0.2);
+  }
+  .hero-product-cover {
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);
+    position: relative;
+    min-height: 480px;
+  }
+  .hero-product-cover-inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--ivory); padding: 48px;
+    text-align: center;
+  }
+  .hero-product-cover-inner::before {
+    content: '';
+    position: absolute; inset: 32px;
+    border: 1px solid rgba(247, 241, 234, 0.25);
+    border-radius: 4px;
+  }
+  .hero-product-cover-symbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 110px; font-style: italic;
+    line-height: 1; margin-bottom: 24px;
+    opacity: 0.85;
+  }
+  .hero-product-cover-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; font-weight: 400;
+    margin-bottom: 12px; letter-spacing: 0.01em;
+    line-height: 1.1;
+  }
+  .hero-product-cover-tag {
+    font-size: 12px; letter-spacing: 0.25em;
+    text-transform: uppercase; opacity: 0.85;
+  }
+  .hero-product-info {
+    padding: 56px 48px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+  }
+  .hero-product-tag {
+    font-size: 11px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--rose);
+    font-weight: 500; margin-bottom: 20px;
+  }
+  .hero-product-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 400;
+    color: var(--burgundy-deep);
+    margin-bottom: 20px;
+    line-height: 1.15;
+  }
+  .hero-product-info > p {
+    color: var(--ink-soft); font-size: 16px;
+    line-height: 1.7; margin-bottom: 28px;
+  }
+  .hero-product-features {
+    list-style: none;
+    margin-bottom: 36px;
+  }
+  .hero-product-features li {
+    padding: 10px 0;
+    color: var(--ink); font-size: 15px;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .hero-product-features li::before {
+    content: '✦'; color: var(--gold);
+    flex-shrink: 0; font-size: 13px; margin-top: 3px;
+  }
+  .hero-product-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid rgba(92, 42, 47, 0.1);
+    gap: 24px;
+  }
+  .hero-product-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; font-style: italic;
+    color: var(--burgundy); line-height: 1;
+  }
+  .hero-product-price-meta {
+    font-size: 12px; color: var(--ink-soft);
+    letter-spacing: 0.05em; margin-top: 4px;
+  }
+
+  /* FREEBIE BRIDGE — secondaire */
+  .freebie-bridge {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 56px;
+    align-items: center;
+    padding: 56px 48px;
+    background: var(--ivory-deep);
+    border-radius: 8px;
+    border: 1px solid rgba(92, 42, 47, 0.08);
+  }
+  .freebie-bridge-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 400;
+    color: var(--burgundy-deep);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .freebie-bridge-text h3 em { font-style: italic; color: var(--rose); }
+  .freebie-bridge-text > p {
+    color: var(--ink-soft); font-size: 15px;
+    line-height: 1.7; margin-bottom: 24px;
+  }
+  .freebie-bridge-cover {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--rose-soft) 0%, var(--rose) 100%);
+    border-radius: 6px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(212, 165, 160, 0.4);
+    max-width: 280px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .freebie-bridge-cover-inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--ivory); padding: 32px;
+    text-align: center;
+  }
+  .freebie-bridge-cover-inner::before {
+    content: '';
+    position: absolute; inset: 20px;
+    border: 1px solid rgba(247, 241, 234, 0.3);
+    border-radius: 3px;
+  }
+  .freebie-bridge-symbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-style: italic;
+    line-height: 1; margin-bottom: 16px;
+    opacity: 0.85;
+  }
+  .freebie-bridge-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .freebie-bridge-tag {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; opacity: 0.85;
+  }
+
+  /* MISSION TROIS PILIERS */
+  .mission-section {
+    background: var(--ivory-deep);
+    padding: 140px 0;
+  }
+  .mission-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 64px;
+  }
+  .mission-item { text-align: center; padding: 0 16px; }
+  .mission-symbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-style: italic;
+    color: var(--rose); line-height: 1;
+    margin-bottom: 24px;
+  }
+  .mission-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 500;
+    color: var(--burgundy-deep);
+    margin-bottom: 14px;
+  }
+  .mission-item p {
+    font-size: 15px; color: var(--ink-soft);
+    line-height: 1.75;
+  }
+
+  /* TÉMOIGNAGES (placeholder élégant) */
+  .testimonials-section { padding: 140px 0; }
+  .testimonials-intro {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .testimonials-intro .section-title { margin: 0 auto 24px; }
+  .testimonial-placeholder {
+    max-width: 720px; margin: 0 auto;
+    padding: 64px 48px;
+    border: 1px dashed rgba(92, 42, 47, 0.2);
+    border-radius: 8px;
+    text-align: center;
+  }
+  .testimonial-placeholder p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 22px;
+    color: var(--burgundy-deep);
+    line-height: 1.5; margin-bottom: 20px;
+  }
+  .testimonial-placeholder small {
+    font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--rose);
+    font-weight: 500;
+  }
+
+  /* NEWSLETTER */
+  .newsletter-section {
+    background: var(--burgundy-deep);
+    color: var(--ivory);
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .newsletter-section::before {
+    content: '';
+    position: absolute;
+    top: 30%; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212, 165, 160, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .newsletter-section .container { position: relative; z-index: 2; }
+  .newsletter-section .section-eyebrow { color: var(--rose-soft); }
+  .newsletter-section .section-title {
+    color: var(--ivory);
+    margin-left: auto; margin-right: auto;
+    text-align: center;
+  }
+  .newsletter-section .section-title em { color: var(--rose-soft); }
+  .newsletter-text {
+    font-size: 17px; line-height: 1.7;
+    color: var(--ivory); opacity: 0.85;
+    max-width: 540px; margin: 0 auto 48px;
+  }
+  .newsletter-form {
+    max-width: 480px; margin: 0 auto;
+    display: flex; gap: 12px;
+  }
+  .newsletter-form input {
+    flex: 1;
+    padding: 18px 24px;
+    background: rgba(247, 241, 234, 0.08);
+    border: 1px solid rgba(247, 241, 234, 0.2);
+    border-radius: 100px;
+    color: var(--ivory);
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.3s;
+  }
+  .newsletter-form input:focus {
+    outline: none;
+    border-color: var(--rose);
+  }
+  .newsletter-form input::placeholder { color: rgba(247, 241, 234, 0.5); }
+  .newsletter-form button {
+    padding: 18px 32px;
+    background: var(--ivory); color: var(--burgundy-deep);
+    border: none; border-radius: 100px;
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+  }
+  .newsletter-form button:hover {
+    background: var(--rose-soft);
+    transform: translateY(-2px);
+  }
+  .newsletter-meta {
+    margin-top: 20px; font-size: 13px;
+    color: rgba(247, 241, 234, 0.6);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 768px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .mission-grid { grid-template-columns: 1fr; gap: 40px; }
+    .newsletter-form { flex-direction: column; }
+    .testimonial-placeholder { padding: 40px 24px; }
+    .hero-product { grid-template-columns: 1fr; gap: 0; }
+    .hero-product-cover { min-height: 320px; }
+    .hero-product-info { padding: 40px 28px; }
+    .hero-product-footer { flex-direction: column; align-items: stretch; gap: 20px; }
+    .hero-product-footer .btn { justify-content: center; }
+    .freebie-bridge { grid-template-columns: 1fr; padding: 40px 24px; gap: 32px; }
+    .freebie-bridge-cover { max-width: 220px; order: -1; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Reset <em>ton cœur</em></a>
+  <div class="nav-links">
+    <a href="ebook.html">L'ebook</a>
+    <a href="mini-guide.html">Le mini-guide</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="contact.html">Contact</a>
+    <a href="ebook.html" class="nav-cta">Commencer</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="home-hero">
+  <div class="home-hero-bg"></div>
+  <div class="container">
+    <div class="home-hero-content">
+      <div class="hero-tag" style="font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rose); margin-bottom: 28px; font-weight: 500; opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;">— un projet de Psycœurlogie</div>
+      <h1>L'art de revenir <em>à toi</em>.</h1>
+      <p class="home-hero-sub">Reset ton cœur est un chemin pensé pour les femmes qui choisissent la douceur comme retour. Des ebooks, des rituels, des mots — pour le corps, le cœur, et l'âme.</p>
+      <a href="ebook.html" class="btn">
+        <span>Commencer le chemin</span>
+        <span class="arrow">→</span>
+      </a>
+      <p class="home-hero-meta">Pour celles qui n'ont plus envie de se perdre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto-section reveal">
+  <div class="container-narrow">
+    <p class="manifesto-text">Prendre soin de soi est un acte d'obéissance. Quand le corps, l'esprit et l'âme s'alignent — l'adoration, la concentration et l'énergie deviennent naturelles.</p>
+    <p class="manifesto-attr">— Reset ton cœur</p>
+  </div>
+</section>
+
+<!-- PRODUITS -->
+<section class="products-section reveal">
+  <div class="container">
+    <div class="products-intro">
+      <div class="section-eyebrow">Le projet</div>
+      <h2 class="section-title">Un chemin, plusieurs <em>portes</em>.</h2>
+      <p>Tout commence par une question : qu'est-ce que ton cœur a vraiment besoin d'entendre ? Chaque création de Reset ton cœur est pensée comme un rituel, à ton rythme, à ta mesure.</p>
+    </div>
+
+    <!-- Ebook principal mis en avant -->
+    <div class="hero-product">
+      <div class="hero-product-cover">
+        <div class="hero-product-cover-inner">
+          <div class="hero-product-cover-symbol">R</div>
+          <div class="hero-product-cover-name">Reset ton cœur</div>
+          <div class="hero-product-cover-tag">Le programme · 30 jours</div>
+        </div>
+      </div>
+      <div class="hero-product-info">
+        <div class="hero-product-tag">L'ebook · Le cœur du projet</div>
+        <h3>Le programme complet, en 30 jours.</h3>
+        <p>Trente jours pour reconstruire ton cœur, retrouver ta paix intérieure, et avancer avec douceur. Une pratique guidée jour après jour — corps, esprit, âme — ancrée dans la spiritualité et soutenue par la connaissance de soi.</p>
+        <ul class="hero-product-features">
+          <li>30 jours de pratique guidée et progressive</li>
+          <li>Exercices d'écriture et d'introspection</li>
+          <li>Rituels spirituels quotidiens</li>
+          <li>Accès à la communauté privée</li>
+        </ul>
+        <div class="hero-product-footer">
+          <div class="hero-product-price-block">
+            <div class="hero-product-price">17€</div>
+            <div class="hero-product-price-meta">Téléchargement immédiat</div>
+          </div>
+          <a href="ebook.html" class="btn">
+            <span>Découvrir le programme</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bridge vers freebie -->
+    <div class="freebie-bridge">
+      <div class="freebie-bridge-text">
+        <div class="section-eyebrow">Pour commencer en douceur</div>
+        <h3>Tu hésites ? Commence par <em>recevoir</em>.</h3>
+        <p>Le Sunnah Body Reset est une ressource gratuite — un protocole de 7 jours pour réaligner ton corps, ton esprit et ton âme. Une porte d'entrée vers l'univers Reset ton cœur.</p>
+        <a href="mini-guide.html" class="btn btn-outline">
+          <span>Recevoir le mini-guide gratuit</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+      <div class="freebie-bridge-cover">
+        <div class="freebie-bridge-cover-inner">
+          <div class="freebie-bridge-symbol">7</div>
+          <div class="freebie-bridge-name">Le Sunnah Body Reset</div>
+          <div class="freebie-bridge-tag">Mini-guide · Gratuit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION 3 PILIERS -->
+<section class="mission-section reveal">
+  <div class="container">
+    <div style="text-align: center;">
+      <div class="section-eyebrow">La mission</div>
+      <h2 class="section-title" style="margin: 0 auto 24px;">Trois territoires, <em>un seul retour</em>.</h2>
+      <p style="font-size: 17px; color: var(--ink-soft); max-width: 620px; margin: 0 auto; line-height: 1.7;">Tout ce que crée Psycœurlogie nourrit l'un de ces trois territoires — souvent les trois en même temps.</p>
+    </div>
+
+    <div class="mission-grid">
+      <div class="mission-item">
+        <div class="mission-symbol">i.</div>
+        <h4>Le corps</h4>
+        <p>Restaurer ton énergie, ton sommeil, ton rythme — par des micro-habitudes ancrées dans la Sunnah.</p>
+      </div>
+      <div class="mission-item">
+        <div class="mission-symbol">ii.</div>
+        <h4>Le cœur</h4>
+        <p>Accueillir ce que tu portes. Comprendre ce qui s'est cassé. Reconstruire ce qui mérite de l'être.</p>
+      </div>
+      <div class="mission-item">
+        <div class="mission-symbol">iii.</div>
+        <h4>L'âme</h4>
+        <p>Réaligner tes journées avec ce qui plaît à Allah — pour que chaque action devienne adoration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES (placeholder) -->
+<section class="testimonials-section reveal">
+  <div class="container">
+    <div class="testimonials-intro">
+      <div class="section-eyebrow">Elles en parlent</div>
+      <h2 class="section-title" style="margin: 0 auto;">Des sœurs, des <em>chemins</em>, des retours.</h2>
+    </div>
+    <div class="testimonial-placeholder">
+      <p>Les premiers témoignages des sœurs qui ont commencé leur reset arriveront bientôt ici.</p>
+      <small>À venir</small>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section reveal">
+  <div class="container">
+    <div class="section-eyebrow">Recevoir les lettres</div>
+    <h2 class="section-title">Une lettre, de temps en <em>temps</em>.</h2>
+    <p class="newsletter-text">Pas de spam, pas de pression. Juste des mots doux, des rappels, et les nouvelles créations Psycœurlogie. Quand le cœur en a besoin.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Formulaire à connecter à un outil email type Brevo, ConvertKit ou Mailchimp');">
+      <input type="email" placeholder="Ton adresse email" required>
+      <button type="submit">M'inscrire</button>
+    </form>
+    <p class="newsletter-meta">Tu peux te désinscrire à tout moment.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Reset <em>ton cœur</em></a>
+        <p>L'art de revenir à toi. Un projet pour les femmes qui choisissent la douceur comme chemin.</p>
+        <p style="margin-top: 16px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose);">— un projet de Psycœurlogie</p>
+      </div>
+      <div class="footer-col">
+        <h5>Le projet</h5>
+        <ul>
+          <li><a href="ebook.html">L'ebook (17€)</a></li>
+          <li><a href="mini-guide.html">Le mini-guide (gratuit)</a></li>
+          <li><a href="manifesto.html">Manifesto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="contact.html">Nous écrire</a></li>
+          <li><a href="https://www.instagram.com/psy.coeurlogie" target="_blank">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@psycoeurlogie?" target="_blank">TikTok</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">CGV</a></li>
+          <li><a href="#">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Reset ton cœur · Psycœurlogie. Tous droits réservés.</p>
+      <p>Fait avec douceur ✦</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bienvenue — Reset ton cœur</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* PAGE ENTIÈRE CENTRÉE */
+  body { min-height: 100vh; }
+
+  .merci-hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .merci-hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, var(--rose-soft) 0%, transparent 65%);
+    opacity: 0.45; z-index: 0;
+  }
+  .merci-hero .container {
+    position: relative; z-index: 2;
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* BADGE CONFIRMATION */
+  .confirm-badge {
+    display: inline-flex;
+    align-items: center; gap: 10px;
+    background: rgba(184, 149, 106, 0.12);
+    border: 1px solid rgba(184, 149, 106, 0.3);
+    color: var(--gold);
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+  .confirm-badge-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* TITRE PRINCIPAL */
+  .merci-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 400; line-height: 1.0;
+    color: var(--burgundy-deep);
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.2s forwards;
+  }
+  .merci-title em { font-style: italic; color: var(--rose); display: block; }
+
+  .merci-sub {
+    font-size: 20px; line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 600px;
+    margin: 0 auto 64px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.35s forwards;
+  }
+
+  /* CARTE TÉLÉCHARGEMENT PRINCIPALE */
+  .download-card {
+    background: var(--ivory);
+    border: 1px solid rgba(92, 42, 47, 0.15);
+    border-radius: 12px;
+    padding: 56px 48px;
+    margin-bottom: 32px;
+    box-shadow: 0 40px 80px -20px rgba(92, 42, 47, 0.15);
+    opacity: 0;
+    animation: fadeUp 1s ease 0.5s forwards;
+    position: relative;
+    overflow: hidden;
+  }
+  .download-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--rose), var(--burgundy), var(--rose));
+  }
+
+  .download-product {
+    display: flex; align-items: center; gap: 32px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(92, 42, 47, 0.1);
+    text-align: left;
+  }
+  .download-cover {
+    flex-shrink: 0;
+    width: 100px; height: 130px;
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 32px -8px rgba(92, 42, 47, 0.4);
+  }
+  .download-cover::before {
+    content: '';
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(247, 241, 234, 0.25);
+    border-radius: 2px;
+  }
+  .download-cover-text {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-style: italic;
+    color: var(--rose-soft); opacity: 0.9;
+  }
+  .download-product-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 500;
+    color: var(--burgundy-deep);
+    margin-bottom: 6px;
+  }
+  .download-product-info p {
+    font-size: 14px; color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .download-product-info .paid-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(184, 149, 106, 0.1);
+    color: var(--gold);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 100px;
+    border: 1px solid rgba(184, 149, 106, 0.25);
+  }
+
+  /* BOUTON TÉLÉCHARGEMENT PRINCIPAL */
+  .download-btn {
+    display: flex; align-items: center; gap: 16px;
+    width: 100%;
+    padding: 24px 32px;
+    background: var(--burgundy);
+    color: var(--ivory);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative; overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .download-btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--burgundy-deep);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .download-btn:hover::before { transform: translateX(0); }
+  .download-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(92, 42, 47, 0.4); }
+  .download-btn-icon {
+    flex-shrink: 0;
+    width: 48px; height: 48px;
+    background: rgba(247, 241, 234, 0.15);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    position: relative; z-index: 1;
+  }
+  .download-btn-text {
+    flex: 1; text-align: left;
+    position: relative; z-index: 1;
+  }
+  .download-btn-text strong {
+    display: block;
+    font-size: 16px; font-weight: 500;
+    letter-spacing: 0.02em;
+    margin-bottom: 3px;
+  }
+  .download-btn-text span {
+    font-size: 13px; opacity: 0.75;
+  }
+  .download-btn-arrow {
+    position: relative; z-index: 1;
+    font-size: 20px;
+    transition: transform 0.3s;
+  }
+  .download-btn:hover .download-btn-arrow { transform: translateX(4px); }
+
+  /* BOUTONS BONUS */
+  .download-bonus-btn {
+    display: flex; align-items: center; gap: 16px;
+    width: 100%;
+    padding: 20px 28px;
+    background: var(--ivory-deep);
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid rgba(92, 42, 47, 0.1);
+    transition: all 0.3s;
+    margin-bottom: 12px;
+  }
+  .download-bonus-btn:hover {
+    border-color: var(--rose);
+    background: var(--ivory);
+    transform: translateX(4px);
+  }
+  .download-bonus-icon {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    background: var(--ivory);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-style: italic;
+    color: var(--rose);
+    border: 1px solid rgba(92, 42, 47, 0.1);
+  }
+  .download-bonus-btn:hover .download-bonus-icon {
+    background: var(--rose-soft);
+  }
+  .download-bonus-text { flex: 1; }
+  .download-bonus-text strong {
+    display: block;
+    font-size: 15px; font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .download-bonus-text span {
+    font-size: 13px; color: var(--ink-soft);
+  }
+  .download-bonus-arrow { color: var(--rose); transition: transform 0.3s; }
+  .download-bonus-btn:hover .download-bonus-arrow { transform: translateX(4px); }
+
+  /* NOTE TECHNIQUE */
+  .download-note {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: rgba(92, 42, 47, 0.04);
+    border-radius: 6px;
+    font-size: 13px; color: var(--ink-soft);
+    line-height: 1.6; text-align: left;
+  }
+  .download-note strong { color: var(--ink); font-weight: 500; }
+
+  /* PROCHAINES ÉTAPES */
+  .next-steps {
+    background: var(--ivory-deep);
+    padding: 100px 0;
+    position: relative; z-index: 2;
+  }
+  .next-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .next-step {
+    text-align: center; padding: 0 16px;
+  }
+  .next-step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-style: italic;
+    color: var(--rose); line-height: 1;
+    margin-bottom: 20px;
+  }
+  .next-step h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500;
+    color: var(--burgundy-deep);
+    margin-bottom: 12px;
+  }
+  .next-step p {
+    font-size: 14px; color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  /* COMMUNAUTÉ */
+  .community-section {
+    padding: 100px 0;
+    text-align: center;
+    background: var(--burgundy-deep);
+    position: relative; overflow: hidden;
+  }
+  .community-section::before {
+    content: '';
+    position: absolute;
+    top: 30%; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212, 165, 160, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .community-section .container { position: relative; z-index: 2; max-width: 680px; }
+  .community-eyebrow { color: var(--rose-soft) !important; }
+  .community-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 400; line-height: 1.15;
+    color: var(--ivory);
+    margin-bottom: 24px;
+  }
+  .community-title em { font-style: italic; color: var(--rose-soft); }
+  .community-text {
+    font-size: 17px; line-height: 1.75;
+    color: var(--ivory); opacity: 0.88;
+    margin-bottom: 40px;
+  }
+  .btn-ivory {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 20px 36px;
+    background: var(--ivory); color: var(--burgundy-deep);
+    text-decoration: none;
+    font-size: 15px; font-weight: 500;
+    letter-spacing: 0.03em;
+    border-radius: 100px;
+    transition: all 0.3s;
+  }
+  .btn-ivory:hover {
+    background: var(--rose-soft);
+    transform: translateY(-2px);
+  }
+
+  /* EMAIL CONFIRMATION */
+  .email-reminder {
+    padding: 64px 0;
+    text-align: center;
+    position: relative; z-index: 2;
+  }
+  .email-reminder-content {
+    max-width: 560px; margin: 0 auto;
+    padding: 40px;
+    background: var(--ivory-deep);
+    border-radius: 8px;
+    border: 1px solid rgba(92, 42, 47, 0.1);
+  }
+  .email-reminder-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-style: italic;
+    color: var(--rose); margin-bottom: 16px;
+  }
+  .email-reminder-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500;
+    color: var(--burgundy-deep);
+    margin-bottom: 10px;
+  }
+  .email-reminder-content p {
+    font-size: 14px; color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .download-card { padding: 36px 24px; }
+    .download-product { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .next-steps-grid { grid-template-columns: 1fr; gap: 40px; }
+    .download-btn { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAS DE NAV SUR CETTE PAGE — évite les fuites de conversion -->
+
+<!-- HERO MERCI -->
+<section class="merci-hero">
+  <div class="merci-hero-bg"></div>
+  <div class="container">
+    <div class="confirm-badge">
+      <span class="confirm-badge-dot"></span>
+      Paiement confirmé
+    </div>
+
+    <h1 class="merci-title">
+      Bienvenue,
+      <em>sœur.</em>
+    </h1>
+
+    <p class="merci-sub">Ton accès à Reset ton cœur est prêt. Télécharge ton programme ci-dessous et commence quand ton cœur en a besoin — pas de pression, pas de chronomètre.</p>
+
+    <!-- CARTE TÉLÉCHARGEMENT -->
+    <div class="download-card">
+
+      <!-- Info produit -->
+      <div class="download-product">
+        <div class="download-cover">
+          <div class="download-cover-text">R</div>
+        </div>
+        <div class="download-product-info">
+          <h3>Reset ton cœur</h3>
+          <p>Le programme spirituel · 30 jours</p>
+          <span class="paid-badge">✦ Accès activé</span>
+        </div>
+      </div>
+
+      <!-- BOUTON PRINCIPAL — remplacer le href par le vrai lien Google Drive/Dropbox -->
+      <a href="https://drive.google.com/uc?export=download&id=1C2TD5RyJmuYKwniB7_wwDKnHhHrVDi5Z" class="download-btn" target="_blank">
+        <div class="download-btn-icon">⬇</div>
+        <div class="download-btn-text">
+          <strong>Télécharger l'ebook PDF</strong>
+          <span>Reset ton cœur — Le programme 30 jours</span>
+        </div>
+        <span class="download-btn-arrow">→</span>
+      </a>
+
+      <!-- BONUS 1 — remplacer le href -->
+      <a href="LIEN_BONUS_DHIKR_ICI" class="download-bonus-btn" target="_blank">
+        <div class="download-bonus-icon">i</div>
+        <div class="download-bonus-text">
+          <strong>Bonus · Communauté privée </strong>
+          <span>Accès Discord </span>
+        </div>
+        <span class="download-bonus-arrow">→</span>
+      </a>
+
+      <!-- BONUS 2 — remplacer le href -->
+      <a href="LIEN_BONUS_CHECKLIST_ICI" class="download-bonus-btn" target="_blank">
+        <div class="download-bonus-icon">ii</div>
+        <div class="download-bonus-text">
+          <strong>Bonus · Reset ton corps avec la Sunnah</strong>
+          <span>PDF · À imprimer ou utiliser sur téléphone</span>
+        </div>
+        <span class="download-bonus-arrow">→</span>
+      </a>
+
+      <!-- NOTE TECHNIQUE -->
+      <div class="download-note">
+        <strong>Tu ne peux pas télécharger ?</strong> Vérifie que ton navigateur ne bloque pas les téléchargements, ou essaie depuis un autre navigateur. Si le problème persiste, écris-nous à <a href="mailto:contact@resettoncoeur.fr" style="color: var(--burgundy);">contact@resettoncoeur.fr</a> — on t'envoie les fichiers directement.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCHAINES ÉTAPES -->
+<section class="next-steps reveal">
+  <div class="container">
+    <div class="section-eyebrow">Par où commencer</div>
+    <h2 class="section-title" style="text-align: center; margin: 0 auto 24px;">Trois <em>premiers pas</em>.</h2>
+    <p style="text-align: center; font-size: 17px; color: var(--ink-soft); max-width: 560px; margin: 0 auto; line-height: 1.7;">Tu n'as pas besoin de tout lire d'un coup. Voici comment commencer avec douceur.</p>
+
+    <div class="next-steps-grid">
+      <div class="next-step">
+        <div class="next-step-num">i.</div>
+        <h4>Télécharge et sauvegarde</h4>
+        <p>Mets le PDF dans un endroit facile d'accès — ton téléphone, tes notes, ou imprime-le si tu préfères le papier.</p>
+      </div>
+      <div class="next-step">
+        <div class="next-step-num">ii.</div>
+        <h4>Lis l'introduction</h4>
+        <p>Les 10 premières pages posent l'intention du programme. Lis-les ce soir, tranquillement, avec une tisane.</p>
+      </div>
+      <div class="next-step">
+        <div class="next-step-num">iii.</div>
+        <h4>Commence le Jour 1 demain</h4>
+        <p>Une seule chose par jour suffit. Commence petit, reste constante. C'est tout ce que le programme te demande.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNAUTÉ -->
+<section class="community-section reveal">
+  <div class="container">
+    <div class="section-eyebrow community-eyebrow">La communauté</div>
+    <h2 class="community-title">Tu n'avances pas <em>seule</em>.</h2>
+    <p class="community-text">Le groupe privé des sœurs de Reset ton cœur t'attend. Un espace doux pour partager ton chemin, poser tes questions, et cheminer avec d'autres femmes qui vivent la même chose.</p>
+    <!-- Remplacer le href par le lien de ta communauté (Telegram, WhatsApp, Discord, etc.) -->
+    <a href="LIEN_COMMUNAUTE_ICI" class="btn-ivory" target="_blank">
+      <span>Rejoindre la communauté</span>
+      <span>→</span>
+    </a>
+  </div>
+</section>
+
+<!-- RAPPEL EMAIL -->
+<section class="email-reminder reveal">
+  <div class="container">
+    <div class="email-reminder-content">
+      <div class="email-reminder-icon">✉</div>
+      <h4>Un email de confirmation t'a été envoyé</h4>
+      <p>Tu trouveras les liens de téléchargement dans ta boîte mail. Si tu ne le vois pas, vérifie tes spams ou écris-nous à <a href="mailto:contact@resettoncoeur.fr" style="color: var(--burgundy);">contact@resettoncoeur.fr</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER MINIMAL — pas de nav de fuite -->
+<footer style="background: var(--ivory-deep); padding: 40px 0; text-align: center; border-top: 1px solid rgba(92,42,47,0.1); position: relative; z-index: 2;">
+  <div class="container">
+    <a href="index.html" class="logo" style="display: inline-flex; margin-bottom: 16px;">Reset <em style="font-style: italic; color: var(--rose); margin-left: 4px;">ton cœur</em></a>
+    <p style="font-size: 13px; color: var(--ink-soft);">© 2026 Reset ton cœur · Psycœurlogie — <a href="contact.html" style="color: var(--burgundy);">Besoin d'aide ?</a></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

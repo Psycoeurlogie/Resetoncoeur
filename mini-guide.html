@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset ton corps avec la Sunnah - Mini-guide gratuit | Reset ton cœur</title>
+<meta name="description" content="Un protocole de 7 jours pour réaligner ton corps, ton esprit et ton âme. Mini-guide gratuit, livré par email.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* HERO MINI-GUIDE */
+  .guide-hero {
+    min-height: calc(100vh - 80px);
+    display: flex; align-items: center;
+    padding: 140px 0 80px;
+    position: relative;
+  }
+  .guide-hero-bg {
+    position: absolute;
+    top: 50%; right: -10%;
+    transform: translateY(-50%);
+    width: 60vw; height: 60vw;
+    max-width: 700px; max-height: 700px;
+    background: radial-gradient(circle, var(--rose-soft) 0%, transparent 70%);
+    opacity: 0.45; filter: blur(80px);
+    z-index: 0;
+  }
+  .guide-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative; z-index: 2;
+  }
+  .guide-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 400; line-height: 1.05;
+    color: var(--burgundy-deep);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+  .guide-hero h1 em { font-style: italic; color: var(--rose); font-weight: 300; }
+  .guide-hero-sub {
+    font-size: 19px; line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 540px; margin-bottom: 40px;
+  }
+
+  /* FORMULAIRE EMAIL */
+  .signup-form {
+    max-width: 500px;
+    margin-bottom: 24px;
+  }
+  .signup-form-row {
+    display: flex; gap: 12px;
+    margin-bottom: 16px;
+  }
+  .signup-form input {
+    flex: 1;
+    padding: 18px 24px;
+    background: var(--ivory);
+    border: 1px solid rgba(92, 42, 47, 0.2);
+    border-radius: 100px;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.3s;
+  }
+  .signup-form input:focus {
+    outline: none;
+    border-color: var(--burgundy);
+  }
+  .signup-form input::placeholder { color: var(--ink-soft); opacity: 0.7; }
+  .signup-form button {
+    padding: 18px 32px;
+    background: var(--burgundy); color: var(--ivory);
+    border: none; border-radius: 100px;
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .signup-form button:hover {
+    background: var(--burgundy-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px -10px rgba(92, 42, 47, 0.4);
+  }
+  .signup-meta {
+    font-size: 13px; color: var(--ink-soft);
+    letter-spacing: 0.02em;
+    display: flex; gap: 20px;
+    flex-wrap: wrap;
+  }
+  .signup-meta-item {
+    display: flex; align-items: center; gap: 6px;
+  }
+  .signup-meta-item .dot {
+    width: 4px; height: 4px;
+    background: var(--gold); border-radius: 50%;
+  }
+
+  /* COVER MINI-GUIDE */
+  .guide-cover-wrapper {
+    display: flex; justify-content: center;
+    perspective: 1200px;
+  }
+  .guide-cover {
+    aspect-ratio: 3/4;
+    width: 100%; max-width: 360px;
+    background: linear-gradient(135deg, var(--rose-soft) 0%, var(--burgundy) 100%);
+    border-radius: 6px;
+    position: relative; overflow: hidden;
+    box-shadow:
+      0 60px 80px -20px rgba(212, 165, 160, 0.5),
+      8px 0 0 rgba(0, 0, 0, 0.08);
+    transform: rotateY(8deg) rotateX(2deg);
+    transition: transform 0.6s ease;
+  }
+  .guide-cover:hover { transform: rotateY(4deg) rotateX(0); }
+  .guide-cover::before {
+    content: '';
+    position: absolute; inset: 28px;
+    border: 1px solid rgba(247, 241, 234, 0.35);
+    border-radius: 3px;
+  }
+  .guide-cover-content {
+    position: absolute; inset: 0;
+    padding: 56px 40px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    color: var(--ivory); text-align: center;
+  }
+  .guide-cover-top {
+    font-size: 11px; letter-spacing: 0.3em;
+    text-transform: uppercase; opacity: 0.85;
+  }
+  .guide-cover-middle {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+  .guide-cover-symbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 110px; font-style: italic;
+    line-height: 1; margin-bottom: 24px;
+    opacity: 0.9;
+  }
+  .guide-cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 400;
+    margin-bottom: 8px; letter-spacing: 0.01em;
+    line-height: 1.1;
+  }
+  .guide-cover-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 15px;
+    opacity: 0.85; margin-top: 12px;
+  }
+  .guide-cover-bottom {
+    font-size: 11px; letter-spacing: 0.3em;
+    text-transform: uppercase; opacity: 0.85;
+  }
+
+  /* MANIFESTO INTERMÉDIAIRE */
+  .guide-manifesto {
+    background: var(--ivory-deep);
+    text-align: center;
+    padding: 100px 0;
+  }
+  .guide-manifesto-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3.2vw, 38px);
+    line-height: 1.45;
+    color: var(--burgundy-deep);
+    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .guide-manifesto-text::before, .guide-manifesto-text::after {
+    content: '"';
+    font-size: 60px; color: var(--rose);
+    line-height: 0; vertical-align: middle;
+    margin: 0 8px; opacity: 0.6;
+  }
+
+  /* PROMESSE TRIPLE */
+  .guide-promise { padding: 140px 0; }
+  .promise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 64px;
+  }
+  .promise-item { text-align: center; padding: 0 16px; }
+  .promise-symbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-style: italic;
+    color: var(--rose); line-height: 1;
+    margin-bottom: 20px;
+  }
+  .promise-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 500;
+    color: var(--burgundy-deep);
+    margin-bottom: 14px;
+  }
+  .promise-item p {
+    font-size: 15px; color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  /* LES 4 JOURS */
+  .guide-days {
+    background: var(--ivory-deep);
+    padding: 140px 0;
+  }
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 64px;
+  }
+  .day-card {
+    background: var(--ivory);
+    padding: 40px 32px;
+    border-radius: 6px;
+    border: 1px solid rgba(92, 42, 47, 0.1);
+    transition: all 0.4s ease;
+  }
+  .day-card:hover {
+    border-color: var(--rose);
+    transform: translateY(-4px);
+    box-shadow: 0 30px 60px -20px rgba(92, 42, 47, 0.15);
+  }
+  .day-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; font-weight: 500; font-style: italic;
+    color: var(--rose);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 16px;
+  }
+  .day-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 500;
+    color: var(--burgundy-deep);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .day-card p { color: var(--ink-soft); font-size: 15px; line-height: 1.7; }
+  .days-note {
+    margin-top: 48px; font-size: 14px;
+    color: var(--ink-soft); font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+  }
+
+  /* APERÇU CONTENU */
+  .guide-preview { padding: 140px 0; }
+  .preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .preview-list { list-style: none; }
+  .preview-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(92, 42, 47, 0.1);
+    font-size: 16px; color: var(--ink);
+    display: flex; align-items: flex-start; gap: 16px;
+    transition: padding 0.3s ease;
+    line-height: 1.6;
+  }
+  .preview-list li:hover { padding-left: 8px; }
+  .preview-list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px; height: 8px;
+    background: var(--rose); border-radius: 50%;
+    margin-top: 8px;
+  }
+  .preview-list li:last-child { border-bottom: none; }
+
+  .preview-visual {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--rose-soft) 0%, var(--burgundy) 100%);
+    border-radius: 8px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 40px 80px -20px rgba(92, 42, 47, 0.3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .preview-visual::before {
+    content: ''; position: absolute; inset: 28px;
+    border: 1px solid rgba(247, 241, 234, 0.25);
+    border-radius: 4px;
+  }
+  .preview-visual-text {
+    text-align: center; color: var(--ivory); padding: 40px;
+    position: relative; z-index: 2;
+  }
+  .preview-visual-text .quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.4; margin-bottom: 20px;
+  }
+  .preview-visual-text .author {
+    font-size: 11px; letter-spacing: 0.25em;
+    text-transform: uppercase; opacity: 0.85;
+  }
+
+  /* BRIDGE EBOOK */
+  .ebook-bridge {
+    background: var(--burgundy-deep);
+    color: var(--ivory);
+    padding: 140px 0;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .ebook-bridge::before {
+    content: '';
+    position: absolute;
+    top: 30%; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(212, 165, 160, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .ebook-bridge .container { position: relative; z-index: 2; }
+  .ebook-bridge .section-eyebrow { color: var(--rose-soft); }
+  .ebook-bridge h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400; line-height: 1.15;
+    color: var(--ivory);
+    margin: 0 auto 28px;
+    max-width: 720px;
+  }
+  .ebook-bridge h2 em { font-style: italic; color: var(--rose-soft); }
+  .ebook-bridge-text {
+    font-size: 17px; line-height: 1.75;
+    color: var(--ivory); opacity: 0.9;
+    max-width: 600px; margin: 0 auto 48px;
+  }
+  .btn-light {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 20px 36px;
+    background: var(--ivory); color: var(--burgundy-deep);
+    text-decoration: none;
+    font-size: 15px; font-weight: 500; letter-spacing: 0.03em;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+  }
+  .btn-light:hover {
+    background: var(--rose-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -12px rgba(212, 165, 160, 0.4);
+  }
+  .btn-light .arrow { transition: transform 0.3s; }
+  .btn-light:hover .arrow { transform: translateX(4px); }
+
+  /* FINAL CTA */
+  .guide-final {
+    text-align: center;
+    padding: 160px 0;
+    position: relative;
+  }
+  .guide-final-bg {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, var(--rose-soft) 0%, transparent 70%);
+    opacity: 0.4; filter: blur(80px);
+    z-index: 0;
+  }
+  .guide-final .container { position: relative; z-index: 2; max-width: 720px; }
+  .guide-final-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4.2vw, 48px);
+    font-weight: 400; line-height: 1.25;
+    color: var(--burgundy-deep);
+    margin-bottom: 48px; font-style: italic;
+  }
+  .guide-final-quote em { color: var(--rose); }
+  .guide-final .signup-form { margin: 0 auto 24px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .guide-hero-grid { grid-template-columns: 1fr; gap: 56px; }
+    .guide-cover-wrapper { order: -1; }
+    .guide-cover { transform: none; max-width: 260px; }
+    .guide-cover:hover { transform: none; }
+    .signup-form-row { flex-direction: column; }
+    .signup-form button { width: 100%; }
+    .promise-grid { grid-template-columns: 1fr; gap: 40px; }
+    .preview-grid { grid-template-columns: 1fr; gap: 48px; }
+    .preview-visual { max-width: 320px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Reset <em>ton cœur</em></a>
+  <div class="nav-links">
+    <a href="ebook.html">L'ebook</a>
+    <a href="mini-guide.html" class="active">Le mini-guide</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="contact.html">Contact</a>
+    <a href="ebook.html" class="nav-cta">Commencer</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="guide-hero">
+  <div class="guide-hero-bg"></div>
+  <div class="container">
+    <div class="guide-hero-grid">
+      <div>
+        <div class="eyebrow">Mini-guide gratuit · 7 jours</div>
+        <h1> <em>Reset</em> ton corps avec la Sunnah</h1> 
+        <p class="guide-hero-sub">Un protocole de 7 jours pour réaligner ton corps, ton esprit et ton âme — enraciné dans la Sunnah, soutenu par la science moderne. Pour celles qui veulent retrouver leur énergie sans s'épuiser.</p>
+
+        <form class="signup-form" onsubmit="event.preventDefault(); alert('Formulaire à connecter à un outil email type Brevo, ConvertKit ou Mailchimp');">
+          <div class="signup-form-row">
+            <input type="email" placeholder="Ton adresse email" required>
+            <button type="submit">Recevoir le guide</button>
+          </div>
+        </form>
+        <div class="signup-meta">
+          <div class="signup-meta-item"><span class="dot"></span> 100% gratuit</div>
+          <div class="signup-meta-item"><span class="dot"></span> Reçu en moins de 2 min</div>
+          <div class="signup-meta-item"><span class="dot"></span> Désinscription à tout moment</div>
+        </div>
+      </div>
+
+      <div class="guide-cover-wrapper">
+        <div class="guide-cover">
+          <div class="guide-cover-content">
+            <div class="guide-cover-top">— Reset ton cœur</div>
+            <div class="guide-cover-middle">
+              <div class="guide-cover-symbol">7</div>
+              <div class="guide-cover-title">Reset ton corps avec la Sunnah</div>
+              <div class="guide-cover-tagline">Protocole · 7 jours</div>
+            </div>
+        
+      
+            <div class="guide-cover-bottom">Mini-guide gratuit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="guide-manifesto reveal">
+  <div class="container-narrow">
+    <p class="guide-manifesto-text">Prendre soin de toi est un acte d'obéissance. Quand le corps, l'esprit et l'âme s'alignent — l'adoration, la concentration et l'énergie deviennent naturelles.</p>
+  </div>
+</section>
+
+<!-- PROMESSE TRIPLE -->
+<section class="guide-promise reveal">
+  <div class="container">
+    <div class="section-eyebrow">La promesse</div>
+    <h2 class="section-title">Un rééquilibrage <em>complet</em>, en 7 jours.</h2>
+    <p style="font-size: 17px; color: var(--ink-soft); max-width: 620px; line-height: 1.7;">Ce reset n'est pas un défi de plus. C'est un retour au rythme naturel qu'Allah a conçu pour toi — celui qui nourrit ton corps, clarifie ton esprit, et renforce ton cœur.</p>
+
+    <div class="promise-grid">
+      <div class="promise-item">
+        <div class="promise-symbol">i.</div>
+        <h4>Le corps</h4>
+        <p>Restaurer ton énergie, ton sommeil et ta vitalité par des micro-habitudes ancrées dans la Sunnah.</p>
+      </div>
+      <div class="promise-item">
+        <div class="promise-symbol">ii.</div>
+        <h4>L'esprit</h4>
+        <p>Retrouver une clarté mentale calme, sans brouillard ni fatigue chronique — par le dhikr et le rythme.</p>
+      </div>
+      <div class="promise-item">
+        <div class="promise-symbol">iii.</div>
+        <h4>L'âme</h4>
+        <p>Réaligner tes journées avec ce qui plaît à Allah — pour que chaque action devienne adoration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LES 4 JOURS -->
+<section class="guide-days reveal">
+  <div class="container">
+    <div class="section-eyebrow">Le protocole</div>
+    <h2 class="section-title">Quatre piliers, sept <em>jours</em>.</h2>
+    <div class="days-grid">
+      <div class="day-card">
+        <div class="day-num">Jour 1</div>
+        <h3>Le rythme du sommeil</h3>
+        <p>Aligner ton sommeil sur le cycle Sunnah : dormir tôt après ‘Isha, se réveiller pour Fajr. Reset hormonal complet.</p>
+      </div>
+      <div class="day-card">
+        <div class="day-num">Jour 2</div>
+        <h3>La routine du matin</h3>
+        <p>5 micro-habitudes pour démarrer la journée avec baraka : wudu, dhikr, mouvement doux, petit-déjeuner Sunnah.</p>
+      </div>
+      <div class="day-card">
+        <div class="day-num">Jour 3</div>
+        <h3>Le dhikr pour la clarté</h3>
+        <p>Comment le rappel d'Allah reprogramme ton cerveau, réduit le cortisol, et purifie le cœur — preuves neuroscientifiques.</p>
+      </div>
+      <div class="day-card">
+        <div class="day-num">Jour 4</div>
+        <h3>La routine du soir</h3>
+        <p>Le protocole pour clôturer ta journée en paix : prières, gratitude, invocations, sommeil réparateur.</p>
+      </div>
+    </div>
+    <p class="days-note">+ 3 jours d'intégration et de progression douce.</p>
+  </div>
+</section>
+
+<!-- APERÇU CONTENU -->
+<section class="guide-preview reveal">
+  <div class="container">
+    <div class="preview-grid">
+      <div>
+        <div class="section-eyebrow">Aperçu du contenu</div>
+        <h2 class="section-title">Ce que tu vas <em>découvrir</em>.</h2>
+        <ul class="preview-list">
+          <li>Pourquoi se lever avant Fajr optimise ton cortisol et ta clarté mentale</li>
+          <li>Les 3 aliments Sunnah à intégrer chaque matin pour une énergie stable</li>
+          <li>Comment le dhikr active ton système parasympathique (étude à l'appui)</li>
+          <li>Le rituel du soir pour un sommeil profond et un réveil léger</li>
+          <li>L'intention quotidienne qui transforme chaque action en adoration</li>
+        </ul>
+      </div>
+      <div class="preview-visual">
+        <div class="preview-visual-text">
+          <p class="quote">Les petites actions constantes sont plus puissantes que la perfection irrégulière.</p>
+          <p class="author">— Reset ton cœur</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE VERS L'EBOOK -->
+<section class="ebook-bridge reveal">
+  <div class="container">
+    <div class="section-eyebrow">Pour aller plus loin</div>
+    <h2>Quand 7 jours <em>ne suffisent plus</em>.</h2>
+    <p class="ebook-bridge-text">Reset ton corps avec la Sunnah. Si tu veux ancrer ces transformations dans la durée — corps, esprit et cœur — l'ebook complet Reset ton cœur t'accompagne pas à pas pendant 30 jours.</p>
+    <a href="ebook.html" class="btn-light">
+      <span>Découvrir l'ebook · 17€</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="guide-final reveal">
+  <div class="guide-final-bg"></div>
+  <div class="container">
+    <div class="section-eyebrow">Le moment</div>
+    <p class="guide-final-quote">Ton chemin commence avec une <em>seule</em> habitude.</p>
+    <p style="font-size: 17px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 40px;">Reçois le mini-guide directement par email. Pas de spam, pas d'engagement — juste un point de départ doux.</p>
+
+    <form class="signup-form" onsubmit="event.preventDefault(); alert('Formulaire à connecter à un outil email type Brevo, ConvertKit ou Mailchimp');">
+      <div class="signup-form-row">
+        <input type="email" placeholder="Ton adresse email" required>
+        <button type="submit">Recevoir le guide</button>
+      </div>
+    </form>
+    <div class="signup-meta" style="justify-content: center;">
+      <div class="signup-meta-item"><span class="dot"></span> 100% gratuit</div>
+      <div class="signup-meta-item"><span class="dot"></span> Reçu en moins de 2 min</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Reset <em>ton cœur</em></a>
+        <p>L'art de revenir à toi. Un projet pour les femmes qui choisissent la douceur comme chemin.</p>
+        <p style="margin-top: 16px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose);">— un projet de Psycœurlogie</p>
+      </div>
+      <div class="footer-col">
+        <h5>Le projet</h5>
+        <ul>
+          <li><a href="ebook.html">L'ebook (17€)</a></li>
+          <li><a href="mini-guide.html">Le mini-guide (gratuit)</a></li>
+          <li><a href="manifesto.html">Manifesto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="contact.html">Nous écrire</a></li>
+          <li><a href="https://www.instagram.com/psy.coeurlogie" target="_blank">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@psycoeurlogie?" target="_blank">TikTok</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">CGV</a></li>
+          <li><a href="#">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Reset ton cœur · Psycœurlogie. Tous droits réservés.</p>
+      <p>Fait avec douceur ✦</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
