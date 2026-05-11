@@ -1019,7 +1019,7 @@ async function submitEmail(e) {
 // ── RENDER RESULT ─────────────────────────────────────────
 function renderResult(profileNum) {
   const p = profileNum || computeProfile();
-  history.replaceState(null, '', '?profil=' + p);
+
   const d = PROFILES[p];
   document.getElementById('resultTitle').innerHTML    = d.title;
   document.getElementById('resultArabic').textContent = d.arabic;
@@ -1029,8 +1029,7 @@ function renderResult(profileNum) {
   goTo(9);
 }
 
-const _p = new URLSearchParams(location.search).get('profil');
-if (_p) renderResult(parseInt(_p));
+
 </script>
 </body>
 </html>
