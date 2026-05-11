@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pourquoi tu n'arrives pas à changer ? — Quiz | Psycœurlogie</title>
+<meta name="description" content="Un mini outil d'auto-réflexion inspiré des notions classiques des états du cœur en psychologie islamique et tazkiya. Pour comprendre ce qui influence ta vie aujourd'hui.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+/* ── QUIZ LAYOUT ─────────────────────────────────────────── */
+.quiz-page {
+  min-height: 100vh;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quiz-outer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px 80px;
+  position: relative;
+}
+
+.quiz-outer::before {
+  content: '';
+  position: fixed;
+  top: 15%;
+  right: -20%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, var(--rose-soft) 0%, transparent 70%);
+  opacity: 0.3;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.quiz-outer::after {
+  content: '';
+  position: fixed;
+  bottom: 10%;
+  left: -15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(184,149,106,0.2) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.quiz-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(212, 165, 160, 0.22);
+  border-radius: 28px;
+  padding: 56px 56px 48px;
+  box-shadow: 0 12px 64px -20px rgba(92, 42, 47, 0.14), 0 2px 8px rgba(92,42,47,0.04);
+}
+
+/* ── PROGRESS ────────────────────────────────────────────── */
+.quiz-progress {
+  margin-bottom: 44px;
+}
+
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 500;
+}
+
+.progress-count {
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.progress-track {
+  height: 3px;
+  background: rgba(212, 165, 160, 0.22);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--rose) 0%, var(--burgundy) 100%);
+  border-radius: 100px;
+  transition: width 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0%;
+}
+
+/* ── STEP ANIMATION ──────────────────────────────────────── */
+.quiz-step { display: none; }
+.quiz-step.active {
+  display: block;
+  animation: stepIn 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes stepIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── INTRO ───────────────────────────────────────────────── */
+.intro-sup {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.intro-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 5vw, 54px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--burgundy-deep);
+  margin-bottom: 20px;
+}
+
+.intro-title em { font-style: italic; color: var(--rose); font-weight: 300; }
+
+.intro-sub {
+  font-size: 16px;
+  line-height: 1.72;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+  max-width: 500px;
+}
+
+.intro-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.chip {
+  font-size: 13px;
+  color: var(--ink-soft);
+  background: rgba(212, 165, 160, 0.12);
+  border: 1px solid rgba(212, 165, 160, 0.28);
+  border-radius: 100px;
+  padding: 6px 16px;
+  white-space: nowrap;
+}
+
+/* ── QUESTION ────────────────────────────────────────────── */
+.question-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--burgundy-deep);
+  margin-bottom: 28px;
+}
+
+.answers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.answer-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(92, 42, 47, 0.13);
+  border-radius: 14px;
+  padding: 16px 20px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.answer-btn:hover {
+  border-color: var(--rose);
+  background: rgba(212, 165, 160, 0.07);
+  transform: translateX(3px);
+}
+
+.answer-btn.selected {
+  border-color: var(--burgundy);
+  background: rgba(92, 42, 47, 0.055);
+}
+
+.answer-dot {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(92, 42, 47, 0.28);
+  margin-top: 2px;
+  transition: all 0.22s ease;
+  position: relative;
+}
+
+.answer-dot::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--burgundy);
+  transform: scale(0);
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.answer-btn.selected .answer-dot {
+  border-color: var(--burgundy);
+}
+
+.answer-btn.selected .answer-dot::after {
+  transform: scale(1);
+}
+
+.answer-text {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  font-weight: 300;
+  padding-top: 2px;
+}
+
+/* ── EMAIL CAPTURE ───────────────────────────────────────── */
+.email-sup {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.email-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--burgundy-deep);
+  margin-bottom: 14px;
+}
+
+.email-title em { font-style: italic; color: var(--rose); }
+
+.email-sub {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin-bottom: 30px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.form-field label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid rgba(92, 42, 47, 0.18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.75);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.22s ease, background 0.22s ease;
+}
+
+.form-field input:focus {
+  border-color: var(--burgundy);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.form-field input::placeholder { color: var(--ink-soft); opacity: 0.55; }
+
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 6px 0 4px;
+}
+
+.form-consent input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin-top: 3px;
+  accent-color: var(--burgundy);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.form-consent span {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.form-error {
+  font-size: 13px;
+  color: #b93a3a;
+  display: none;
+  margin-top: 6px;
+}
+
+/* ── RESULT ──────────────────────────────────────────────── */
+.result-badge-wrap {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(184, 149, 106, 0.1);
+  border: 1px solid rgba(184, 149, 106, 0.28);
+  border-radius: 100px;
+  padding: 6px 18px;
+  margin-bottom: 20px;
+}
+
+.result-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 400;
+  line-height: 1.12;
+  color: var(--burgundy-deep);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.result-title em { font-style: italic; color: var(--rose); }
+
+.result-arabic {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 300;
+  color: var(--gold);
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin-top: -8px;
+  margin-bottom: 28px;
+  opacity: 0.85;
+}
+
+.result-box {
+  background: rgba(212, 165, 160, 0.07);
+  border: 1px solid rgba(212, 165, 160, 0.22);
+  border-radius: 18px;
+  padding: 30px 32px;
+  margin-bottom: 28px;
+}
+
+.result-box p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink);
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.result-box p:last-child { margin-bottom: 0; }
+
+.result-conseil-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.result-conseil {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  font-style: italic;
+  padding-left: 16px;
+  border-left: 2px solid rgba(212, 165, 160, 0.5);
+}
+
+.result-cta-section {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.result-cta-note {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.result-cta-note strong { color: var(--burgundy); font-weight: 500; }
+
+.result-cta .btn {
+  display: inline-flex;
+}
+
+.result-share {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.result-share a {
+  color: var(--burgundy);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ── NAV BUTTONS ─────────────────────────────────────────── */
+.quiz-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+
+.btn-back:hover { color: var(--burgundy); }
+.btn-back[disabled] { opacity: 0; pointer-events: none; }
+
+.btn-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 26px;
+  background: var(--burgundy);
+  color: var(--ivory);
+  border: none;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-next:hover:not(:disabled) {
+  background: var(--burgundy-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -8px rgba(92, 42, 47, 0.32);
+}
+
+.btn-next:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+/* ── LOADING ─────────────────────────────────────────────── */
+.dots {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.dots span {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--ivory);
+  animation: dp 1.3s ease-in-out infinite;
+}
+.dots span:nth-child(2) { animation-delay: 0.18s; }
+.dots span:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes dp {
+  0%, 80%, 100% { opacity: 0.28; transform: scale(0.75); }
+  40% { opacity: 1; transform: scale(1); }
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .quiz-card {
+    padding: 36px 24px 32px;
+    border-radius: 22px;
+  }
+  .answer-btn { padding: 14px 16px; }
+  .result-box { padding: 22px 20px; }
+  .quiz-nav { margin-top: 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">Psy<em>cœur</em>logie</a>
+  <div class="nav-links">
+    <a href="ebook.html">L'ebook</a>
+    <a href="mini-guide.html">Le mini-guide</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="quiz.html" class="active">Le quiz</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://buy.stripe.com/aFa28q8g11z12MLd6xcfK00" class="nav-cta">Commencer · 17€</a>
+  </div>
+</nav>
+
+<div class="quiz-page">
+  <div class="quiz-outer">
+    <div class="quiz-card">
+
+      <!-- PROGRESS (visible Q1–Q7 seulement) -->
+      <div class="quiz-progress" id="quizProgress" style="display:none">
+        <div class="progress-meta">
+          <span class="progress-label">Introspection</span>
+          <span class="progress-count" id="progressCount">1 / 7</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <!-- ── 0 · INTRO ───────────────────────────────────── -->
+      <div class="quiz-step active" id="step-0">
+        <div class="intro-sup">Outil d'introspection · 7 questions</div>
+        <h1 class="intro-title">Pourquoi tu n'arrives<br>pas à <em>changer</em> ?</h1>
+        <p class="intro-sub">
+          Un mini outil d'auto-réflexion inspiré des notions classiques des états du cœur en psychologie islamique et tazkiya. Pour comprendre ce qui influence ta vie aujourd'hui.
+        </p>
+        <div class="intro-chips">
+          <span class="chip">2 minutes</span>
+          <span class="chip">5 profils possibles</span>
+          <span class="chip">Inspiré de la tazkiya</span>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" disabled></button>
+          <button class="btn-next" onclick="goTo(1)">Commencer →</button>
+        </div>
+      </div>
+
+      <!-- ── 1 · QUESTION 1 ──────────────────────────────── -->
+      <div class="quiz-step" id="step-1">
+        <p class="question-text">Quand quelque chose te blesse dans la vie…</p>
+        <div class="answers-list">
+          <button class="answer-btn" data-q="1" data-v="1" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je rumine énormément et mon esprit reste bloqué dessus</span>
+          </button>
+          <button class="answer-btn" data-q="1" data-v="2" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je prends de la distance émotionnellement pour ne plus souffrir</span>
+          </button>
+          <button class="answer-btn" data-q="1" data-v="3" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je cherche rapidement du réconfort ou de la validation</span>
+          </button>
+          <button class="answer-btn" data-q="1" data-v="4" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je reviens vers Allah et j'essaie de comprendre ce que je traverse</span>
+          </button>
+          <button class="answer-btn" data-q="1" data-v="5" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">J'essaie de garder mon calme et mon équilibre intérieur</span>
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(0)">← Retour</button>
+          <button class="btn-next" id="next-1" onclick="goTo(2)" disabled>Suivant →</button>
+        </div>
+      </div>
+
+      <!-- ── 2 · QUESTION 2 ──────────────────────────────── -->
+      <div class="quiz-step" id="step-2">
+        <p class="question-text">Dans ta relation avec Allah actuellement…</p>
+        <div class="answers-list">
+          <button class="answer-btn" data-q="2" data-v="1" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je veux me rapprocher, mais je me sens instable intérieurement</span>
+          </button>
+          <button class="answer-btn" data-q="2" data-v="2" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je fais les actes, mais je ressens peu de connexion</span>
+          </button>
+          <button class="answer-btn" data-q="2" data-v="3" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je me tourne surtout vers Allah dans les moments difficiles</span>
+          </button>
+          <button class="answer-btn" data-q="2" data-v="4" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je ressens un vrai besoin de changer intérieurement</span>
+          </button>
+          <button class="answer-btn" data-q="2" data-v="5" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je cherche davantage de sérénité et de sincérité</span>
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(1)">← Retour</button>
+          <button class="btn-next" id="next-2" onclick="goTo(3)" disabled>Suivant →</button>
+        </div>
+      </div>
+
+      <!-- ── 3 · QUESTION 3 ──────────────────────────────── -->
+      <div class="quiz-step" id="step-3">
+        <p class="question-text">Dans tes relations humaines, tu as tendance à…</p>
+        <div class="answers-list">
+          <button class="answer-btn" data-q="3" data-v="1" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Trop analyser les paroles et comportements des autres</span>
+          </button>
+          <button class="answer-btn" data-q="3" data-v="2" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Garder mes émotions pour moi</span>
+          </button>
+          <button class="answer-btn" data-q="3" data-v="3" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">M'attacher rapidement ou dépendre émotionnellement</span>
+          </button>
+          <button class="answer-btn" data-q="3" data-v="4" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Prendre du recul pour me remettre en question</span>
+          </button>
+          <button class="answer-btn" data-q="3" data-v="5" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Chercher des relations plus équilibrées et apaisantes</span>
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(2)">← Retour</button>
+          <button class="btn-next" id="next-3" onclick="goTo(4)" disabled>Suivant →</button>
+        </div>
+      </div>
+
+      <!-- ── 4 · QUESTION 4 ──────────────────────────────── -->
+      <div class="quiz-step" id="step-4">
+        <p class="question-text">Face à l'argent ou à l'avenir…</p>
+        <div class="answers-list">
+          <button class="answer-btn" data-q="4" data-v="1" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Mon esprit devient vite anxieux ou agité</span>
+          </button>
+          <button class="answer-btn" data-q="4" data-v="2" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je ressens parfois un vide malgré ce que j'ai</span>
+          </button>
+          <button class="answer-btn" data-q="4" data-v="3" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">J'ai peur de perdre ma sécurité ou mon contrôle</span>
+          </button>
+          <button class="answer-btn" data-q="4" data-v="4" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">J'essaie d'apprendre à faire davantage confiance à Allah</span>
+          </button>
+          <button class="answer-btn" data-q="4" data-v="5" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je cherche surtout une stabilité intérieure durable</span>
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(3)">← Retour</button>
+          <button class="btn-next" id="next-4" onclick="goTo(5)" disabled>Suivant →</button>
+        </div>
+      </div>
+
+      <!-- ── 5 · QUESTION 5 ──────────────────────────────── -->
+      <div class="quiz-step" id="step-5">
+        <p class="question-text">Quand tu es seul(e) avec toi-même…</p>
+        <div class="answers-list">
+          <button class="answer-btn" data-q="5" data-v="1" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Mon esprit ne s'arrête presque jamais</span>
+          </button>
+          <button class="answer-btn" data-q="5" data-v="2" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je ressens une forme de fermeture intérieure</span>
+          </button>
+          <button class="answer-btn" data-q="5" data-v="3" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je cherche souvent une distraction pour éviter ce que je ressens</span>
+          </button>
+          <button class="answer-btn" data-q="5" data-v="4" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je réfléchis beaucoup à ma situation et à mon évolution</span>
+          </button>
+          <button class="answer-btn" data-q="5" data-v="5" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Je ressens un besoin de calme et de réalignement</span>
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(4)">← Retour</button>
+          <button class="btn-next" id="next-5" onclick="goTo(6)" disabled>Suivant →</button>
+        </div>
+      </div>
+
+      <!-- ── 6 · QUESTION 6 ──────────────────────────────── -->
+      <div class="quiz-step" id="step-6">
+        <p class="question-text">Ce qui te fatigue le plus actuellement…</p>
+        <div class="answers-list">
+          <button class="answer-btn" data-q="6" data-v="1" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">La surcharge mentale et émotionnelle</span>
+          </button>
+          <button class="answer-btn" data-q="6" data-v="2" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Le manque de connexion ou de profondeur intérieure</span>
+          </button>
+          <button class="answer-btn" data-q="6" data-v="3" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Les attachements et les relations</span>
+          </button>
+          <button class="answer-btn" data-q="6" data-v="4" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Le combat constant contre moi-même</span>
+          </button>
+          <button class="answer-btn" data-q="6" data-v="5" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Le besoin de retrouver une vraie paix intérieure</span>
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(5)">← Retour</button>
+          <button class="btn-next" id="next-6" onclick="goTo(7)" disabled>Suivant →</button>
+        </div>
+      </div>
+
+      <!-- ── 7 · QUESTION 7 ──────────────────────────────── -->
+      <div class="quiz-step" id="step-7">
+        <p class="question-text">Aujourd'hui, tu as surtout l'impression que…</p>
+        <div class="answers-list">
+          <button class="answer-btn" data-q="7" data-v="1" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Tu portes beaucoup intérieurement sans réussir à relâcher</span>
+          </button>
+          <button class="answer-btn" data-q="7" data-v="2" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Tu t'es éloigné(e) émotionnellement de beaucoup de choses</span>
+          </button>
+          <button class="answer-btn" data-q="7" data-v="3" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Tu cherches encore ta sécurité dans certaines personnes ou situations</span>
+          </button>
+          <button class="answer-btn" data-q="7" data-v="4" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Tu es dans une phase de remise en question et de retour vers Allah</span>
+          </button>
+          <button class="answer-btn" data-q="7" data-v="5" onclick="selectAnswer(this)">
+            <span class="answer-dot"></span>
+            <span class="answer-text">Tu cherches un équilibre plus sain et plus apaisé dans ta vie</span>
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(6)">← Retour</button>
+          <button class="btn-next" id="next-7" onclick="goTo(8)" disabled>Voir mon profil →</button>
+        </div>
+      </div>
+
+      <!-- ── 8 · EMAIL ───────────────────────────────────── -->
+      <div class="quiz-step" id="step-8">
+        <div class="email-sup">Ton résultat est prêt</div>
+        <h2 class="email-title">Une dernière étape pour <em>découvrir ton profil</em></h2>
+        <p class="email-sub">Entre ton prénom et ton email pour recevoir ton profil personnalisé et des ressources adaptées à ton chemin intérieur.</p>
+        <form onsubmit="submitEmail(event)" novalidate>
+          <div class="form-field">
+            <label for="fPrenom">Prénom</label>
+            <input type="text" id="fPrenom" placeholder="Ton prénom" required autocomplete="given-name">
+          </div>
+          <div class="form-field">
+            <label for="fEmail">Email</label>
+            <input type="email" id="fEmail" placeholder="ton@email.com" required autocomplete="email">
+          </div>
+          <div class="form-consent">
+            <input type="checkbox" id="fConsent" required>
+            <span>J'accepte de recevoir des emails de Psycœurlogie. Pas de spam — uniquement du contenu qui nourrit.</span>
+          </div>
+          <p class="form-error" id="formError">Une erreur est survenue. Réessaie dans quelques instants.</p>
+          <div class="quiz-nav">
+            <button type="button" class="btn-back" onclick="goTo(7)">← Retour</button>
+            <button type="submit" class="btn-next" id="btnSubmit">Voir mon résultat →</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- ── 9 · RÉSULTAT ────────────────────────────────── -->
+      <div class="quiz-step" id="step-9">
+        <div class="result-badge-wrap">
+          <div class="result-badge">✦ Ton profil</div>
+        </div>
+        <h2 class="result-title" id="resultTitle"></h2>
+        <p class="result-arabic" id="resultArabic" dir="rtl"></p>
+        <div class="result-box">
+          <div id="resultBody"></div>
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(212,165,160,0.25)">
+            <p class="result-conseil-label">Conseil Tazkiya</p>
+            <p class="result-conseil" id="resultConseil"></p>
+          </div>
+        </div>
+        <div class="result-cta-section">
+          <p class="result-cta-note" id="resultCtaNote"></p>
+          <div class="result-cta">
+            <a href="https://buy.stripe.com/aFa28q8g11z12MLd6xcfK00" class="btn">
+              <span>Commencer le programme · 17€</span>
+              <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
+        <p class="result-share" style="margin-top: 24px">
+          Partage ce quiz →
+          <a href="quiz.html">resetoncoeur.vercel.app/quiz.html</a>
+        </p>
+      </div>
+
+    </div><!-- /quiz-card -->
+  </div><!-- /quiz-outer -->
+</div><!-- /quiz-page -->
+
+<script>
+// ── STATE ─────────────────────────────────────────────────
+const answers = {};
+let currentStep = 0;
+
+// ── SCORING MAP ───────────────────────────────────────────
+// Pour chaque question, la réponse choisie (1-5) donne un point
+// au profil correspondant. null = neutre (aucun profil scoré).
+// Exception Q3 : réponse 1 → profil 2, réponse 2 → profil 1
+const SCORE_MAP = {
+  1: { 1:1, 2:2, 3:3, 4:4, 5:5 },
+  2: { 1:1, 2:2, 3:null, 4:4, 5:5 },
+  3: { 1:2, 2:1, 3:3, 4:4, 5:5 },
+  4: { 1:1, 2:2, 3:3, 4:4, 5:5 },
+  5: { 1:1, 2:2, 3:3, 4:4, 5:5 },
+  6: { 1:1, 2:2, 3:3, 4:4, 5:5 },
+  7: { 1:1, 2:2, 3:3, 4:4, 5:5 },
+};
+
+// ── PROFILES ──────────────────────────────────────────────
+const PROFILES = {
+  1: {
+    title: 'Le cœur <em>blessé</em>',
+    arabic: 'القلب المريض',
+    body: `
+      <p>Tu ressens profondément les choses, mais ton monde intérieur semble souvent chargé, agité ou fatigué.</p>
+      <p>Dans la tazkiya, cela se rapproche du cœur blessé ou du cœur malade <em>(al-qalb al-marîd)</em> : un cœur encore vivant et sensible, mais affecté par les pensées, les émotions, les blessures et la surcharge intérieure.</p>
+      <p>Tu peux ressentir de l'anxiété, une fatigue émotionnelle, de l'hyperanalyse, une difficulté à trouver le calme ou le sentiment de tout porter intérieurement.</p>
+      <p><strong>Ton cœur n'est pas fermé. Il est surtout épuisé.</strong></p>
+    `,
+    conseil: 'Dans la psychologie islamique, un cœur agité a besoin de ralentir avant de pouvoir se réparer. Reviens progressivement vers des habitudes simples qui apaisent intérieurement : le dhikr régulier, des moments de calme loin du bruit mental et une relation plus douce avec toi-même et avec Allah.',
+    ctaNote: 'Le programme Reset ton cœur t\'accompagne jour après jour pour apaiser ce qui est épuisé — <strong>avec douceur et à ton rythme.</strong>'
+  },
+  2: {
+    title: 'Le cœur <em>endurci</em>',
+    arabic: 'القلب القاسي',
+    body: `
+      <p>Tu t'es peut-être protégé(e) émotionnellement à force de fatigue, de déceptions ou de déconnexion intérieure.</p>
+      <p>Dans la psychologie islamique, cela se rapproche du cœur endurci <em>(al-qalb al-qâsî)</em> : un état où l'on continue parfois d'avancer extérieurement, mais où l'on ressent moins intérieurement.</p>
+      <p>Tu peux avoir l'impression d'être détaché(e), de ressentir peu de connexion, de fonctionner en pilote automatique ou d'avoir perdu une forme de douceur intérieure.</p>
+      <p><strong>L'endurcissement du cœur n'est pas une fin. Dans la tazkiya, il est vu comme un état qui peut être adouci par le retour sincère vers Allah.</strong></p>
+    `,
+    conseil: 'Le cœur s\'adoucit souvent lentement, pas brutalement. La méditation du Coran, le dhikr sincère et le fait de diminuer certaines distractions peuvent progressivement ramener de la présence et de la sensibilité intérieure.',
+    ctaNote: 'Le programme est conçu pour rouvrir doucement ce qui s\'est fermé — <strong>une pratique quotidienne pour ramener de la vie intérieure.</strong>'
+  },
+  3: {
+    title: 'Le cœur <em>attaché</em>',
+    arabic: 'القلب المتعلق',
+    body: `
+      <p>Tu cherches peut-être encore ta stabilité dans les relations, les émotions, le contrôle ou la validation extérieure.</p>
+      <p>Dans la tazkiya, cela correspond au cœur attaché au dunya : un cœur qui cherche inconsciemment sa sécurité dans ce qui reste instable.</p>
+      <p>Tu peux ressentir une peur de perdre, un besoin d'être rassuré(e), une dépendance émotionnelle, une difficulté à lâcher prise ou un attachement fort à certaines situations ou personnes.</p>
+      <p><strong>Plus le cœur s'attache excessivement au créé, plus il devient émotionnellement agité.</strong></p>
+    `,
+    conseil: 'La psychologie islamique enseigne que la vraie stabilité ne vient pas des gens, mais d\'un cœur plus attaché à Allah. Plus tu développes le tawakkul et le détachement émotionnel excessif, plus tu retrouves une forme de paix intérieure.',
+    ctaNote: 'Le programme t\'aide à déplacer ton ancre intérieure — <strong>de la dépendance extérieure vers la confiance en Allah.</strong>'
+  },
+  4: {
+    title: 'Le cœur <em>en retour</em>',
+    arabic: 'القلب المنيب',
+    body: `
+      <p>Malgré tes difficultés, tu es dans une phase de retour intérieur.</p>
+      <p>Dans la tazkiya, cela correspond au cœur en retour <em>(al-qalb al-munîb)</em> : un cœur qui revient vers Allah malgré ses luttes, ses erreurs ou ses instabilités.</p>
+      <p>Tu ressens probablement un besoin de changement sincère, une envie de réalignement, une conscience plus profonde de toi-même et le besoin de retrouver du sens et de la paix.</p>
+      <p><strong>Tu n'es peut-être pas encore là où tu voudrais être, mais tu n'es plus dans l'inconscience.</strong></p>
+    `,
+    conseil: 'Le retour vers Allah ne commence pas forcément par de grands changements. Dans la tazkiya, ce sont souvent les petites actions sincères et régulières qui transforment progressivement l\'état intérieur.',
+    ctaNote: 'Le programme est fait pour des cœurs comme le tien — <strong>pour passer du retour intérieur à la transformation durable.</strong>'
+  },
+  5: {
+    title: 'Le cœur <em>apaisé</em>',
+    arabic: 'القلب المطمئن',
+    body: `
+      <p>Tu recherches sincèrement un équilibre plus sain, plus stable et plus apaisé.</p>
+      <p>Dans la psychologie islamique, cela se rapproche du cœur apaisé ou du cœur sain : un cœur qui cherche la sincérité, le calme intérieur et la proximité d'Allah.</p>
+      <p>Cela ne signifie pas que tout est parfait, mais plutôt que tu développes davantage de recul, que tu cherches un équilibre émotionnel et que tu avances avec plus de conscience.</p>
+      <p><strong>La tazkiya considère cet état comme un chemin de purification et de stabilité progressive.</strong></p>
+    `,
+    conseil: 'Continue à protéger cette paix intérieure sans tomber dans la pression ou la perfection excessive. La constance, la sincérité et une relation régulière avec Allah sont ce qui nourrit le plus durablement le cœur.',
+    ctaNote: 'Le programme t\'offre la structure pour aller encore plus loin — <strong>profondeur, constance et pratique quotidienne.</strong>'
+  }
+};
+
+// ── NAVIGATION ────────────────────────────────────────────
+function goTo(n) {
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  document.getElementById('step-' + n).classList.add('active');
+  currentStep = n;
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const bar = document.getElementById('quizProgress');
+  if (currentStep >= 1 && currentStep <= 7) {
+    bar.style.display = 'block';
+    document.getElementById('progressFill').style.width = ((currentStep / 7) * 100) + '%';
+    document.getElementById('progressCount').textContent = currentStep + ' / 7';
+  } else {
+    bar.style.display = 'none';
+  }
+}
+
+// ── ANSWER ────────────────────────────────────────────────
+function selectAnswer(btn) {
+  const q = btn.dataset.q;
+  btn.closest('.answers-list').querySelectorAll('.answer-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  answers[q] = parseInt(btn.dataset.v, 10);
+  const nb = document.getElementById('next-' + q);
+  if (nb) nb.disabled = false;
+}
+
+// ── SCORE ─────────────────────────────────────────────────
+function computeProfile() {
+  const counts = { 1:0, 2:0, 3:0, 4:0, 5:0 };
+  for (let q = 1; q <= 7; q++) {
+    const mapped = SCORE_MAP[q][answers[q]];
+    if (mapped) counts[mapped]++;
+  }
+  return parseInt(Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0], 10);
+}
+
+// ── EMAIL SUBMIT ──────────────────────────────────────────
+async function submitEmail(e) {
+  e.preventDefault();
+  const prenom = document.getElementById('fPrenom').value.trim();
+  const email  = document.getElementById('fEmail').value.trim();
+  const consent = document.getElementById('fConsent').checked;
+  const btn  = document.getElementById('btnSubmit');
+  const errEl = document.getElementById('formError');
+
+  if (!prenom || !email || !consent) return;
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="dots"><span></span><span></span><span></span></span>';
+  errEl.style.display = 'none';
+
+  try {
+    // ── REMPLACE cette URL par ton URL de formulaire Brevo (liste Quiz) ──
+    const BREVO_URL = 'https://59abc3a3.sibforms.com/serve/MUIFAD0mNgCJTGKESm5aTUQA39jtTj6YJV-wxDBSH1QInBSeNCZCj6KhvdWEs4urEHwNM3LrcY0TqkPGZFwZQfAb08aWcz9ZvCO64SrO98LaMZrhgVaU-B31TFfN9LqfI1x47vK8nhwjNTZjfVUPusXu3RJypAfChwEtcpGGnyKO_fCHQbt17UjTOKC_YSKvPZ2PTFZMMI_Lfeyzxw==';
+
+    if (BREVO_URL) {
+      const fd = new FormData();
+      fd.append('EMAIL', email);
+      fd.append('PRENOM', prenom);
+      fd.append('email_address_check', '');
+      fd.append('locale', 'fr');
+      await fetch(BREVO_URL, { method: 'POST', body: fd, mode: 'no-cors' });
+    }
+
+    renderResult();
+  } catch {
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    btn.innerHTML = 'Voir mon résultat →';
+  }
+}
+
+// ── RENDER RESULT ─────────────────────────────────────────
+function renderResult() {
+  const p = computeProfile();
+  const d = PROFILES[p];
+  document.getElementById('resultTitle').innerHTML    = d.title;
+  document.getElementById('resultArabic').textContent = d.arabic;
+  document.getElementById('resultBody').innerHTML     = d.body;
+  document.getElementById('resultConseil').textContent = d.conseil;
+  document.getElementById('resultCtaNote').innerHTML  = d.ctaNote;
+  goTo(9);
+}
+</script>
+</body>
+</html>
