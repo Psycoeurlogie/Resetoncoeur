@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     },
     body: JSON.stringify({
       email,
-      attributes: { FIRSTNAME: prenom || '' },
+      attributes: { PRENOM: prenom || '' },
       listIds: [listId],
       updateEnabled: true
     })
