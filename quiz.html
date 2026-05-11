@@ -944,12 +944,6 @@ const PROFILES = {
 };
 
 // ── NAVIGATION ────────────────────────────────────────────
-// Affiche directement le résultat si ?profil=N dans l'URL (lien depuis email)
-(function() {
-  const p = new URLSearchParams(location.search).get('profil');
-  if (p) { window.addEventListener('DOMContentLoaded', () => renderResult(parseInt(p))); }
-})();
-
 function goTo(n) {
   document.getElementById('step-' + currentStep).classList.remove('active');
   document.getElementById('step-' + n).classList.add('active');
@@ -1034,6 +1028,9 @@ function renderResult(profileNum) {
   document.getElementById('resultCtaNote').innerHTML  = d.ctaNote;
   goTo(9);
 }
+
+const _p = new URLSearchParams(location.search).get('profil');
+if (_p) renderResult(parseInt(_p));
 </script>
 </body>
 </html>
