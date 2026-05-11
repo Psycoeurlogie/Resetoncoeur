@@ -944,6 +944,12 @@ const PROFILES = {
 };
 
 // ── NAVIGATION ────────────────────────────────────────────
+// Affiche directement le résultat si ?profil=N dans l'URL (lien depuis email)
+(function() {
+  const p = new URLSearchParams(location.search).get('profil');
+  if (p) { window.addEventListener('DOMContentLoaded', () => renderResult(parseInt(p))); }
+})();
+
 function goTo(n) {
   document.getElementById('step-' + currentStep).classList.remove('active');
   document.getElementById('step-' + n).classList.add('active');
@@ -1019,6 +1025,7 @@ async function submitEmail(e) {
 // ── RENDER RESULT ─────────────────────────────────────────
 function renderResult(profileNum) {
   const p = profileNum || computeProfile();
+  history.replaceState(null, '', '?profil=' + p);
   const d = PROFILES[p];
   document.getElementById('resultTitle').innerHTML    = d.title;
   document.getElementById('resultArabic').textContent = d.arabic;
