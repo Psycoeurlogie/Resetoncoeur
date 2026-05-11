@@ -998,20 +998,17 @@ async function submitEmail(e) {
   btn.innerHTML = '<span class="dots"><span></span><span></span><span></span></span>';
   errEl.style.display = 'none';
 
+  const profileNum = computeProfile();
+  const LIST_IDS = { 1: 9, 2: 10, 3: 11, 4: 12, 5: 13 };
+
   try {
-    // ── REMPLACE cette URL par ton URL de formulaire Brevo (liste Quiz) ──
-    const BREVO_URL = 'https://59abc3a3.sibforms.com/serve/MUIFAD0mNgCJTGKESm5aTUQA39jtTj6YJV-wxDBSH1QInBSeNCZCj6KhvdWEs4urEHwNM3LrcY0TqkPGZFwZQfAb08aWcz9ZvCO64SrO98LaMZrhgVaU-B31TFfN9LqfI1x47vK8nhwjNTZjfVUPusXu3RJypAfChwEtcpGGnyKO_fCHQbt17UjTOKC_YSKvPZ2PTFZMMI_Lfeyzxw==';
+    await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, prenom, listId: LIST_IDS[profileNum] })
+    });
 
-    if (BREVO_URL) {
-      const fd = new FormData();
-      fd.append('EMAIL', email);
-      fd.append('PRENOM', prenom);
-      fd.append('email_address_check', '');
-      fd.append('locale', 'fr');
-      await fetch(BREVO_URL, { method: 'POST', body: fd, mode: 'no-cors' });
-    }
-
-    renderResult();
+    renderResult(profileNum);
   } catch {
     errEl.style.display = 'block';
     btn.disabled = false;
@@ -1020,8 +1017,8 @@ async function submitEmail(e) {
 }
 
 // ── RENDER RESULT ─────────────────────────────────────────
-function renderResult() {
-  const p = computeProfile();
+function renderResult(profileNum) {
+  const p = profileNum || computeProfile();
   const d = PROFILES[p];
   document.getElementById('resultTitle').innerHTML    = d.title;
   document.getElementById('resultArabic').textContent = d.arabic;
