@@ -994,6 +994,9 @@ async function submitEmail(e) {
 
   if (!prenom || !email || !consent) return;
 
+  const allAnswered = Array.from({length: 7}, (_, i) => i + 1).every(q => answers[q] !== undefined);
+  if (!allAnswered) { errEl.textContent = 'Merci de répondre à toutes les questions.'; errEl.style.display = 'block'; return; }
+
   btn.disabled = true;
   btn.innerHTML = '<span class="dots"><span></span><span></span><span></span></span>';
   errEl.style.display = 'none';

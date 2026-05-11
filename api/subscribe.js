@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'https://resetoncoeur.vercel.app');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.status(200).end();
@@ -8,19 +8,33 @@ export default async function handler(req, res) {
   const { email, prenom, listId } = req.body;
   if (!email || !listId) return res.status(400).json({ error: 'Missing fields' });
 
-  const response = await fetch('https://api.brevo.com/v3/contacts', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'api-key': process.env.BREVO_API_KEY
-    },
-    body: JSON.stringify({
-      email,
-      attributes: { PRENOM: prenom || '' },
-      listIds: [listId],
-      updateEnabled: true
-    })
-  });
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) return res.status(400).json({ error: 'Invalid email' });
 
-  res.status(response.ok ? 200 : 500).end();
+  try {
+    const response = await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': process.env.BREVO_API_KEY
+      },
+      body: JSON.stringify({
+        email,
+        attributes: { PRENOM: prenom || '' },
+        listIds: [listId],
+        updateEnabled: true
+      })
+    });
+
+    if (!response.ok) {
+      const body = await response.json().catch(() => ({}));
+      console.error('Brevo error', response.status, body);
+      return res.status(500).json({ error: 'Brevo error' });
+    }
+
+    res.status(200).end();
+  } catch (err) {
+    console.error('Subscribe handler error', err);
+    res.status(500).json({ error: 'internal' });
+  }
 }

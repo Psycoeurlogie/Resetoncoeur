@@ -96,6 +96,14 @@
   .ebook-slide:hover { transform: rotateY(0deg) rotateX(0); }
   .ebook-slide.active { display: block; }
   .ebook-slide img { width: 100%; height: auto; display: block; }
+  .ebook-slide-placeholder {
+    width: 100%; aspect-ratio: 3/4;
+    background: linear-gradient(135deg, #ede4d8 0%, #f7f1ea 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px; color: #5c2a2f; letter-spacing: 0.05em;
+    font-style: italic;
+  }
   .ebook-slider-nav {
     display: flex; align-items: center; justify-content: center;
     gap: 20px; margin-top: 24px;
@@ -525,28 +533,28 @@
 <div class="ebook-cover-wrapper">
   <div class="ebook-slider">
     <div class="ebook-slide active">
-      <img src="ebook-cover.png" alt="Couverture">
+      <img src="ebook-cover.png" alt="Couverture" onerror="this.outerHTML='<div class=\'ebook-slide-placeholder\'>Reset ton cœur</div>'">
     </div>
     <div class="ebook-slide">
-      <img src="page-2.png" alt="Page 2">
+      <img src="page-2.png" alt="Page 2" onerror="this.outerHTML='<div class=\'ebook-slide-placeholder\'>Page 2</div>'">
     </div>
     <div class="ebook-slide">
-      <img src="page-3.png" alt="Page 3">
+      <img src="page-3.png" alt="Page 3" onerror="this.outerHTML='<div class=\'ebook-slide-placeholder\'>Page 3</div>'">
     </div>
     <div class="ebook-slide">
-      <img src="page-4.png" alt="Page 4">
+      <img src="page-4.png" alt="Page 4" onerror="this.outerHTML='<div class=\'ebook-slide-placeholder\'>Page 4</div>'">
     </div>
     <div class="ebook-slide">
-      <img src="page-5.png" alt="Page 5">
+      <img src="page-5.png" alt="Page 5" onerror="this.outerHTML='<div class=\'ebook-slide-placeholder\'>Page 5</div>'">
     </div>
     <div class="ebook-slide">
-      <img src="page-6.png" alt="Page 6">
+      <img src="page-6.png" alt="Page 6" onerror="this.outerHTML='<div class=\'ebook-slide-placeholder\'>Page 6</div>'">
     </div>
     <div class="ebook-slide">
-      <img src="page-7.png" alt="Page 7">
+      <img src="page-7.png" alt="Page 7" onerror="this.outerHTML='<div class=\'ebook-slide-placeholder\'>Page 7</div>'">
     </div>
     <div class="ebook-slide">
-      <img src="page-8.png" alt="Page 8">
+      <img src="page-8.png" alt="Page 8" onerror="this.outerHTML='<div class=\'ebook-slide-placeholder\'>Page 8</div>'">
     </div>
     <div class="ebook-slider-nav">
       <button class="prev" onclick="changeSlide(-1)">←</button>
