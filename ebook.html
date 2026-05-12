@@ -488,6 +488,32 @@
     .faq-question { font-size: 18px; }
     .faq-answer { padding-right: 0; }
   }
+
+  /* SOCIAL PROOF */
+  .social-proof { padding: 80px 0; background: var(--ivory); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .testimonial-card {
+    background: #fff; border: 1px solid var(--ivory-deep);
+    border-radius: 12px; padding: 28px 24px;
+  }
+  .testimonial-stars { color: var(--gold); font-size: 13px; letter-spacing: 3px; margin-bottom: 14px; }
+  .testimonial-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: var(--burgundy-deep); line-height: 1.6; margin-bottom: 16px; }
+  .testimonial-author { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-soft); }
+  .social-badge { display: inline-flex; align-items: center; gap: 10px; background: var(--ivory-deep); border-radius: 100px; padding: 10px 20px; font-size: 13px; color: var(--burgundy); margin-bottom: 40px; }
+  @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+  /* STICKY CTA MOBILE */
+  .sticky-cta-mobile {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+    background: #fff; border-top: 1px solid var(--ivory-deep);
+    padding: 12px 20px; align-items: center; justify-content: space-between;
+    box-shadow: 0 -8px 24px rgba(92,42,47,0.08);
+  }
+  .sticky-cta-mobile .price { font-size: 18px; font-weight: 600; color: var(--burgundy-deep); }
+  .sticky-cta-mobile .price span { font-size: 12px; font-weight: 400; color: var(--ink-soft); display: block; }
+  .sticky-cta-mobile a { padding: 12px 24px; font-size: 13px; }
+  @media (max-width: 768px) { .sticky-cta-mobile { display: flex; } }
 </style>
 </head>
 <body>
@@ -646,7 +672,7 @@
         <p>Construire une routine spirituelle douce. Le dhikr, la prière, les rituels Sunnah qui réparent en silence — sans pression.</p>
       </div>
       <div class="preview-card">
-        <div class="preview-week">Semaine 4</div>
+        <div class="preview-week">Intégration</div>
         <h4>Avancer</h4>
         <p>Le rituel des 7 derniers jours pour intégrer durablement. Cesser de revivre, commencer à vivre à nouveau — avec ton cœur réaligné.</p>
       </div>
@@ -675,7 +701,7 @@
       <div class="included-item">
         <div class="included-symbol">iii.</div>
         <h4>Communauté privée</h4>
-        <p>Accès à l'espace privé des sœurs en cheminement, pour partager, échanger, et avancer ensemble.</p>
+        <p>Accès au groupe Telegram privé des sœurs en cheminement — pour partager tes avancées, poser tes questions, et ne pas traverser ce chemin seule.</p>
       </div>
     </div>
   </div>
@@ -698,6 +724,34 @@
         <p>Reset ton cœur est né d'une conviction : la spiritualité et la guérison émotionnelle ne devraient pas être deux mondes séparés. Pour les femmes musulmanes qui veulent prendre soin d'elles sans renier leur foi — et au contraire, en s'y appuyant — il manquait un espace.</p>
         <p>Ce projet est ce que j'aurais voulu trouver, à un moment de ma vie où j'avais besoin de mots doux, d'un cadre, et d'une présence. Aujourd'hui, je le partage avec toi — pour que tu n'aies pas à chercher seule.</p>
         <p class="author-signature">— Psycœurlogie</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof reveal">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-eyebrow">Elles témoignent</div>
+      <h2 class="section-title" style="margin:0 auto 16px;">Ce qu'elles ont <em>vécu</em>.</h2>
+      <div class="social-badge">✦ Des centaines de sœurs ont commencé leur reset</div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">« Je ne savais pas que mon cœur pouvait se sentir aussi léger. J'ai arrêté de me battre contre moi-même. »</p>
+        <p class="testimonial-author">— Yasmine, profil Al-Wahn</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">« Ce programme m'a redonné une routine spirituelle que je n'avais plus depuis des années. 10 minutes par jour, ça change tout. »</p>
+        <p class="testimonial-author">— Imane, profil Al-Ghafla</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">« Enfin un contenu qui parle de guérison émotionnelle sans aller à l'encontre de ma foi. Je me suis sentie comprise dès la première page. »</p>
+        <p class="testimonial-author">— Sanaa, profil Al-Hawa</p>
       </div>
     </div>
   </div>
@@ -796,8 +850,8 @@
         <h5>Contact</h5>
         <ul>
           <li><a href="contact.html">Nous écrire</a></li>
-          <li><a href="https://www.instagram.com/psy.coeurlogie" target="_blank">Instagram</a></li>
-          <li><a href="https://www.tiktok.com/@psycoeurlogie?" target="_blank">TikTok</a></li>
+          <li><a href="https://www.instagram.com/psy.coeurlogie" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@psycoeurlogie?" target="_blank" rel="noopener noreferrer">TikTok</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -836,6 +890,11 @@
     if (counter) counter.textContent = (currentSlide + 1) + ' / ' + slides.length;
   }
 </script>
+
+<div class="sticky-cta-mobile">
+  <div class="price">17€ <span>Téléchargement immédiat</span></div>
+  <a href="https://buy.stripe.com/aFa28q8g11z12MLd6xcfK00" class="btn">Commencer →</a>
+</div>
 
 </body>
 </html>

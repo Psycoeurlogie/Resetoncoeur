@@ -503,7 +503,7 @@
 
 <nav>
   <a href="index.html" class="logo">Reset <em>ton cœur</em></a>
-  <div class="nav-links">
+  <div class="nav-links" id="navLinks">
     <a href="ebook.html">L'ebook</a>
     <a href="mini-guide.html">Le mini-guide</a>
     <a href="manifesto.html">Manifesto</a>
@@ -511,6 +511,9 @@
     <a href="contact.html">Contact</a>
     <a href="ebook.html" class="nav-cta">Commencer</a>
   </div>
+  <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -521,10 +524,13 @@
       <div class="hero-tag" style="font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rose); margin-bottom: 28px; font-weight: 500; opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;">— un projet de Psycœurlogie</div>
       <h1>L'art de revenir <em>à toi</em>.</h1>
       <p class="home-hero-sub">Reset ton cœur est un chemin pensé pour les femmes qui choisissent la douceur comme retour. Des ebooks, des rituels, des mots — pour le corps, le cœur, et l'âme.</p>
-      <a href="ebook.html" class="btn">
-        <span>Commencer le chemin</span>
-        <span class="arrow">→</span>
-      </a>
+      <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+        <a href="ebook.html" class="btn">
+          <span>Commencer le chemin</span>
+          <span class="arrow">→</span>
+        </a>
+        <span style="font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--rose); opacity:0; animation:fadeUp 1s ease 0.45s forwards;">17€ · Accès immédiat</span>
+      </div>
       <p class="home-hero-meta">Pour celles qui n'ont plus envie de se perdre.</p>
     </div>
   </div>
@@ -679,16 +685,16 @@
         <h5>Contact</h5>
         <ul>
           <li><a href="contact.html">Nous écrire</a></li>
-          <li><a href="https://www.instagram.com/psy.coeurlogie" target="_blank">Instagram</a></li>
-          <li><a href="https://www.tiktok.com/@psycoeurlogie?" target="_blank">TikTok</a></li>
+          <li><a href="https://www.instagram.com/psy.coeurlogie" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@psycoeurlogie?" target="_blank" rel="noopener noreferrer">TikTok</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5>Légal</h5>
         <ul>
-          <li><a href="#">Mentions légales</a></li>
-          <li><a href="#">CGV</a></li>
-          <li><a href="#">Confidentialité</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="cgv.html">CGV</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
         </ul>
       </div>
     </div>
@@ -706,6 +712,21 @@
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const burger = document.getElementById('navBurger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', false);
+    });
+  });
 </script>
 
 </body>
