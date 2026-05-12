@@ -946,6 +946,11 @@ const PROFILES = {
   }
 };
 
+// Sanitize: keep only safe inline tags, strip everything else
+function sanitize(html) {
+  return html.replace(/<(?!\/?(?:em|strong|p|br)\b)[^>]+>/gi, '');
+}
+
 // ── NAVIGATION ────────────────────────────────────────────
 function goTo(n) {
   const from = document.getElementById('step-' + currentStep);
@@ -1030,11 +1035,11 @@ function renderResult(profileNum) {
   const p = profileNum || computeProfile();
 
   const d = PROFILES[p];
-  document.getElementById('resultTitle').innerHTML    = d.title;
+  document.getElementById('resultTitle').innerHTML    = sanitize(d.title);
   document.getElementById('resultArabic').textContent = d.arabic;
-  document.getElementById('resultBody').innerHTML     = d.body;
+  document.getElementById('resultBody').innerHTML     = sanitize(d.body);
   document.getElementById('resultConseil').textContent = d.conseil;
-  document.getElementById('resultCtaNote').innerHTML  = d.ctaNote;
+  document.getElementById('resultCtaNote').innerHTML  = sanitize(d.ctaNote);
   goTo(9);
 }
 
