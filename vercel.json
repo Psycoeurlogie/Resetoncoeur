@@ -1,4 +1,12 @@
 {
+  "redirects": [
+    { "source": "/mentions-legales", "destination": "/legal/mentions-legales", "permanent": true },
+    { "source": "/mentions-legales.html", "destination": "/legal/mentions-legales", "permanent": true },
+    { "source": "/cgv", "destination": "/legal/cgv", "permanent": true },
+    { "source": "/cgv.html", "destination": "/legal/cgv", "permanent": true },
+    { "source": "/confidentialite", "destination": "/legal/confidentialite", "permanent": true },
+    { "source": "/confidentialite.html", "destination": "/legal/confidentialite", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
