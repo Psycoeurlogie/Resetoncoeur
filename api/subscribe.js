@@ -1,5 +1,16 @@
+const ALLOWED_ORIGINS = [
+  'https://resetoncoeur.fr',
+  'https://www.resetoncoeur.fr',
+  'https://resetoncoeur.vercel.app'
+];
+
+const ALLOWED_LIST_IDS = [9, 10, 11, 12, 13];
+
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://resetoncoeur.vercel.app');
+  const origin = req.headers.origin;
+  if (ALLOWED_ORIGINS.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.status(200).end();
@@ -10,6 +21,8 @@ export default async function handler(req, res) {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) return res.status(400).json({ error: 'Invalid email' });
+
+  if (!ALLOWED_LIST_IDS.includes(Number(listId))) return res.status(400).json({ error: 'Invalid list' });
 
   try {
     const response = await fetch('https://api.brevo.com/v3/contacts', {
