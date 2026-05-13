@@ -1,6 +1,7 @@
 import express from 'express'
 import crypto from 'crypto'
 import rateLimit from 'express-rate-limit'
+import cron from 'node-cron'
 
 // Fail-closed: refuse to start if secrets are missing
 if (!process.env.VERIFY_TOKEN) throw new Error('VERIFY_TOKEN env var is required')
@@ -164,3 +165,89 @@ async function sendFollowerWelcomeDM(userId) {
 }
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+
+// --- FOLLOWER POLLING (toutes les 15 min) ---
+const IG_USER_ID = process.env.IG_USER_ID  // ID numérique du compte Instagram ex: 17841480078629028
+
+async function pollNewFollowers() {
+  if (!IG_USER_ID) {
+    console.warn('IG_USER_ID not set — follower polling disabled')
+    return
+  }
+  try {
+    let url = `https://graph.instagram.com/v21.0/${IG_USER_ID}/followers?fields=id&limit=50&access_token=${IG_ACCESS_TOKEN}`
+    const newFollowers = []
+
+    // On parcourt jusqu'à trouver un follower déjà connu (arrêt anticipé)
+    while (url) {
+      const res = await fetch(url, { signal: AbortSignal.timeout(15000) })
+      const data = await res.json()
+      if (data.error) {
+        console.error('Follower poll error:', data.error.code, data.error.message)
+        return
+      }
+      let hitKnown = false
+      for (const user of data.data ?? []) {
+        const key = `known_follower:${user.id}`
+        if (await dedup.seen(key)) { hitKnown = true; break }
+        newFollowers.push(user.id)
+      }
+      url = (!hitKnown && data.paging?.next) ? data.paging.next : null
+    }
+
+    // Marquer tous les followers comme connus (TTL 90 jours)
+    for (const id of newFollowers) {
+      await dedup.mark(`known_follower:${id}`, 90 * 86400)
+    }
+
+    if (newFollowers.length > 0) {
+      console.log(`Follower poll: ${newFollowers.length} new follower(s) detected`)
+      for (const id of newFollowers) {
+        const dmKey = `follow:${id}`
+        if (await dedup.seen(dmKey)) continue
+        await dedup.mark(dmKey, 30 * 86400)
+        console.log(`New follower ${id.slice(0, 4)}*** — sending welcome DM`)
+        await sendFollowerWelcomeDM(id)
+      }
+    } else {
+      console.log('Follower poll: no new followers')
+    }
+  } catch (err) {
+    console.error('pollNewFollowers error:', err.message)
+  }
+}
+
+// Initialisation : marquer tous les followers actuels comme connus (sans envoyer de DM)
+async function seedKnownFollowers() {
+  if (!IG_USER_ID) return
+  try {
+    let url = `https://graph.instagram.com/v21.0/${IG_USER_ID}/followers?fields=id&limit=200&access_token=${IG_ACCESS_TOKEN}`
+    let count = 0
+    while (url) {
+      const res = await fetch(url, { signal: AbortSignal.timeout(15000) })
+      const data = await res.json()
+      if (data.error) {
+        console.error('Seed followers error:', data.error.code, data.error.message)
+        return
+      }
+      for (const user of data.data ?? []) {
+        const key = `known_follower:${user.id}`
+        if (!(await dedup.seen(key))) {
+          await dedup.mark(key, 90 * 86400)
+          count++
+        }
+      }
+      url = data.paging?.next ?? null
+    }
+    console.log(`Seed complete: ${count} existing followers marked as known`)
+  } catch (err) {
+    console.error('seedKnownFollowers error:', err.message)
+  }
+}
+
+// Au démarrage : seed des followers existants, puis polling toutes les 15 min
+if (IG_USER_ID) {
+  seedKnownFollowers()
+  cron.schedule('*/15 * * * *', pollNewFollowers)
+  console.log('Follower polling: active (every 15 min)')
+}
