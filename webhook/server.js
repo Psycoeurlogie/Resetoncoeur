@@ -24,7 +24,7 @@ if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) 
   })
   dedup = {
     async seen(id) { return !!(await redis.get(`dedup:${id}`)) },
-    async mark(id) { await redis.set(`dedup:${id}`, 1, { ex: 86400 }) },
+    async mark(id, ttl = 86400) { await redis.set(`dedup:${id}`, 1, { ex: ttl }) },
   }
   console.log('Deduplication: Upstash Redis')
 } else {
@@ -32,9 +32,9 @@ if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) 
   const store = new Map()
   dedup = {
     async seen(id) { return store.has(id) },
-    async mark(id) {
+    async mark(id, ttl = 86400) {
       store.set(id, true)
-      setTimeout(() => store.delete(id), 86_400_000)
+      setTimeout(() => store.delete(id), ttl * 1000)
     },
   }
 }
@@ -83,20 +83,38 @@ app.post('/webhook', async (req, res) => {
   const entries = req.body?.entry ?? []
   for (const entry of entries) {
     for (const change of entry.changes ?? []) {
-      if (change.field !== 'comments') continue
-      const commentId = change.value?.id
-      const senderId = change.value?.from?.id
-      const text = change.value?.text ?? ''
-      if (typeof senderId !== 'string' || !/^\d{1,30}$/.test(senderId)) continue
-      const matched = KEYWORDS.find(k => text.toLowerCase().includes(k))
-      if (!matched) continue
-      if (commentId && await dedup.seen(commentId)) {
-        console.log(`Duplicate event ${commentId} — skipped`)
-        continue
+
+      // --- COMMENTS TO DM ---
+      if (change.field === 'comments') {
+        const commentId = change.value?.id
+        const senderId = change.value?.from?.id
+        const text = change.value?.text ?? ''
+        if (typeof senderId !== 'string' || !/^\d{1,30}$/.test(senderId)) continue
+        const matched = KEYWORDS.find(k => text.toLowerCase().includes(k))
+        if (!matched) continue
+        if (commentId && await dedup.seen(commentId)) {
+          console.log(`Duplicate event ${commentId} — skipped`)
+          continue
+        }
+        if (commentId) await dedup.mark(commentId)
+        console.log(`Keyword "${matched}" — sending DM to ${senderId.slice(0, 4)}***`)
+        await sendDM(senderId)
       }
-      if (commentId) await dedup.mark(commentId)
-      console.log(`Keyword "${matched}" — sending DM to ${senderId.slice(0, 4)}***`)
-      await sendDM(senderId)
+
+      // --- NEW FOLLOWER WELCOME DM ---
+      if (change.field === 'follow') {
+        const followerId = change.value?.from?.id
+        if (typeof followerId !== 'string' || !/^\d{1,30}$/.test(followerId)) continue
+        const dedupKey = `follow:${followerId}`
+        if (await dedup.seen(dedupKey)) {
+          console.log(`Duplicate follow ${followerId.slice(0, 4)}*** — skipped`)
+          continue
+        }
+        await dedup.mark(dedupKey, 30 * 86_400) // 30 jours TTL
+        console.log(`New follower ${followerId.slice(0, 4)}*** — sending welcome DM`)
+        await sendFollowerWelcomeDM(followerId)
+      }
+
     }
   }
 })
@@ -120,6 +138,28 @@ async function sendDM(userId) {
     else console.log('DM sent')
   } catch (err) {
     console.error('sendDM error:', err.message)
+  }
+}
+
+async function sendFollowerWelcomeDM(userId) {
+  try {
+    const response = await fetch('https://graph.instagram.com/v21.0/me/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        recipient: { id: userId },
+        message: {
+          text: `As-salamu 'alaykum 🌙\n\nBienvenue dans la communauté Reset ton cœur 🤍\n\nJe suis vraiment contente de te voir ici. Ça veut dire que quelque chose en toi cherche à revenir — à toi-même, à Allah, à ce qui compte vraiment.\n\nPour te souhaiter la bienvenue, je t'offre mon mini-guide gratuit ✨\n7 jours pour réaligner ton corps et ton âme avec la Sunnah — concret, doux, et ancré dans ce qui plaît à Allah.\n\nClique ici pour le recevoir 👇🏼\n${DOWNLOAD_LINK}\n\nQu'Allah te facilite et mette du barakah dans ta démarche 🤍\nMajda`,
+        },
+        access_token: IG_ACCESS_TOKEN,
+      }),
+      signal: AbortSignal.timeout(10000),
+    })
+    const data = await response.json()
+    if (data.error) console.error('Welcome DM failed:', data.error.code, data.error.message)
+    else console.log('Welcome DM sent')
+  } catch (err) {
+    console.error('sendFollowerWelcomeDM error:', err.message)
   }
 }
 
