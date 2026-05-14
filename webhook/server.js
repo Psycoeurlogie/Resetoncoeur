@@ -40,6 +40,7 @@ if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) 
 }
 
 const app = express()
+app.set('trust proxy', 1)
 
 app.use('/webhook', rateLimit({ windowMs: 60_000, max: 30, standardHeaders: true, legacyHeaders: false }))
 
