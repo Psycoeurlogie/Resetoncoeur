@@ -10,6 +10,7 @@ if (!process.env.IG_TOKEN) throw new Error('IG_TOKEN env var is required')
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN
 const APP_SECRET = process.env.APP_SECRET
 const IG_ACCESS_TOKEN = process.env.IG_TOKEN
+const IG_USER_ID = process.env.IG_USER_ID || '17841480078629028'
 const DOWNLOAD_LINK = 'https://resetoncoeur.vercel.app/ig.html'
 const KEYWORDS = ['sunnah', 'baraka']
 const PORT = process.env.PORT || 3000
@@ -108,7 +109,7 @@ app.post('/webhook', async (req, res) => {
 
 async function sendDM(userId) {
   try {
-    const response = await fetch('https://graph.facebook.com/v21.0/me/messages', {
+    const response = await fetch(`https://graph.facebook.com/v21.0/${IG_USER_ID}/messages`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
