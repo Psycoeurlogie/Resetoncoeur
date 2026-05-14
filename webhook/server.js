@@ -109,7 +109,7 @@ app.post('/webhook', async (req, res) => {
 
 async function sendDM(userId) {
   try {
-    const response = await fetch(`https://graph.facebook.com/v21.0/${IG_USER_ID}/messages`, {
+    const response = await fetch(`https://graph.instagram.com/v21.0/${IG_USER_ID}/messages`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
