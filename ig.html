@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BH1LRKVSJG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BH1LRKVSJG');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ton mini-guide gratuit — Reset ton cœur</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #f7f1ea;
+    --ivory-deep: #ede4d8;
+    --rose: #d4a5a0;
+    --rose-soft: #e8c8c4;
+    --burgundy: #5c2a2f;
+    --burgundy-deep: #3d1c20;
+    --ink: #2a1d1f;
+    --ink-soft: #5a4a4c;
+    --gold: #b8956a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 8vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--burgundy-deep);
+    margin-bottom: 16px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--burgundy);
+  }
+
+  .subtitle {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cover {
+    width: 140px;
+    border-radius: 8px;
+    box-shadow: 0 12px 40px rgba(92,42,47,0.18);
+    margin: 0 auto 32px;
+    display: block;
+  }
+
+  .form-wrap { margin-bottom: 16px; }
+
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input[type="email"] {
+    width: 100%;
+    padding: 15px 18px;
+    border: 1.5px solid var(--ivory-deep);
+    border-radius: 8px;
+    background: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input[type="email"]:focus { border-color: var(--rose); }
+  input[type="email"]::placeholder { color: var(--ink-soft); opacity: 0.7; }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--burgundy);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  button[type="submit"]:hover { background: var(--burgundy-deep); transform: translateY(-1px); }
+  button[type="submit"]:disabled { opacity: 0.6; cursor: default; transform: none; }
+
+  .success {
+    display: none;
+    background: rgba(184,149,106,0.12);
+    border: 1px solid rgba(184,149,106,0.3);
+    border-radius: 8px;
+    padding: 20px;
+    color: var(--burgundy-deep);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .error {
+    display: none;
+    color: #a33;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--ink-soft);
+    opacity: 0.8;
+  }
+
+  .meta span::before {
+    content: '✦ ';
+    color: var(--gold);
+  }
+
+  .footer {
+    margin-top: 48px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    opacity: 0.5;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <p class="eyebrow">Mini-guide gratuit · 7 jours</p>
+
+  <img src="mini-guide-cover.png" alt="Mini-guide Reset ton corps avec la Sunnah" class="cover">
+
+  <h1><em>Reset</em> ton corps<br>avec la Sunnah</h1>
+
+  <p class="subtitle">
+    7 jours pour réaligner ton corps, ton esprit et ton âme —
+    des pratiques concrètes, douces, ancrées dans la Sunnah.
+  </p>
+
+  <div class="form-wrap">
+    <div class="success" id="success">
+      Barakallahu fik 🤍<br>
+      <strong>Ton guide arrive dans ta boîte mail.</strong><br>
+      <span style="font-size:13px; opacity:0.85;">Pense à vérifier tes spams si tu ne le vois pas dans 2 min.</span>
+    </div>
+    <div class="error" id="error">Une erreur s'est produite. Réessaie.</div>
+    <form id="form">
+      <div class="form-row">
+        <input type="email" id="email" placeholder="Ton adresse email" required autocomplete="email">
+        <button type="submit" id="btn">Recevoir le guide gratuitement</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="meta">
+    <span>100% gratuit</span>
+    <span>Reçu en moins de 2 min</span>
+    <span>Désinscription à tout moment</span>
+  </div>
+</div>
+
+<p class="footer">© Reset ton cœur · <a href="confidentialite.html" style="color:inherit;">Confidentialité</a></p>
+
+<script>
+document.getElementById('form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  const btn = document.getElementById('btn');
+  const success = document.getElementById('success');
+  const error = document.getElementById('error');
+
+  btn.disabled = true;
+  btn.textContent = 'Envoi...';
+  error.style.display = 'none';
+
+  const formData = new FormData();
+  formData.append('EMAIL', email);
+  formData.append('email_address_check', '');
+  formData.append('locale', 'fr');
+
+  try {
+    await fetch('https://59abc3a3.sibforms.com/serve/MUIFAPFfe0btVfU5J8Dk4lQuVRimw48hB_2Vpn2FO9jzOe_2WwxVCO_fQbqbiuOrz7e7mJSRF_8-__leSLB8eFlMFX9mxO8NqY83Q-TS5CX0bmtvu450GlslEEisEo7Xtt2pbW1-w5wlqcJ1WcNVmqBGAtt4-6wmwkr-bYDEvh-VBkvBXOIA1GuXCVxCnJKflXSo56OYeYuqpOIdVw==', {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors',
+    });
+  } catch (_) {}
+
+  // Always show success — no-cors doesn't expose response status
+  this.style.display = 'none';
+  success.style.display = 'block';
+
+  // GA4 event
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'lead_capture', { source: 'instagram_dm' });
+  }
+});
+</script>
+</body>
+</html>
