@@ -8,7 +8,7 @@ if (!process.env.APP_SECRET) throw new Error('APP_SECRET env var is required')
 if (!process.env.IG_TOKEN) throw new Error('IG_TOKEN env var is required')
 
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN
-const APP_SECRET = process.env.APP_SECRET
+const APP_SECRET = process.env.APP_SECRET?.trim()
 const IG_ACCESS_TOKEN = process.env.IG_TOKEN
 const IG_USER_ID = process.env.IG_USER_ID || '17841480078629028'
 const DOWNLOAD_LINK = 'https://resetoncoeur.vercel.app/ig.html'
@@ -45,18 +45,27 @@ app.set('trust proxy', 1)
 
 app.use('/webhook', rateLimit({ windowMs: 60_000, max: 30, standardHeaders: true, legacyHeaders: false }))
 
+app.use('/webhook', (req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} /webhook sig=${req.headers['x-hub-signature-256'] ? 'present' : 'MISSING'} ip=${req.ip}`)
+  next()
+})
+
 // Signature verification — fail-closed (403 if missing or invalid)
+// DEBUG_SIG=1 bypasses check temporarily while diagnosing
 app.use(express.json({
   verify(req, res, buf) {
     const sig = req.headers['x-hub-signature-256']
+    const expStr = 'sha256=' + crypto.createHmac('sha256', APP_SECRET).update(buf).digest('hex')
+    const expHex = 'sha256=' + crypto.createHmac('sha256', Buffer.from(APP_SECRET, 'hex')).update(buf).digest('hex')
+    console.log('SIG recv=' + (sig ?? 'NONE').slice(7, 15) + ' expStr=' + expStr.slice(7, 15) + ' expHex=' + expHex.slice(7, 15) + ' bodyLen=' + buf.length)
+    if (process.env.DEBUG_SIG === '1') return
     if (!sig) {
       const err = new Error('Missing signature')
       err.status = 403
       throw err
     }
-    const expected = 'sha256=' + crypto.createHmac('sha256', APP_SECRET).update(buf).digest('hex')
     const sigBuf = Buffer.from(sig)
-    const expBuf = Buffer.from(expected)
+    const expBuf = Buffer.from(expStr)
     if (sigBuf.length !== expBuf.length || !crypto.timingSafeEqual(sigBuf, expBuf)) {
       const err = new Error('Invalid signature')
       err.status = 403
@@ -66,7 +75,10 @@ app.use(express.json({
 }))
 
 app.use((err, req, res, next) => {
-  if (err.status === 403) return res.sendStatus(403)
+  if (err.status === 403) {
+    console.error('403 rejected:', err.message, 'ip:', req.ip)
+    return res.sendStatus(403)
+  }
   next(err)
 })
 
@@ -85,7 +97,6 @@ app.post('/webhook', async (req, res) => {
   const entries = req.body?.entry ?? []
   for (const entry of entries) {
     for (const change of entry.changes ?? []) {
-
       // --- COMMENTS TO DM ---
       if (change.field === 'comments') {
         const commentId = change.value?.id
@@ -103,19 +114,33 @@ app.post('/webhook', async (req, res) => {
         await sendDM(senderId)
       }
 
+      // --- NEW FOLLOWER → WELCOME DM ---
+      if (change.field === 'follow') {
+        const followerId = change.value?.from?.id
+        if (typeof followerId !== 'string' || !/^\d{1,30}$/.test(followerId)) continue
+        const dedupKey = `follow:${followerId}`
+        if (await dedup.seen(dedupKey)) {
+          console.log(`Duplicate follow ${followerId.slice(0, 4)}*** — skipped`)
+          continue
+        }
+        await dedup.mark(dedupKey, 30 * 86_400)
+        console.log(`New follower ${followerId.slice(0, 4)}*** — sending welcome DM`)
+        await sendFollowerWelcomeDM(followerId)
+      }
+
     }
   }
 })
 
 async function sendDM(userId) {
   try {
-    const response = await fetch(`https://graph.instagram.com/v21.0/${IG_USER_ID}/messages`, {
+    const response = await fetch('https://graph.instagram.com/v21.0/me/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         recipient: { id: userId },
         message: {
-          text: `As-salamu 'alaykum 🌙\n\nQu'Allah te facilite et mette du khayr dans ta démarche 🤍\n\nSi tu es ici, c'est que tu as commenté SUNNAH et c'est que ce sujet te parle... et je peux t'aider à y voir plus clair, bi idhni'Allah ✨\n\nClique ci-dessous pour télécharger ton mini guide gratuit 👇🏼\n${DOWNLOAD_LINK}`,
+          text: `As-salamu 'alaykum 🌙\n\nJ'ai vu ton commentaire et ça m'a touchée 🤍\n\nSi ce post te parle, c'est déjà un signe. Je ne sais pas où tu en es dans ton chemin, mais je peux peut-être t'aider à y voir plus clair, bi idhni'Allah ✨\n\nJe t'ai préparé un petit guide gratuit, juste pour t'accompagner doucement là où tu en es.\n\n👇🏼\n${DOWNLOAD_LINK}\n\nQu'Allah te facilite et mette du khayr dans ta démarche 🤍`,
         },
         access_token: IG_ACCESS_TOKEN,
       }),
@@ -126,6 +151,29 @@ async function sendDM(userId) {
     else console.log('DM sent')
   } catch (err) {
     console.error('sendDM error:', err.message)
+  }
+}
+
+async function sendFollowerWelcomeDM(userId) {
+  const WELCOME_LINK = 'https://resetoncoeur.vercel.app/mini-guide.html'
+  try {
+    const response = await fetch('https://graph.instagram.com/v21.0/me/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        recipient: { id: userId },
+        message: {
+          text: `As-salamu 'alaykum 🌙\n\nTu viens de faire un premier pas — et ce n'est pas un hasard 🤍\n\nIl y a une chose que j'aurais aimé qu'on me dise quand j'ai commencé à me reconnecter à la Sunnah. Je te l'ai mise dans ce guide gratuit, fait pour celles qui ont décidé de ne plus attendre.\n\nOuvre-le ce soir 👇🏼\n${WELCOME_LINK}\n\nQu'Allah mette du barakah dans ta démarche 🤍\nMajda`,
+        },
+        access_token: IG_ACCESS_TOKEN,
+      }),
+      signal: AbortSignal.timeout(10000),
+    })
+    const data = await response.json()
+    if (data.error) console.error('Welcome DM failed:', data.error.code, data.error.message)
+    else console.log('Welcome DM sent')
+  } catch (err) {
+    console.error('sendFollowerWelcomeDM error:', err.message)
   }
 }
 
