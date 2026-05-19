@@ -6,6 +6,7 @@ import rateLimit from 'express-rate-limit'
 if (!process.env.VERIFY_TOKEN) throw new Error('VERIFY_TOKEN env var is required')
 if (!process.env.APP_SECRET) throw new Error('APP_SECRET env var is required')
 if (!process.env.IG_TOKEN) throw new Error('IG_TOKEN env var is required')
+console.log(`APP_SECRET loaded: len=${process.env.APP_SECRET?.trim().length}`)
 
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN
 const APP_SECRET = process.env.APP_SECRET?.trim()
@@ -51,13 +52,12 @@ app.use('/webhook', (req, res, next) => {
 })
 
 // Signature verification — fail-closed (403 if missing or invalid)
-// DEBUG_SIG=1 bypasses check temporarily while diagnosing
+// TODO: remove DEBUG_SIG once APP_SECRET mismatch is resolved (see tasks/lessons.md)
 app.use(express.json({
   verify(req, res, buf) {
     const sig = req.headers['x-hub-signature-256']
     const expStr = 'sha256=' + crypto.createHmac('sha256', APP_SECRET).update(buf).digest('hex')
-    const expHex = 'sha256=' + crypto.createHmac('sha256', Buffer.from(APP_SECRET, 'hex')).update(buf).digest('hex')
-    console.log('SIG recv=' + (sig ?? 'NONE').slice(7, 15) + ' expStr=' + expStr.slice(7, 15) + ' expHex=' + expHex.slice(7, 15) + ' bodyLen=' + buf.length)
+    console.log('SIG check: present=' + !!sig + ' bodyLen=' + buf.length)
     if (process.env.DEBUG_SIG === '1') return
     if (!sig) {
       const err = new Error('Missing signature')
