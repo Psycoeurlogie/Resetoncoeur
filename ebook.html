@@ -511,6 +511,34 @@
   .social-badge { display: inline-flex; align-items: center; gap: 10px; background: var(--ivory-deep); border-radius: 100px; padding: 10px 20px; font-size: 13px; color: var(--burgundy); margin-bottom: 40px; }
   @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
 
+  /* FOMO BADGE */
+  .fomo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(212, 165, 160, 0.1);
+    border: 1px solid rgba(212, 165, 160, 0.45);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .fomo-dot {
+    width: 6px; height: 6px;
+    background: var(--rose);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: fomo-pulse 2s ease-in-out infinite;
+  }
+  @keyframes fomo-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.75); }
+  }
+
   /* STICKY CTA MOBILE */
   .sticky-cta-mobile {
     display: none;
@@ -574,6 +602,10 @@
         <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--ink-soft);margin-bottom:28px;padding:16px 20px;border-left:2px solid var(--rose);background:rgba(212,165,160,0.08);border-radius:0 6px 6px 0;">
           Un suivi psychologique coûte 80€ la séance. Ce programme fait le même travail intérieur — en 21 jours, à ton rythme, depuis chez toi.
         </p>
+        <div class="fomo-badge">
+          <span class="fomo-dot"></span>
+          Prix de lancement · Disponible jusqu'au 22 juin
+        </div>
         <div class="ebook-cta-block">
           <a href="https://buy.stripe.com/6oU00i0NzelN3QP7MdcfK01" class="btn">
             <span>Commencer maintenant</span>
@@ -832,6 +864,10 @@
     <div class="section-eyebrow">Le moment</div>
     <p class="final-cta-quote">Ton cœur attend que tu reviennes — pas que tu sois <em>parfaite</em>.</p>
     <p class="final-cta-text">Vingt et un jours. Un chemin. Le tien. Tu peux commencer aujourd'hui, à ton rythme, depuis ton canapé.</p>
+    <div class="fomo-badge" style="justify-content: center; margin: 0 auto 24px;">
+      <span class="fomo-dot"></span>
+      Prix de lancement · Disponible jusqu'au 22 juin
+    </div>
     <a href="https://buy.stripe.com/6oU00i0NzelN3QP7MdcfK01" class="btn" style="font-size: 16px; padding: 22px 44px;">
       <span>Commencer le programme</span>
       <span class="arrow">→</span>
@@ -925,6 +961,10 @@
 </script>
 
 <div class="sticky-cta-mobile">
+  <div>
+    <div class="price" style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--burgundy-deep);">Prix de lancement</div>
+    <span style="font-size:11px;color:var(--ink-soft);letter-spacing:0.05em;">Jusqu'au 22 juin</span>
+  </div>
   <a href="https://buy.stripe.com/6oU00i0NzelN3QP7MdcfK01" class="btn">Commencer →</a>
 </div>
 
