@@ -99,7 +99,11 @@ nav {
   transition: background 0.3s;
 }
 .nav-buy:hover { background: var(--burgundy-deep); }
-@media (max-width: 640px) { .nav-link { display: none; } }
+@media (max-width: 640px) {
+  .nav-link { display: none; }
+  .nav-buy-full { display: none; }
+  .nav-buy { padding: 11px 18px; }
+}
 
 /* ─── HERO — plein écran, typo monumentale ───────────── */
 .hero {
@@ -368,6 +372,8 @@ nav {
 @media (max-width: 860px) {
   .foryou-grid { grid-template-columns: 1fr; }
   .foryou-sticky { position: static; }
+  .foryou-item { grid-template-columns: 34px 1fr; gap: 12px; padding: 26px 0; }
+  .foryou-item:hover { padding-left: 0; }
 }
 
 /* ─── BANDE PLEINE LARGEUR — citation ─────────────────── */
@@ -524,7 +530,13 @@ nav {
 .bento-guarantee { background: rgba(212, 165, 160, 0.14); border-color: rgba(212, 165, 160, 0.4); }
 @media (max-width: 860px) {
   .bento-grid { grid-template-columns: 1fr; }
-  .bento-price { grid-column: auto; }
+  .bento-price {
+    grid-column: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+  .bento-price .btn { width: 100%; justify-content: center; }
 }
 
 /* ─── TÉMOIGNAGES — pull quotes ───────────────────────── */
@@ -535,7 +547,10 @@ nav {
   border-bottom: 1px solid var(--hairline);
 }
 .voice:first-of-type { border-top: 1px solid var(--hairline); margin-top: clamp(44px, 7vh, 72px); }
-.voice:nth-child(odd) { margin-left: auto; text-align: right; }
+@media (min-width: 761px) {
+  /* L'alternance gauche/droite n'a de sens que sur grand écran */
+  .voice:nth-child(odd) { margin-left: auto; text-align: right; }
+}
 .voice blockquote {
   font-family: var(--serif); font-style: italic; font-weight: 300;
   font-size: clamp(22px, 3vw, 34px);
@@ -712,7 +727,7 @@ footer nav-links { display: block; }
   <a href="index.html" class="logo">Reset <em>ton cœur</em></a>
   <div class="nav-right">
     <a class="nav-link" href="mini-guide.html">Le mini-guide gratuit</a>
-    <a class="nav-buy js-buy" href="https://buy.stripe.com/6oU00i0NzelN3QP7MdcfK01">25€ — Recevoir l'ebook</a>
+    <a class="nav-buy js-buy" href="https://buy.stripe.com/6oU00i0NzelN3QP7MdcfK01">25€<span class="nav-buy-full"> — Recevoir l'ebook</span></a>
   </div>
 </nav>
 
