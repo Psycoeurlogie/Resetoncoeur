@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 240 240" fill="none">
+  <!-- Sceau Psycœurlogie — sceau × cœur en chemin (texte en couronne, cœur héros) -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600&amp;display=swap');
+      text { font-family: 'Hanken Grotesk', 'Avenir Next', 'Helvetica Neue', sans-serif; }
+    </style>
+    <path id="arc-haut" d="M 26 120 A 94 94 0 0 1 214 120"/>
+    <path id="arc-bas" d="M 33 120 A 87 87 0 0 0 207 120"/>
+  </defs>
+
+  <circle cx="120" cy="120" r="116" stroke="#5c2a2f" stroke-width="1.5"/>
+
+  <text font-size="14" letter-spacing="5" fill="#5c2a2f" font-weight="600">
+    <textPath href="#arc-haut" startOffset="50%" text-anchor="middle">PSYCŒURLOGIE</textPath>
+  </text>
+  <text font-size="10.5" letter-spacing="3.4" fill="#5c2a2f" font-weight="600" opacity="0.85">
+    <textPath href="#arc-bas" startOffset="50%" text-anchor="middle">L'ART DE REVENIR À TOI</textPath>
+  </text>
+
+  <!-- Étoiles latérales -->
+  <path d="M 26 113.5 l 2 4.5 4.5 2 -4.5 2 -2 4.5 -2 -4.5 -4.5 -2 4.5 -2 z" fill="#b8956a"/>
+  <path d="M 214 113.5 l 2 4.5 4.5 2 -4.5 2 -2 4.5 -2 -4.5 -4.5 -2 4.5 -2 z" fill="#b8956a"/>
+
+  <!-- Cœur en chemin — héros -->
+  <g transform="translate(120 121) scale(0.56) translate(-100 -103)">
+    <path d="M 100 165 C 55 130, 30 95, 38 68 C 44 47, 68 40, 84 52 C 92 58, 98 67, 100 76 C 102 67, 108 58, 116 52 C 132 40, 156 47, 162 68 C 169 93, 150 124, 112 155"
+          stroke="#5c2a2f" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+    <path d="M 106 158 l 3.6 8 8 3.6 -8 3.6 -3.6 8 -3.6 -8 -8 -3.6 8 -3.6 z" fill="#b8956a"/>
+  </g>
+</svg>
