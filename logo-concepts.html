@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Identité Psycœurlogie — 3 pistes de logo</title>
+<title>Identité Psycœurlogie — Le sceau, version finale</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --ivory: #f7f1ea; --ivory-deep: #ede4d8;
@@ -24,274 +24,98 @@ body::before {
   content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 5; opacity: 0.3;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0 0.3 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+header { padding: 88px 0 48px; text-align: center; }
+.kicker { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 5vw, 58px); line-height: 1.1; color: var(--burgundy-deep); }
+h1 em { font-style: italic; color: var(--rose); }
+header p { margin-top: 16px; color: var(--ink-soft); font-size: 15px; max-width: 50ch; margin-left: auto; margin-right: auto; }
 
-header { padding: 96px 0 64px; text-align: center; }
-.kicker {
-  font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--gold); font-weight: 600; margin-bottom: 18px;
-}
-header h1 {
-  font-family: var(--serif); font-weight: 400;
-  font-size: clamp(36px, 5.5vw, 64px); line-height: 1.08;
-  color: var(--burgundy-deep); letter-spacing: -0.015em;
-}
-header h1 em { font-style: italic; color: var(--rose); }
-header p { margin-top: 18px; color: var(--ink-soft); font-size: 15.5px; max-width: 54ch; margin-left: auto; margin-right: auto; }
+.hero-seal { display: flex; justify-content: center; padding: 24px 0 72px; }
+.hero-seal img { width: min(70vw, 420px); height: auto; }
 
-.concept { padding: clamp(64px, 10vh, 110px) 0; border-top: 1px solid var(--hairline); }
-.concept-head { display: flex; align-items: baseline; gap: 20px; margin-bottom: 14px; flex-wrap: wrap; }
-.concept-num {
-  font-family: var(--serif); font-style: italic;
-  font-size: 52px; line-height: 1;
-  color: transparent; -webkit-text-stroke: 1px rgba(92, 42, 47, 0.4);
-}
-.concept h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.6vw, 42px); color: var(--burgundy-deep); }
-.concept h2 em { font-style: italic; color: var(--rose); }
-.concept-pitch { color: var(--ink-soft); font-size: 15.5px; max-width: 64ch; margin-bottom: 40px; }
-
-.board { display: grid; grid-template-columns: 1.25fr 1fr; gap: 18px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding-bottom: 18px; }
 .tile {
-  border: 1px solid var(--hairline); border-radius: 8px;
-  padding: 40px 32px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 28px; text-align: center;
-  background: #fdfaf6;
+  border: 1px solid var(--hairline); border-radius: 8px; background: #fdfaf6;
+  padding: 40px 28px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
 }
 .tile.dark { background: var(--burgundy-deep); border-color: transparent; }
-.tile-label {
-  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--ink-soft); font-weight: 600;
-}
+.tile-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
 .tile.dark .tile-label { color: var(--rose-soft); }
-.tile-row { display: flex; align-items: center; justify-content: center; gap: 36px; flex-wrap: wrap; }
-
-/* Logotypes */
-.lt-psy {
-  font-family: var(--serif); font-weight: 400;
-  font-size: clamp(34px, 4.5vw, 50px); color: var(--burgundy); letter-spacing: 0.01em;
-}
-.lt-psy .oe { font-style: italic; color: var(--rose); font-weight: 300; }
-.tile.dark .lt-psy { color: var(--ivory); }
-.tile.dark .lt-psy .oe { color: var(--rose-soft); }
-.lt-rtc {
-  font-family: var(--serif); font-weight: 500;
-  font-size: clamp(26px, 3.4vw, 36px); color: var(--burgundy);
-}
-.lt-rtc em { font-style: italic; color: var(--rose); font-weight: 400; }
-.tile.dark .lt-rtc { color: var(--ivory); }
-.tile.dark .lt-rtc em { color: var(--rose-soft); }
-.endorse {
-  font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase;
-  color: var(--gold); font-weight: 600; margin-top: 6px;
-}
-
-/* Avatars */
-.avatar { border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.av-120 { width: 120px; height: 120px; }
-.av-48 { width: 48px; height: 48px; }
-.avatar.bg-b { background: var(--burgundy-deep); }
-.avatar.bg-i { background: var(--ivory-deep); border: 1px solid var(--hairline); }
-.av-note { font-size: 10px; color: var(--ink-soft); letter-spacing: 0.08em; margin-top: 8px; }
-.tile.dark .av-note { color: var(--rose-soft); }
-
-.mono-oe { font-family: var(--serif); font-style: italic; font-weight: 400; line-height: 1; position: relative; }
-.av-120 .mono-oe { font-size: 64px; }
-.av-48 .mono-oe { font-size: 26px; }
-.avatar.bg-b .mono-oe { color: var(--ivory); }
-.avatar.bg-i .mono-oe { color: var(--burgundy); }
-.mono-star { position: absolute; top: -12px; right: -14px; font-style: normal; color: var(--gold); }
-.av-120 .mono-star { font-size: 16px; }
-.av-48 .mono-star { font-size: 9px; top: -6px; right: -8px; }
-
-.usage { margin-top: 14px; font-size: 13px; color: var(--ink-soft); max-width: 64ch; }
-.usage b { color: var(--burgundy); font-weight: 600; }
-
-footer { padding: 72px 0 56px; text-align: center; font-size: 13px; color: var(--ink-soft); border-top: 1px solid var(--hairline); }
-
-@media (max-width: 760px) {
-  .board { grid-template-columns: 1fr; }
-  .tile { padding: 32px 20px; }
-}
+.tile-row { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.av { border-radius: 50%; }
+.note { font-size: 10px; color: var(--ink-soft); letter-spacing: 0.08em; margin-top: 8px; }
+.tile.dark .note { color: var(--rose-soft); }
+.files { margin: 40px 0 0; border-top: 1px solid var(--hairline); padding: 40px 0 0; }
+.files h2 { font-family: var(--serif); font-weight: 400; font-size: 28px; color: var(--burgundy-deep); margin-bottom: 18px; }
+.files ul { list-style: none; font-size: 14px; color: var(--ink-soft); }
+.files li { padding: 10px 0; border-bottom: 1px solid var(--hairline); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.files code { font-family: ui-monospace, monospace; font-size: 12.5px; color: var(--burgundy); }
+footer { padding: 56px 0; text-align: center; font-size: 13px; color: var(--ink-soft); }
+@media (max-width: 700px) { .row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
 <header class="wrap">
-  <div class="kicker">Identité visuelle · Proposition</div>
-  <h1>Psycœurlogie — trois <em>pistes</em>.</h1>
-  <p>Un système à deux niveaux : <strong>Psycœurlogie</strong> (la marque mère, l'autrice) et <strong>Reset ton cœur</strong> (le projet). Chaque piste montre le symbole, les logotypes, et l'avatar Instagram en taille réelle. Rien n'est définitif — on itère.</p>
+  <div class="kicker">Identité validée · Sceau × cœur en chemin</div>
+  <h1>Le <em>sceau</em> — version finale.</h1>
+  <p>La couronne du sceau (concept 03) portant le cœur en chemin (concept 02) en héros, l'étoile dorée posée sur l'ouverture. Comme on scelle une lettre.</p>
 </header>
 
-<!-- ════ CONCEPT 1 — LE MONOGRAMME Œ ════ -->
-<section class="concept wrap">
-  <div class="concept-head">
-    <span class="concept-num">01</span>
-    <h2>Le monogramme <em>œ</em></h2>
-  </div>
-  <p class="concept-pitch">La ligature « œ » est le cœur caché du nom : deux lettres <em>liées en une</em> — la psyché et le cœur, inséparables. C'est un symbole que personne d'autre ne peut revendiquer, élégant, typographique, et déjà dans ton nom. L'étoile dorée ✦ (ta signature sur tout le site) vient le couronner comme un accent.</p>
-  <div class="board">
-    <div class="tile">
-      <span class="tile-label">Logotype principal</span>
-      <div>
-        <div class="lt-psy">psyc<span class="oe">œ</span>urlogie</div>
-      </div>
-      <div>
-        <div class="lt-rtc">Reset <em>ton cœur</em></div>
-        <div class="endorse">— par Psycœurlogie</div>
-      </div>
-    </div>
-    <div class="tile dark">
-      <span class="tile-label">Avatar Instagram</span>
-      <div class="tile-row">
-        <div>
-          <div class="avatar av-120 bg-b" style="border: 1px solid rgba(247,241,234,0.2);"><span class="mono-oe">œ<span class="mono-star">✦</span></span></div>
-          <div class="av-note">120 px</div>
-        </div>
-        <div>
-          <div class="avatar av-48 bg-b" style="border: 1px solid rgba(247,241,234,0.2);"><span class="mono-oe">œ<span class="mono-star">✦</span></span></div>
-          <div class="av-note">48 px — taille feed</div>
-        </div>
-      </div>
-      <div class="tile-row">
-        <div>
-          <div class="avatar av-120 bg-i"><span class="mono-oe">œ<span class="mono-star">✦</span></span></div>
-          <div class="av-note">version claire</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p class="usage"><b>Forces :</b> unique et inimitable, lisible même en minuscule, fonctionne pour les deux marques (le œ est dans les deux noms). Sobre — très « maison d'édition ». <b>Limite :</b> abstrait au premier regard, demande un petit temps d'appropriation.</p>
-</section>
+<div class="hero-seal">
+  <img src="brand/sceau-full.svg" alt="Sceau Psycœurlogie — version complète">
+</div>
 
-<!-- ════ CONCEPT 2 — LE CŒUR EN CHEMIN ════ -->
-<section class="concept wrap">
-  <div class="concept-head">
-    <span class="concept-num">02</span>
-    <h2>Le cœur en <em>chemin</em></h2>
-  </div>
-  <p class="concept-pitch">Un cœur tracé d'un seul geste calligraphique, qui ne se referme pas tout à fait — il est <em>en train</em> de se refermer. C'est exactement ta promesse : pas un cœur parfait, un cœur en chemin. L'étoile dorée marque le point d'ouverture, comme une lueur.</p>
-  <div class="board">
-    <div class="tile">
-      <span class="tile-label">Symbole + logotypes</span>
-      <svg width="150" height="138" viewBox="0 0 200 184" fill="none" aria-label="Cœur en chemin">
-        <path d="M 100 165 C 55 130, 30 95, 38 68 C 44 47, 68 40, 84 52 C 92 58, 98 67, 100 76 C 102 67, 108 58, 116 52 C 132 40, 156 47, 162 68 C 169 93, 150 124, 112 155"
-              stroke="#5c2a2f" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <path d="M 106 163 l 2.4 5.4 5.4 2.4 -5.4 2.4 -2.4 5.4 -2.4 -5.4 -5.4 -2.4 5.4 -2.4 z" fill="#b8956a"/>
-      </svg>
-      <div>
-        <div class="lt-rtc">Reset <em>ton cœur</em></div>
-        <div class="endorse">— par Psycœurlogie</div>
-      </div>
-      <div class="lt-psy" style="font-size: 28px;">psyc<span class="oe">œ</span>urlogie</div>
-    </div>
+<div class="wrap">
+  <div class="row">
     <div class="tile dark">
-      <span class="tile-label">Avatar Instagram</span>
+      <span class="tile-label">Avatar Instagram — taille réelle</span>
       <div class="tile-row">
         <div>
-          <div class="avatar av-120 bg-b" style="border: 1px solid rgba(247,241,234,0.2);">
-            <svg width="64" height="60" viewBox="0 0 200 184" fill="none">
-              <path d="M 100 165 C 55 130, 30 95, 38 68 C 44 47, 68 40, 84 52 C 92 58, 98 67, 100 76 C 102 67, 108 58, 116 52 C 132 40, 156 47, 162 68 C 169 93, 150 124, 112 155"
-                    stroke="#f7f1ea" stroke-width="8" stroke-linecap="round" fill="none"/>
-              <path d="M 106 160 l 3.4 7.6 7.6 3.4 -7.6 3.4 -3.4 7.6 -3.4 -7.6 -7.6 -3.4 7.6 -3.4 z" fill="#b8956a"/>
-            </svg>
-          </div>
-          <div class="av-note">120 px</div>
+          <img class="av" src="brand/avatar-instagram-1024.png" width="120" height="120" alt="Avatar 120px">
+          <div class="note">120 px — profil</div>
         </div>
         <div>
-          <div class="avatar av-48 bg-b" style="border: 1px solid rgba(247,241,234,0.2);">
-            <svg width="27" height="25" viewBox="0 0 200 184" fill="none">
-              <path d="M 100 165 C 55 130, 30 95, 38 68 C 44 47, 68 40, 84 52 C 92 58, 98 67, 100 76 C 102 67, 108 58, 116 52 C 132 40, 156 47, 162 68 C 169 93, 150 124, 112 155"
-                    stroke="#f7f1ea" stroke-width="11" stroke-linecap="round" fill="none"/>
-            </svg>
-          </div>
-          <div class="av-note">48 px — taille feed</div>
+          <img class="av" src="brand/avatar-instagram-1024.png" width="48" height="48" alt="Avatar 48px">
+          <div class="note">48 px — feed</div>
         </div>
       </div>
-      <div class="tile-row">
-        <div>
-          <div class="avatar av-120 bg-i">
-            <svg width="64" height="60" viewBox="0 0 200 184" fill="none">
-              <path d="M 100 165 C 55 130, 30 95, 38 68 C 44 47, 68 40, 84 52 C 92 58, 98 67, 100 76 C 102 67, 108 58, 116 52 C 132 40, 156 47, 162 68 C 169 93, 150 124, 112 155"
-                    stroke="#5c2a2f" stroke-width="8" stroke-linecap="round" fill="none"/>
-              <path d="M 106 160 l 3.4 7.6 7.6 3.4 -7.6 3.4 -3.4 7.6 -3.4 -7.6 -7.6 -3.4 7.6 -3.4 z" fill="#b8956a"/>
-            </svg>
-          </div>
-          <div class="av-note">version claire</div>
-        </div>
-      </div>
+      <img src="brand/sceau-simple-ivoire.svg" width="150" alt="Version ivoire">
+      <div class="note">version ivoire — fonds bordeaux (emails, covers)</div>
     </div>
-  </div>
-  <p class="usage"><b>Forces :</b> immédiatement compréhensible, émotionnel, le sens (« presque refermé ») raconte ta promesse. Excellent en avatar. <b>Limite :</b> un cœur reste un territoire encombré — c'est le tracé inachevé et l'étoile qui le rendent tien.</p>
-</section>
-
-<!-- ════ CONCEPT 3 — LE SCEAU ════ -->
-<section class="concept wrap">
-  <div class="concept-head">
-    <span class="concept-num">03</span>
-    <h2>Le <em>sceau</em></h2>
-  </div>
-  <p class="concept-pitch">Ta marque parle comme une lettre intime — alors son logo peut être un sceau, comme on fermait les lettres. Un cercle, le nom qui l'entoure, le cœur en chemin au centre. Très fort sur les covers d'ebooks et en tampon de signature d'emails.</p>
-  <div class="board">
     <div class="tile">
-      <span class="tile-label">Le sceau</span>
-      <svg width="200" height="200" viewBox="0 0 240 240" fill="none" aria-label="Sceau Psycœurlogie">
-        <circle cx="120" cy="120" r="116" stroke="#5c2a2f" stroke-width="1.5"/>
-        <circle cx="120" cy="120" r="86" stroke="#5c2a2f" stroke-width="0.75" opacity="0.5"/>
-        <defs><path id="ringtxt" d="M 120 24 A 96 96 0 1 1 119.9 24"/></defs>
-        <text font-family="'Hanken Grotesk', sans-serif" font-size="13.5" letter-spacing="4.5" fill="#5c2a2f" font-weight="600">
-          <textPath href="#ringtxt" startOffset="0">PSYCŒURLOGIE · L'ART DE REVENIR À TOI ·</textPath>
-        </text>
-        <g transform="translate(120 124) scale(0.42) translate(-100 -96)">
-          <path d="M 100 165 C 55 130, 30 95, 38 68 C 44 47, 68 40, 84 52 C 92 58, 98 67, 100 76 C 102 67, 108 58, 116 52 C 132 40, 156 47, 162 68 C 169 93, 150 124, 112 155"
-                stroke="#5c2a2f" stroke-width="7" stroke-linecap="round" fill="none"/>
-          <path d="M 106 160 l 3.4 7.6 7.6 3.4 -7.6 3.4 -3.4 7.6 -3.4 -7.6 -7.6 -3.4 7.6 -3.4 z" fill="#b8956a"/>
-        </g>
-      </svg>
-      <div>
-        <div class="lt-rtc">Reset <em>ton cœur</em></div>
-        <div class="endorse">— par Psycœurlogie</div>
-      </div>
-    </div>
-    <div class="tile dark">
-      <span class="tile-label">Avatar Instagram</span>
+      <span class="tile-label">Petites tailles — favicon &amp; icônes</span>
       <div class="tile-row">
         <div>
-          <div class="avatar av-120 bg-b" style="border: 1px solid rgba(247,241,234,0.2);">
-            <svg width="104" height="104" viewBox="0 0 240 240" fill="none">
-              <circle cx="120" cy="120" r="112" stroke="#f7f1ea" stroke-width="3"/>
-              <circle cx="120" cy="120" r="84" stroke="#d4a5a0" stroke-width="1" opacity="0.6"/>
-              <g transform="translate(120 124) scale(0.5) translate(-100 -96)">
-                <path d="M 100 165 C 55 130, 30 95, 38 68 C 44 47, 68 40, 84 52 C 92 58, 98 67, 100 76 C 102 67, 108 58, 116 52 C 132 40, 156 47, 162 68 C 169 93, 150 124, 112 155"
-                      stroke="#f7f1ea" stroke-width="9" stroke-linecap="round" fill="none"/>
-                <path d="M 106 160 l 3.4 7.6 7.6 3.4 -7.6 3.4 -3.4 7.6 -3.4 -7.6 -7.6 -3.4 7.6 -3.4 z" fill="#b8956a"/>
-              </g>
-            </svg>
-          </div>
-          <div class="av-note">120 px — sans texte (illisible si petit)</div>
+          <img src="brand/apple-touch-180.png" width="90" height="90" alt="Apple touch icon">
+          <div class="note">180 px — icône iPhone</div>
         </div>
         <div>
-          <div class="avatar av-48 bg-b" style="border: 1px solid rgba(247,241,234,0.2);">
-            <svg width="42" height="42" viewBox="0 0 240 240" fill="none">
-              <circle cx="120" cy="120" r="110" stroke="#f7f1ea" stroke-width="5"/>
-              <g transform="translate(120 124) scale(0.55) translate(-100 -96)">
-                <path d="M 100 165 C 55 130, 30 95, 38 68 C 44 47, 68 40, 84 52 C 92 58, 98 67, 100 76 C 102 67, 108 58, 116 52 C 132 40, 156 47, 162 68 C 169 93, 150 124, 112 155"
-                      stroke="#f7f1ea" stroke-width="12" stroke-linecap="round" fill="none"/>
-              </g>
-            </svg>
-          </div>
-          <div class="av-note">48 px</div>
+          <img src="brand/favicon-32.png" width="32" height="32" alt="Favicon">
+          <div class="note">32 px — onglet navigateur</div>
         </div>
       </div>
+      <img src="brand/sceau-simple.svg" width="150" alt="Version simplifiée">
+      <div class="note">version simplifiée — le texte disparaît, le cœur reste</div>
     </div>
   </div>
-  <p class="usage"><b>Forces :</b> raconte « la lettre », majestueux sur une cover d'ebook ou en signature d'email, déclinable en tampon/filigrane. <b>Limite :</b> le texte circulaire disparaît aux petites tailles — l'avatar utilise la version simplifiée (cercle + cœur).</p>
-</section>
 
-<footer class="wrap">
-  <p>Les trois pistes partagent le même ADN : bordeaux · ivoire · rose · or, Cormorant Garamond, l'étoile ✦.<br>Elles peuvent aussi se combiner — ex. monogramme œ pour Psycœurlogie + cœur en chemin pour Reset ton cœur.</p>
-  <p style="margin-top: 16px;">✦ rien n'est appliqué nulle part — on valide ensemble d'abord</p>
-</footer>
+  <div class="files">
+    <h2>Fichiers livrés — <code>brand/</code></h2>
+    <ul>
+      <li><code>sceau-full.svg</code><span>version complète avec couronne — site, covers, documents</span></li>
+      <li><code>sceau-simple.svg</code> · <code>sceau-simple-ivoire.svg</code><span>petites tailles, fonds clairs / sombres</span></li>
+      <li><code>avatar-instagram-1024.png</code><span>à uploader sur @psy.coeurlogie</span></li>
+      <li><code>sceau-full-960.png</code><span>sceau HD fond transparent — Canva, stories, PDF</span></li>
+      <li><code>apple-touch-180.png</code> · <code>favicon-32.png</code><span>icônes site</span></li>
+      <li><code>render-*.html</code><span>sources pour régénérer les PNG</span></li>
+    </ul>
+  </div>
+</div>
+
+<footer>✦ prochaine étape proposée (à valider) : favicon sur le site, sceau dans le footer, tampon de signature des emails</footer>
 
 </body>
 </html>
