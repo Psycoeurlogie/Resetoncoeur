@@ -323,6 +323,40 @@ nav {
 .marquee .sep { color: var(--gold); font-style: normal; font-size: 13px; }
 @keyframes marq { to { transform: translateX(-50%); } }
 
+/* ─── APERÇU — galerie à glisser ──────────────────────── */
+.peek { padding: clamp(80px, 12vh, 140px) 0 0; }
+.peek-scroller {
+  display: flex; gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px clamp(20px, 4vw, 48px) 28px;
+  scrollbar-width: none;
+}
+.peek-scroller::-webkit-scrollbar { display: none; }
+.peek-scroller figure {
+  flex: 0 0 auto;
+  width: min(62vw, 290px);
+  scroll-snap-align: center;
+  border-radius: 6px; overflow: hidden;
+  border: 1px solid var(--hairline);
+  box-shadow: 0 24px 48px -20px rgba(92, 42, 47, 0.35);
+  background: var(--ivory-deep);
+}
+.peek-scroller img { width: 100%; height: auto; display: block; }
+.peek-fallback {
+  aspect-ratio: 3/4;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-style: italic;
+  font-size: 17px; color: var(--burgundy);
+}
+.peek-hint {
+  text-align: center;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-soft); padding-bottom: 8px;
+}
+.peek-hint .gold { color: var(--gold); }
+
 /* ─── RÉVÉLATION AU SCROLL ────────────────────────────── */
 .reveal {
   opacity: 0; transform: translateY(36px);
@@ -693,6 +727,11 @@ footer nav-links { display: block; }
   max-width: calc(100vw - 32px);
 }
 .buybar.visible { transform: translate(-50%, 0); }
+.buybar-cover {
+  width: 34px; height: 46px; object-fit: cover;
+  border-radius: 4px; flex-shrink: 0;
+  border: 1px solid rgba(247, 241, 234, 0.25);
+}
 .buybar-info { line-height: 1.25; white-space: nowrap; }
 .buybar-price { font-family: var(--serif); font-style: italic; font-size: 22px; }
 .buybar-note { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose-soft); }
@@ -766,6 +805,25 @@ footer nav-links { display: block; }
     <span>revenir à toi <i class="sep">✦</i> 21 jours <i class="sep">✦</i> dhikr <i class="sep">✦</i> douceur <i class="sep">✦</i> le corps, le cœur, l'âme <i class="sep">✦</i> à ton rythme <i class="sep">✦</i></span>
   </div>
 </div>
+
+<!-- APERÇU DE L'EBOOK -->
+<section class="peek">
+  <div class="wrap reveal">
+    <div class="kicker">Un aperçu</div>
+    <h2 class="section-h">Feuillette quelques <em>pages</em>.</h2>
+  </div>
+  <div class="peek-scroller" aria-label="Aperçu des pages de l'ebook">
+    <figure><img src="ebook-cover.png" alt="Couverture de l'ebook Reset ton cœur" loading="lazy" onerror="this.outerHTML='<div class=\'peek-fallback\'>Reset ton cœur</div>'"></figure>
+    <figure><img src="page-2.png" alt="Aperçu — page 2" loading="lazy" onerror="this.outerHTML='<div class=\'peek-fallback\'>Page 2</div>'"></figure>
+    <figure><img src="page-3.png" alt="Aperçu — page 3" loading="lazy" onerror="this.outerHTML='<div class=\'peek-fallback\'>Page 3</div>'"></figure>
+    <figure><img src="page-4.png" alt="Aperçu — page 4" loading="lazy" onerror="this.outerHTML='<div class=\'peek-fallback\'>Page 4</div>'"></figure>
+    <figure><img src="page-5.png" alt="Aperçu — page 5" loading="lazy" onerror="this.outerHTML='<div class=\'peek-fallback\'>Page 5</div>'"></figure>
+    <figure><img src="page-6.png" alt="Aperçu — page 6" loading="lazy" onerror="this.outerHTML='<div class=\'peek-fallback\'>Page 6</div>'"></figure>
+    <figure><img src="page-7.png" alt="Aperçu — page 7" loading="lazy" onerror="this.outerHTML='<div class=\'peek-fallback\'>Page 7</div>'"></figure>
+    <figure><img src="page-8.png" alt="Aperçu — page 8" loading="lazy" onerror="this.outerHTML='<div class=\'peek-fallback\'>Page 8</div>'"></figure>
+  </div>
+  <p class="peek-hint"><span class="gold">←</span> Fais glisser <span class="gold">→</span></p>
+</section>
 
 <!-- À QUI ÇA PARLE -->
 <section class="foryou">
@@ -1020,6 +1078,7 @@ footer nav-links { display: block; }
 
 <!-- BARRE D'ACHAT FLOTTANTE -->
 <div class="buybar" id="buybar" role="complementary" aria-label="Acheter l'ebook">
+  <img class="buybar-cover" src="ebook-cover.png" alt="" onerror="this.remove()">
   <div class="buybar-info">
     <div class="buybar-price">25€</div>
     <div class="buybar-note">Lancement · jusqu'au 22 juin</div>
