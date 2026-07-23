@@ -12,7 +12,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bienvenue — Reset ton cœur</title>
+<title>Bienvenue · Les racines des blocages de la femme</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -402,7 +402,7 @@
       <em>sœur.</em>
     </h1>
 
-    <p class="merci-sub">Ton accès à Reset ton cœur est prêt. Télécharge ton programme ci-dessous et commence quand ton cœur en a besoin — pas de pression, pas de chronomètre.</p>
+    <p class="merci-sub">Ton accès à « Les racines des blocages de la femme » est prêt. Télécharge ton livre ci-dessous et lis-le à ton rythme, pas de pression, pas de chronomètre.</p>
 
     <!-- CARTE TÉLÉCHARGEMENT -->
     <div class="download-card">
@@ -410,11 +410,11 @@
       <!-- Info produit -->
       <div class="download-product">
         <div class="download-cover">
-          <div class="download-cover-text">R</div>
+          <img src="racines/racines-cover.jpg" alt="Couverture du livre" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="download-product-info">
-          <h3>Reset ton cœur</h3>
-          <p>Le programme spirituel · 30 jours</p>
+          <h3>Les racines des blocages de la femme</h3>
+          <p>Le livre · 46 pages</p>
           <span class="paid-badge">✦ Accès activé</span>
         </div>
       </div>
@@ -426,34 +426,14 @@
       <a id="dl-btn" href="#" class="download-btn" target="_blank" rel="noopener" style="display:none;">
         <div class="download-btn-icon">⬇</div>
         <div class="download-btn-text">
-          <strong>Télécharger l'ebook PDF</strong>
-          <span>Reset ton cœur, le programme complet</span>
+          <strong>Télécharger le livre PDF</strong>
+          <span>Les racines des blocages de la femme · 46 pages</span>
         </div>
         <span class="download-btn-arrow">→</span>
       </a>
       <div id="dl-denied" class="download-note" style="display:none;text-align:center;margin-top:0;margin-bottom:16px;">
         <strong>Accès réservé.</strong> Ce téléchargement se débloque après un achat confirmé. Si tu viens de payer, patiente quelques secondes puis recharge la page. Un souci ? Écris-nous à <a href="mailto:contact@resettoncoeur.fr" style="color: var(--burgundy);">contact@resettoncoeur.fr</a>.
       </div>
-
-      <!-- BONUS 1 — remplacer le href -->
-      <a href="LIEN_BONUS_DHIKR_ICI" class="download-bonus-btn" target="_blank">
-        <div class="download-bonus-icon">i</div>
-        <div class="download-bonus-text">
-          <strong>Bonus · Communauté privée </strong>
-          <span>Accès Discord </span>
-        </div>
-        <span class="download-bonus-arrow">→</span>
-      </a>
-
-      <!-- BONUS 2 — remplacer le href -->
-      <a href="LIEN_BONUS_CHECKLIST_ICI" class="download-bonus-btn" target="_blank">
-        <div class="download-bonus-icon">ii</div>
-        <div class="download-bonus-text">
-          <strong>Bonus · Reset ton corps avec la Sunnah</strong>
-          <span>PDF · À imprimer ou utiliser sur téléphone</span>
-        </div>
-        <span class="download-bonus-arrow">→</span>
-      </a>
 
       <!-- NOTE TECHNIQUE -->
       <div class="download-note">
@@ -475,33 +455,19 @@
       <div class="next-step">
         <div class="next-step-num">i.</div>
         <h4>Télécharge et sauvegarde</h4>
-        <p>Mets le PDF dans un endroit facile d'accès — ton téléphone, tes notes, ou imprime-le si tu préfères le papier.</p>
+        <p>Mets le PDF dans un endroit facile d'accès, ton téléphone, tes notes, ou imprime-le si tu préfères le papier.</p>
       </div>
       <div class="next-step">
         <div class="next-step-num">ii.</div>
         <h4>Lis l'introduction</h4>
-        <p>Les 10 premières pages posent l'intention du programme. Lis-les ce soir, tranquillement, avec une tisane.</p>
+        <p>« L'art de revenir à toi » pose l'intention du livre. Lis-la ce soir, tranquillement, avec une tisane.</p>
       </div>
       <div class="next-step">
         <div class="next-step-num">iii.</div>
-        <h4>Commence le Jour 1 demain</h4>
-        <p>Une seule chose par jour suffit. Commence petit, reste constante. C'est tout ce que le programme te demande.</p>
+        <h4>Fais le miroir</h4>
+        <p>Quand tu es prête, le diagnostic du chapitre « Le miroir » révèle ta porte d'entrée. Commence ton chemin par là.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- COMMUNAUTÉ -->
-<section class="community-section reveal">
-  <div class="container">
-    <div class="section-eyebrow community-eyebrow">La communauté</div>
-    <h2 class="community-title">Tu n'avances pas <em>seule</em>.</h2>
-    <p class="community-text">Le groupe privé des sœurs de Reset ton cœur t'attend. Un espace doux pour partager ton chemin, poser tes questions, et cheminer avec d'autres femmes qui vivent la même chose.</p>
-    <!-- Remplacer le href par le lien de ta communauté (Telegram, WhatsApp, Discord, etc.) -->
-    <a href="LIEN_COMMUNAUTE_ICI" class="btn-ivory" target="_blank">
-      <span>Rejoindre la communauté</span>
-      <span>→</span>
-    </a>
   </div>
 </section>
 
@@ -550,7 +516,7 @@
     var denied = document.getElementById('dl-denied');
     function fail() { if (verify) verify.style.display = 'none'; if (denied) denied.style.display = 'block'; }
     if (!sid) { fail(); return; }
-    fetch('/api/telecharger?produit=base&session_id=' + encodeURIComponent(sid))
+    fetch('/api/telecharger?produit=racines&session_id=' + encodeURIComponent(sid))
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (d && d.ok && d.url) { btn.href = d.url; if (verify) verify.style.display = 'none'; btn.style.display = 'flex'; }
