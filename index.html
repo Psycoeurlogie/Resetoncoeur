@@ -304,6 +304,68 @@
     letter-spacing: 0.05em; margin-top: 4px;
   }
 
+  /* SECOND LIVRE — carte compacte (Les racines) */
+  .book-card {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+    background: var(--ivory);
+    border: 1px solid rgba(92, 42, 47, 0.12);
+    border-radius: 8px;
+    padding: 48px;
+    margin-bottom: 80px;
+    box-shadow: 0 24px 60px -30px rgba(92, 42, 47, 0.18);
+  }
+  .book-card-info { display: flex; flex-direction: column; }
+  .book-card-tag {
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--rose); font-weight: 500; margin-bottom: 18px;
+  }
+  .book-card-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3vw, 36px); font-weight: 400;
+    color: var(--burgundy-deep); margin-bottom: 16px; line-height: 1.15;
+  }
+  .book-card-info > p {
+    color: var(--ink-soft); font-size: 15px; line-height: 1.7; margin-bottom: 22px;
+  }
+  .book-card-features { list-style: none; margin-bottom: 28px; }
+  .book-card-features li {
+    padding: 8px 0; color: var(--ink); font-size: 14.5px;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .book-card-features li::before {
+    content: '✦'; color: var(--gold); flex-shrink: 0; font-size: 12px; margin-top: 3px;
+  }
+  .book-card-footer {
+    display: flex; align-items: center; gap: 24px;
+    padding-top: 22px; border-top: 1px solid rgba(92, 42, 47, 0.1);
+  }
+  .book-card-price {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 28px; color: var(--burgundy); line-height: 1;
+  }
+  .book-card-cover {
+    position: relative; border-radius: 6px; overflow: hidden;
+    box-shadow: 0 24px 50px -20px rgba(92, 42, 47, 0.35);
+    max-width: 260px; width: 100%; margin: 0 auto;
+    aspect-ratio: 595 / 842;
+  }
+  .book-card-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .book-card-badge {
+    position: absolute; top: 14px; left: 14px; z-index: 2;
+    background: var(--burgundy); color: var(--ivory);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 600; padding: 6px 13px; border-radius: 100px;
+  }
+  @media (max-width: 760px) {
+    .book-card { grid-template-columns: 1fr; gap: 28px; padding: 32px 24px; }
+    .book-card-cover { max-width: 190px; order: -1; }
+    .book-card-footer { flex-direction: column; align-items: stretch; gap: 18px; }
+    .book-card-footer .btn { justify-content: center; }
+  }
+
   /* FREEBIE BRIDGE — secondaire */
   .freebie-bridge {
     display: grid;
@@ -516,6 +578,7 @@
   <a href="index.html" class="logo">Reset <em>ton cœur</em></a>
   <div class="nav-links" id="navLinks">
     <a href="ebook.html">L'ebook</a>
+    <a href="racines.html">Le livre</a>
     <a href="mini-guide.html">Le mini-guide</a>
     <a href="manifesto.html">Manifesto</a>
     <a href="quiz.html">Le quiz</a>
@@ -585,6 +648,31 @@
             <span class="arrow">→</span>
           </a>
         </div>
+      </div>
+    </div>
+
+    <!-- Deuxième livre : Les racines -->
+    <div class="book-card">
+      <div class="book-card-info">
+        <div class="book-card-tag">Le livre · Comprendre tes blocages</div>
+        <h3>Les racines des blocages de la femme.</h3>
+        <p>Comprendre, à la lumière du Coran et de la psychologie, pourquoi tu aimes mal, pourquoi tu portes ce que tu n'as pas choisi, pourquoi tu n'oses pas. Avec les femmes du Coran pour guides, pour descendre à la racine et revenir à toi.</p>
+        <ul class="book-card-features">
+          <li>Double regard : psychologie et révélation</li>
+          <li>Neuf femmes du Coran comme repères vivants</li>
+          <li>Un auto-diagnostic et un protocole de purification</li>
+        </ul>
+        <div class="book-card-footer">
+          <div class="book-card-price">25€</div>
+          <a href="racines.html" class="btn">
+            <span>Recevoir le livre</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="book-card-cover">
+        <span class="book-card-badge">Nouveau</span>
+        <img src="racines/racines-cover.jpg" alt="Couverture du livre Les racines des blocages de la femme" />
       </div>
     </div>
 
@@ -676,6 +764,7 @@
         <h5>Le projet</h5>
         <ul>
           <li><a href="ebook.html">L'ebook</a></li>
+          <li><a href="racines.html">Le livre : Les racines</a></li>
           <li><a href="mini-guide.html">Le mini-guide (gratuit)</a></li>
           <li><a href="manifesto.html">Manifesto</a></li>
         </ul>
