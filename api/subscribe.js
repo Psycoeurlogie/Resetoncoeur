@@ -4,7 +4,14 @@ const ALLOWED_ORIGINS = [
   'https://resetoncoeur.vercel.app'
 ];
 
-const ALLOWED_LIST_IDS = [9, 10, 11, 12, 13];
+const ALLOWED_LIST_IDS = [9, 10, 11, 12, 13, 14];
+
+// Aimants à mails livrés immédiatement par email transactionnel.
+// Clé envoyée par la landing page -> id du template Brevo qui porte le lien de téléchargement.
+// Pour en ajouter un : créer le template dans Brevo, ajouter une ligne ici.
+const GUIDES = {
+  blocages: 36, // « Ce que tu répètes » -> guides/ce-que-tu-repetes.pdf
+};
 
 // Rate limiter: max 5 requests per IP per 10 minutes
 const rateLimiter = new Map();
@@ -38,8 +45,12 @@ export default async function handler(req, res) {
     return res.status(429).json({ error: 'Too many requests' });
   }
 
-  const { email, prenom, listId } = req.body;
+  const { email, prenom, listId, guide } = req.body;
   if (!email || !listId) return res.status(400).json({ error: 'Missing fields' });
+
+  if (guide !== undefined && !GUIDES[guide]) {
+    return res.status(400).json({ error: 'Invalid guide' });
+  }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) return res.status(400).json({ error: 'Invalid email' });
@@ -67,6 +78,29 @@ export default async function handler(req, res) {
       const body = await response.json().catch(() => ({}));
       console.error('Brevo error', response.status, body);
       return res.status(500).json({ error: 'Brevo error' });
+    }
+
+    // Aimant à mails : on livre le guide tout de suite, sans dépendre d'une automation Brevo.
+    // Le contact est déjà inscrit à ce stade ; si l'envoi échoue on renvoie une erreur pour
+    // que la page propose de réessayer (l'inscription est idempotente, updateEnabled est actif).
+    if (guide) {
+      const sent = await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': process.env.BREVO_API_KEY
+        },
+        body: JSON.stringify({
+          to: [{ email }],
+          templateId: GUIDES[guide]
+        })
+      });
+
+      if (!sent.ok) {
+        const body = await sent.json().catch(() => ({}));
+        console.error('Brevo delivery error', guide, sent.status, body);
+        return res.status(502).json({ error: 'Delivery failed' });
+      }
     }
 
     res.status(200).end();

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ce que tu répètes · Le mini-guide gratuit | Psycœurlogie</title>
+<meta name="description" content="La blessure cachée sous les blocages de la femme. Un mini-guide gratuit de 7 pages, à la lumière du Coran, de la Sunnah et de la psychologie. Lecture 4 minutes.">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BH1LRKVSJG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BH1LRKVSJG');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════
+   RESET TON CŒUR — V2 « ÉDITORIAL IMMERSIF »
+   Landing aimant à mails. Une seule action : donner son adresse.
+   ════════════════════════════════════════════════════════ */
+:root {
+  --ivory: #f7f1ea;
+  --ivory-deep: #ede4d8;
+  --rose: #d4a5a0;
+  --rose-soft: #e8c8c4;
+  --burgundy: #5c2a2f;
+  --burgundy-deep: #3d1c20;
+  --ink: #2a1d1f;
+  --ink-soft: #5a4a4c;
+  --gold: #b8956a;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Hanken Grotesk', -apple-system, sans-serif;
+  --hairline: rgba(92, 42, 47, 0.14);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-weight: 400;
+  background: var(--ivory);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+::selection { background: var(--burgundy); color: var(--ivory); }
+
+/* Grain papier — signature de la marque */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 5;
+  opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0 0.3 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+
+/* ─── NAV ─────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 90;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px clamp(20px, 4vw, 48px);
+  backdrop-filter: blur(14px);
+  background: rgba(247, 241, 234, 0.78);
+  border-bottom: 1px solid var(--hairline);
+}
+.logo {
+  font-family: var(--serif);
+  font-size: 22px; font-weight: 500;
+  color: var(--burgundy); text-decoration: none;
+}
+.logo em { font-style: italic; color: var(--rose); font-weight: 400; }
+.nav-cta {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ivory); background: var(--burgundy);
+  text-decoration: none;
+  padding: 11px 22px; border-radius: 100px;
+  transition: background 0.3s;
+}
+.nav-cta:hover { background: var(--burgundy-deep); }
+
+/* ─── HERO ────────────────────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative;
+  padding: 118px 0 56px;
+  overflow: hidden;
+}
+.bloom {
+  position: absolute; border-radius: 50%;
+  filter: blur(90px); pointer-events: none;
+}
+.bloom-1 {
+  width: 55vw; height: 55vw; max-width: 720px; max-height: 720px;
+  background: radial-gradient(circle, rgba(212,165,160,0.36), transparent 68%);
+  top: -14%; right: -14%;
+}
+.bloom-2 {
+  width: 42vw; height: 42vw; max-width: 520px; max-height: 520px;
+  background: radial-gradient(circle, rgba(184,149,106,0.24), transparent 68%);
+  bottom: -16%; left: -12%;
+}
+.hero-watermark {
+  position: absolute; right: -3vw; bottom: -8vh;
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(320px, 46vw, 660px);
+  line-height: 0.8; color: var(--burgundy);
+  opacity: 0.045; pointer-events: none; user-select: none;
+}
+.hero-inner { position: relative; z-index: 2; }
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 26px; font-weight: 600;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(58px, 13vw, 168px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--burgundy);
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(19px, 2.4vw, 27px);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: 30ch;
+  margin-top: 26px;
+}
+.hero-form-zone { margin-top: 40px; max-width: 520px; }
+
+/* ─── FORMULAIRE ──────────────────────────────────────── */
+.capture { width: 100%; }
+.capture-row { display: flex; gap: 10px; }
+.capture input[type="email"] {
+  flex: 1; min-width: 0;
+  font-family: var(--sans); font-size: 16px;
+  color: var(--ink);
+  background: rgba(255,255,255,0.72);
+  border: 1px solid var(--hairline);
+  border-radius: 100px;
+  padding: 17px 24px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.capture input[type="email"]:focus {
+  border-color: var(--burgundy);
+  background: #fff;
+}
+.capture input::placeholder { color: var(--ink-soft); opacity: 0.65; }
+.capture button {
+  font-family: var(--sans);
+  font-size: 14px; font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ivory); background: var(--burgundy);
+  border: none; border-radius: 100px;
+  padding: 17px 30px;
+  cursor: pointer; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 9px;
+  transition: background 0.3s, transform 0.3s;
+}
+.capture button:hover { background: var(--burgundy-deep); transform: translateY(-2px); }
+.capture button[disabled] { opacity: 0.6; cursor: wait; transform: none; }
+.capture .arrow { transition: transform 0.3s; }
+.capture button:hover .arrow { transform: translateX(4px); }
+.capture-meta {
+  font-size: 13px; color: var(--ink-soft);
+  margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px 18px;
+}
+.capture-meta span { display: inline-flex; align-items: center; gap: 6px; }
+.capture-meta .star { color: var(--gold); }
+.capture-msg {
+  margin-top: 16px; font-size: 15px; line-height: 1.55;
+  padding: 16px 20px; border-radius: 14px;
+  display: none;
+}
+.capture-msg.ok {
+  display: block;
+  background: rgba(92,42,47,0.07);
+  border: 1px solid var(--hairline);
+  color: var(--burgundy);
+}
+.capture-msg.err {
+  display: block;
+  background: rgba(160,60,50,0.09);
+  border: 1px solid rgba(160,60,50,0.25);
+  color: #8c3028;
+}
+.capture-msg strong { font-weight: 600; }
+@media (max-width: 620px) {
+  .capture-row { flex-direction: column; }
+  .capture button { justify-content: center; }
+}
+
+/* ─── SECTIONS GÉNÉRIQUES ─────────────────────────────── */
+section { position: relative; }
+.kicker {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: 18px;
+}
+.section-h {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(34px, 5.6vw, 66px);
+  line-height: 1.02; letter-spacing: -0.015em;
+  color: var(--burgundy);
+}
+.section-h em { font-style: italic; color: var(--gold); }
+.reveal {
+  opacity: 0; transform: translateY(26px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── LES TROIS PHRASES ───────────────────────────────── */
+.echo { padding: clamp(84px, 12vw, 148px) 0; }
+.echo-list { margin: 40px 0 44px; display: grid; gap: 18px; max-width: 780px; }
+.echo-item {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(21px, 3.2vw, 33px);
+  line-height: 1.32; color: var(--burgundy);
+  padding-left: 26px;
+  border-left: 3px solid var(--rose);
+}
+.echo-turn { max-width: 62ch; display: grid; gap: 18px; }
+.echo-turn p { font-size: 17px; line-height: 1.72; color: var(--ink-soft); }
+.echo-turn strong { color: var(--burgundy); font-weight: 600; }
+.echo-punch {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.6vw, 38px);
+  line-height: 1.28; color: var(--burgundy);
+  margin-top: 12px;
+}
+
+/* ─── CITATION PLEINE LARGEUR ─────────────────────────── */
+.fullbleed {
+  background: var(--burgundy);
+  color: var(--ivory);
+  padding: clamp(84px, 13vw, 156px) 0;
+  text-align: center;
+}
+.fullbleed .star { color: var(--gold); font-size: 22px; display: block; margin-bottom: 30px; }
+.fullbleed blockquote {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(24px, 3.9vw, 46px);
+  line-height: 1.34;
+  max-width: 22ch; margin: 0 auto;
+}
+.fullbleed cite {
+  display: block; margin-top: 32px;
+  font-family: var(--sans); font-style: normal;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--rose-soft);
+}
+
+/* ─── CE QU'IL Y A DEDANS ─────────────────────────────── */
+.inside { padding: clamp(84px, 12vw, 148px) 0; background: var(--ivory-deep); }
+.inside-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px; margin-top: 54px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  border-radius: 18px; overflow: hidden;
+}
+.inside-cell {
+  background: var(--ivory);
+  padding: clamp(28px, 3.6vw, 40px);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.inside-num {
+  font-family: var(--serif); font-style: italic;
+  font-size: 34px; color: var(--rose); line-height: 1;
+}
+.inside-cell h3 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(21px, 2.5vw, 27px);
+  line-height: 1.2; color: var(--burgundy);
+}
+.inside-cell p { font-size: 15px; line-height: 1.68; color: var(--ink-soft); }
+
+/* ─── L'HONNÊTETÉ ─────────────────────────────────────── */
+.honest { padding: clamp(84px, 12vw, 148px) 0; }
+.honest-inner { max-width: 62ch; display: grid; gap: 20px; }
+.honest-inner p { font-size: 17px; line-height: 1.72; color: var(--ink-soft); }
+.honest-inner strong { color: var(--burgundy); font-weight: 600; }
+.honest-note {
+  margin-top: 12px; padding: 26px 30px;
+  background: var(--ivory-deep);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 14px 14px 0;
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(19px, 2.3vw, 24px);
+  line-height: 1.42; color: var(--burgundy);
+}
+
+/* ─── CTA FINAL ───────────────────────────────────────── */
+.final {
+  background: var(--burgundy);
+  color: var(--ivory);
+  padding: clamp(88px, 13vw, 164px) 0;
+  position: relative; overflow: hidden;
+}
+.final .bloom-1 {
+  background: radial-gradient(circle, rgba(212,165,160,0.2), transparent 68%);
+  top: -22%; right: -18%;
+}
+.final-inner { position: relative; z-index: 2; text-align: center; }
+.final h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(34px, 5.6vw, 68px);
+  line-height: 1.04; color: var(--ivory);
+  max-width: 16ch; margin: 0 auto;
+}
+.final h2 em { font-style: italic; color: var(--rose-soft); }
+.final .kicker { color: var(--rose-soft); }
+.final-sub {
+  font-size: 17px; line-height: 1.68;
+  color: var(--rose-soft);
+  max-width: 50ch; margin: 26px auto 40px;
+}
+.final .capture { max-width: 520px; margin: 0 auto; }
+.final .capture input[type="email"] {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(247,241,234,0.28);
+  color: var(--ivory);
+}
+.final .capture input::placeholder { color: var(--rose-soft); opacity: 0.8; }
+.final .capture input[type="email"]:focus {
+  background: rgba(255,255,255,0.16);
+  border-color: var(--rose-soft);
+}
+.final .capture button { background: var(--ivory); color: var(--burgundy); }
+.final .capture button:hover { background: #fff; }
+.final .capture-meta { color: var(--rose-soft); justify-content: center; }
+.final .capture-msg.ok {
+  background: rgba(247,241,234,0.12);
+  border-color: rgba(247,241,234,0.3);
+  color: var(--ivory);
+}
+.final .capture-msg.err {
+  background: rgba(255,220,215,0.14);
+  border-color: rgba(255,200,195,0.4);
+  color: #ffe2de;
+}
+
+/* ─── FOOTER ──────────────────────────────────────────── */
+footer {
+  background: var(--burgundy-deep);
+  color: var(--rose-soft);
+  padding: 64px 0 44px;
+  text-align: center;
+}
+footer .logo { color: var(--ivory); display: inline-block; margin-bottom: 14px; }
+footer .logo em { color: var(--rose); }
+footer p { font-size: 14px; }
+.foot-links {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 12px 26px; margin-top: 26px;
+}
+.foot-links a {
+  font-size: 13px; color: var(--rose-soft); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: border-color 0.3s;
+}
+.foot-links a:hover { border-bottom-color: var(--rose-soft); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Reset <em>ton cœur</em></a>
+  <a class="nav-cta" href="#recevoir">Recevoir le guide</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="bloom bloom-1"></div>
+  <div class="bloom bloom-2"></div>
+  <div class="hero-watermark" aria-hidden="true">œ</div>
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow">Le mini-guide gratuit · par Psycœurlogie</div>
+    <h1>Ce que tu <em>répètes</em></h1>
+    <p class="hero-sub">La blessure cachée sous les blocages de la femme.</p>
+
+    <div class="hero-form-zone">
+      <form class="capture js-capture" data-place="hero" novalidate>
+        <div class="capture-row">
+          <input type="email" name="email" autocomplete="email" required
+                 placeholder="Ton adresse email" aria-label="Ton adresse email">
+          <button type="submit"><span>Recevoir le guide</span><span class="arrow">→</span></button>
+        </div>
+        <p class="capture-meta">
+          <span><i class="star">✦</i> 7 pages</span>
+          <span><i class="star">✦</i> Lecture 4 minutes</span>
+          <span><i class="star">✦</i> Gratuit</span>
+        </p>
+        <p class="capture-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</header>
+
+<!-- LES TROIS PHRASES -->
+<section class="echo">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Trois phrases</div>
+      <h2 class="section-h">Tu en as sûrement déjà dit <em>une</em>.</h2>
+    </div>
+    <div class="echo-list reveal">
+      <p class="echo-item">« Je refais les mêmes erreurs en amour. »</p>
+      <p class="echo-item">« Je porte le poids de ma mère. »</p>
+      <p class="echo-item">« Je n'arrive pas à me donner le droit de réussir. »</p>
+    </div>
+    <div class="echo-turn reveal">
+      <p>Trois phrases différentes. Trois vies différentes.</p>
+      <p>Ce ne sont pas trois problèmes. <strong>Ce sont trois branches d'un même arbre</strong>, et c'est pour ça que tant de femmes travaillent sur elles-mêmes pendant des années sans que rien ne change durablement.</p>
+      <p class="echo-punch">On taille la branche. La racine, elle, continue de pousser.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CITATION -->
+<section class="fullbleed">
+  <div class="wrap">
+    <span class="star">✦</span>
+    <blockquote>Il y a dans le corps un morceau de chair : s'il est sain, tout le corps est sain. Ce morceau de chair, c'est le cœur.</blockquote>
+    <cite>Al-Bukhārī et Muslim</cite>
+  </div>
+</section>
+
+<!-- CE QU'IL Y A DEDANS -->
+<section class="inside">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Dans ces 7 pages</div>
+      <h2 class="section-h">Ce que tu vas <em>comprendre</em>.</h2>
+    </div>
+    <div class="inside-grid reveal">
+      <div class="inside-cell">
+        <div class="inside-num">1</div>
+        <h3>Pourquoi rien ne tient plus de trois semaines</h3>
+        <p>Le mécanisme qui fait que tu recommences, encore, alors que tu as compris. Et pourquoi comprendre ne suffit jamais quand on travaille au mauvais endroit.</p>
+      </div>
+      <div class="inside-cell">
+        <div class="inside-num">2</div>
+        <h3>La croyance qui les produit toutes les trois</h3>
+        <p>Une seule phrase, sous les trois blocages. Tu la reconnaîtras en la lisant, et c'est exactement à ça qu'on la reconnaît.</p>
+      </div>
+      <div class="inside-cell">
+        <div class="inside-num">3</div>
+        <h3>Pourquoi c'est plus grave que « manquer de confiance »</h3>
+        <p>Ce qu'Al-Ghazālī et Ibn al-Qayyim ont rangé, non pas parmi les fragilités de caractère, mais parmi les maladies du cœur. Et ce que le Prophète ﷺ en a dit.</p>
+      </div>
+      <div class="inside-cell">
+        <div class="inside-num">4</div>
+        <h3>Ce que tu peux faire dès cette semaine</h3>
+        <p>Un geste précis, à poser une fois, qui apprend au cœur quelque chose que dix lectures ne lui apprendront pas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- L'HONNÊTETÉ -->
+<section class="honest">
+  <div class="wrap">
+    <div class="honest-inner reveal">
+      <div class="kicker">Ce que ce guide ne fera pas</div>
+      <h2 class="section-h" style="margin-bottom: 12px;">Je préfère te le dire <em>maintenant</em>.</h2>
+      <p>Ce guide te donne la branche à couper. Il te montre le mécanisme, la croyance qui le nourrit, et un premier geste concret à poser cette semaine.</p>
+      <p><strong>Il ne te donnera pas le remède complet.</strong> Une racine ne se soigne pas au niveau de la branche, et le chemin n'est pas le même selon que ta blessure sort par l'amour, par ta famille ou par ton ambition.</p>
+      <p class="honest-note">Quatre minutes de lecture ne réparent pas quinze ans d'histoire. Mais elles peuvent te montrer où creuser.</p>
+      <p>C'est déjà beaucoup, et c'est gratuit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final" id="recevoir">
+  <div class="bloom bloom-1"></div>
+  <div class="wrap final-inner">
+    <div class="kicker reveal">Le guide</div>
+    <h2 class="reveal">Ce que tu répètes a une <em>racine</em>.</h2>
+    <p class="final-sub reveal">Laisse ton adresse, je te l'envoie tout de suite. Sept pages, quatre minutes, et une phrase que tu ne pourras plus ne pas voir.</p>
+    <div class="reveal">
+      <form class="capture js-capture" data-place="final" novalidate>
+        <div class="capture-row">
+          <input type="email" name="email" autocomplete="email" required
+                 placeholder="Ton adresse email" aria-label="Ton adresse email">
+          <button type="submit"><span>Recevoir le guide</span><span class="arrow">→</span></button>
+        </div>
+        <p class="capture-meta">
+          <span><i class="star">✦</i> Envoi immédiat</span>
+          <span><i class="star">✦</i> Désinscription en un clic</span>
+        </p>
+        <p class="capture-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <a href="index.html" class="logo">Reset <em>ton cœur</em></a>
+    <p>L'art de revenir à toi · un projet de Psycœurlogie</p>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/psy.coeurlogie" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="contact.html">Contact</a>
+      <a href="/legal/mentions-legales.html">Mentions légales</a>
+      <a href="/legal/confidentialite.html">Confidentialité</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 12px;">© 2026 Reset ton cœur · Fait avec douceur ✦</p>
+  </div>
+</footer>
+
+<script>
+  // Révélation au scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Capture email : les deux formulaires partagent le même comportement
+  const LIST_ID = 14;
+  document.querySelectorAll('.js-capture').forEach((form) => {
+    const input = form.querySelector('input[type="email"]');
+    const button = form.querySelector('button');
+    const msg = form.querySelector('.capture-msg');
+    const label = button.querySelector('span');
+    const initial = label.textContent;
+
+    const show = (type, html) => {
+      msg.className = 'capture-msg ' + type;
+      msg.innerHTML = html;
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = (input.value || '').trim();
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        show('err', "Cette adresse n'a pas l'air valide. Vérifie juste avant d'envoyer.");
+        input.focus();
+        return;
+      }
+
+      button.disabled = true;
+      label.textContent = 'Envoi';
+      msg.className = 'capture-msg';
+
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, listId: LIST_ID, guide: 'blocages' })
+        });
+
+        if (!res.ok) throw new Error('http ' + res.status);
+
+        form.querySelector('.capture-row').style.display = 'none';
+        form.querySelector('.capture-meta').style.display = 'none';
+        show('ok', "<strong>C'est envoyé.</strong> Le guide est parti vers <strong>" +
+                   email.replace(/</g, '&lt;') +
+                   "</strong>. Regarde dans ta boîte, et dans tes spams si tu ne le vois pas tout de suite.");
+
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', {
+          currency: 'EUR', value: 0,
+          items: [{ item_name: 'Mini-guide Ce que tu repetes' }]
+        });
+      } catch (err) {
+        show('err', "L'envoi n'a pas abouti. Réessaie dans un instant, ou écris-moi à <a href=\"contact.html\" style=\"color:inherit\">la page contact</a>.");
+        button.disabled = false;
+        label.textContent = initial;
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
