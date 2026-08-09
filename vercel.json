@@ -5,7 +5,13 @@
     { "source": "/cgv", "destination": "/legal/cgv", "permanent": true },
     { "source": "/cgv.html", "destination": "/legal/cgv", "permanent": true },
     { "source": "/confidentialite", "destination": "/legal/confidentialite", "permanent": true },
-    { "source": "/confidentialite.html", "destination": "/legal/confidentialite", "permanent": true }
+    { "source": "/confidentialite.html", "destination": "/legal/confidentialite", "permanent": true },
+
+    { "source": "/racines", "destination": "/racines.html", "permanent": false },
+    { "source": "/ebook", "destination": "/ebook.html", "permanent": false },
+    { "source": "/mini-guide", "destination": "/mini-guide.html", "permanent": false },
+    { "source": "/blocages", "destination": "/blocages.html", "permanent": false },
+    { "source": "/guide", "destination": "/blocages.html", "permanent": false }
   ],
   "headers": [
     {
