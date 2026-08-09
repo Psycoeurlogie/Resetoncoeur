@@ -77,22 +77,11 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const body = await response.json().catch(() => ({}));
       console.error('Brevo error', response.status, body);
-      // DIAGNOSTIC TEMPORAIRE — à retirer une fois la clé Vercel corrigée.
-      // Ne renvoie jamais la clé : seulement le code HTTP de Brevo, la longueur,
-      // et une empreinte SHA-256 tronquée qui permet de comparer la clé du serveur
-      // à celle du disque sans jamais exposer l'une ni l'autre.
-      const crypto = await import('node:crypto');
-      const key = process.env.BREVO_API_KEY || '';
-      return res.status(500).json({
-        error: 'Brevo error',
-        _diag: {
-          brevoStatus: response.status,
-          brevoCode: body && body.code ? body.code : null,
-          keyLen: key.length,
-          keyTrimmedLen: key.trim().length,
-          keyFingerprint: crypto.createHash('sha256').update(key.trim()).digest('hex').slice(0, 12)
-        }
-      });
+      // Le code HTTP de Brevo part dans les logs Vercel, jamais dans la réponse publique.
+      // Un 401 ici signifie presque toujours que le blocage par IP a été réactivé côté
+      // Brevo (Sécurité > IPs autorisées) : les IP de Vercel tournent et ne peuvent pas
+      // être listées. Panne diagnostiquée ainsi le 2026-08-09.
+      return res.status(500).json({ error: 'Brevo error' });
     }
 
     // Aimant à mails : on livre le guide tout de suite, sans dépendre d'une automation Brevo.
