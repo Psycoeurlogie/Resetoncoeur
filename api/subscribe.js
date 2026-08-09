@@ -78,14 +78,19 @@ export default async function handler(req, res) {
       const body = await response.json().catch(() => ({}));
       console.error('Brevo error', response.status, body);
       // DIAGNOSTIC TEMPORAIRE — à retirer une fois la clé Vercel corrigée.
-      // Ne renvoie que le code HTTP de Brevo et la longueur de la clé, jamais sa valeur.
+      // Ne renvoie jamais la clé : seulement le code HTTP de Brevo, la longueur,
+      // et une empreinte SHA-256 tronquée qui permet de comparer la clé du serveur
+      // à celle du disque sans jamais exposer l'une ni l'autre.
+      const crypto = await import('node:crypto');
+      const key = process.env.BREVO_API_KEY || '';
       return res.status(500).json({
         error: 'Brevo error',
         _diag: {
           brevoStatus: response.status,
           brevoCode: body && body.code ? body.code : null,
-          keyLen: (process.env.BREVO_API_KEY || '').length,
-          keyTrimmedLen: (process.env.BREVO_API_KEY || '').trim().length
+          keyLen: key.length,
+          keyTrimmedLen: key.trim().length,
+          keyFingerprint: crypto.createHash('sha256').update(key.trim()).digest('hex').slice(0, 12)
         }
       });
     }
