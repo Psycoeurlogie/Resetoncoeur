@@ -77,7 +77,17 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const body = await response.json().catch(() => ({}));
       console.error('Brevo error', response.status, body);
-      return res.status(500).json({ error: 'Brevo error' });
+      // DIAGNOSTIC TEMPORAIRE — à retirer une fois la clé Vercel corrigée.
+      // Ne renvoie que le code HTTP de Brevo et la longueur de la clé, jamais sa valeur.
+      return res.status(500).json({
+        error: 'Brevo error',
+        _diag: {
+          brevoStatus: response.status,
+          brevoCode: body && body.code ? body.code : null,
+          keyLen: (process.env.BREVO_API_KEY || '').length,
+          keyTrimmedLen: (process.env.BREVO_API_KEY || '').trim().length
+        }
+      });
     }
 
     // Aimant à mails : on livre le guide tout de suite, sans dépendre d'une automation Brevo.
