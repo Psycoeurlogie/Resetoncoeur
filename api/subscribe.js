@@ -10,7 +10,7 @@ const ALLOWED_LIST_IDS = [9, 10, 11, 12, 13, 14];
 // Clé envoyée par la landing page -> id du template Brevo qui porte le lien de téléchargement.
 // Pour en ajouter un : créer le template dans Brevo, ajouter une ligne ici.
 const GUIDES = {
-  blocages: 36, // « Ce que tu répètes » -> guides/ce-que-tu-repetes.pdf
+  blocages: 36, // « Ce que tu répètes » -> lien Drive porté par le template Brevo
 };
 
 // Rate limiter: max 5 requests per IP per 10 minutes
