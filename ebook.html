@@ -757,6 +757,13 @@ footer nav-links { display: block; }
   .hero h1 .line > span, .hero-eyebrow, .hero-foot, .scroll-cue { opacity: 1; transform: none; }
   .reveal { opacity: 1; transform: none; }
 }
+
+.bento-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.pack-link {
+  font-size: 13px; color: var(--rose-soft);
+  text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(212, 165, 160, 0.6);
+}
+.pack-link:hover { color: var(--ivory); }
 </style>
 </head>
 <body>
@@ -951,9 +958,12 @@ footer nav-links { display: block; }
           <div class="old">80€<small>Une séance chez le psy</small></div>
           <div class="new">25€<small>21 jours complets · une fois</small></div>
         </div>
-        <a href="https://buy.stripe.com/6oU00i0NzelN3QP7MdcfK01" class="btn js-buy" style="background: var(--ivory); color: var(--burgundy-deep);">
-          <span>Recevoir l'ebook</span><span class="arrow">→</span>
-        </a>
+        <div class="bento-cta">
+          <a href="https://buy.stripe.com/6oU00i0NzelN3QP7MdcfK01" class="btn js-buy" style="background: var(--ivory); color: var(--burgundy-deep);">
+            <span>Recevoir l'ebook</span><span class="arrow">→</span>
+          </a>
+          <a class="pack-link" href="pack.html">Ou les deux livres, 39€ au lieu de 50€ →</a>
+        </div>
       </div>
       <div class="bento-cell bento-guarantee reveal">
         <span class="bento-sym">✦</span>
