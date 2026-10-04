@@ -59,7 +59,12 @@ export default async function handler(req, res) {
     res.setHeader('Cache-Control', 'no-store');
 
     if (estPack) {
-      if (session.currency !== 'eur' || !(session.amount_total >= PACK_MIN_CENTIMES)) {
+      // Adaptive Pricing est actif : une cliente hors zone euro paie dans sa devise, et
+      // `currency_conversion` porte alors le montant d'origine, en euros.
+      const conv = session.currency_conversion;
+      const devise = conv ? conv.source_currency : session.currency;
+      const montant = conv ? conv.amount_total : session.amount_total;
+      if (devise !== 'eur' || !(montant >= PACK_MIN_CENTIMES)) {
         return res.status(403).json({ ok: false, error: 'montant_insuffisant' });
       }
       return res.status(200).json({ ok: true, urls: { racines: LIENS.racines, base: LIENS.base } });
