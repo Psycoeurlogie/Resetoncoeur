@@ -572,6 +572,7 @@
 
 
 <link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="interactions.css">
 <link rel="stylesheet" href="photos.css">
 </head>
 <body>
@@ -627,82 +628,68 @@
   </div>
 </section>
 
-<div class="ph-strip" aria-hidden="true"><div style="--img:url(photos/palmier-prune.jpg)"></div><div style="--img:url(photos/orchidees-eucalyptus.jpg)"></div><div style="--img:url(photos/roses-prune.jpg)"></div></div>
-
-<!-- PRODUITS -->
-<section class="products-section reveal">
-  <div class="container">
-    <div class="products-intro">
-      <div class="section-eyebrow">Le projet</div>
-      <h2 class="section-title">Un chemin, plusieurs <em>portes</em>.</h2>
-      <p>Tout commence par une question : qu'est-ce que ton cœur a vraiment besoin d'entendre ? Chaque création de Reset ton cœur est pensée comme un rituel, à ton rythme, à ta mesure.</p>
+<!-- BIBLIOTHÈQUE : cartes photo + filtres par besoin -->
+<section class="lib" id="bibliotheque">
+  <div class="lib-wrap">
+    <div class="lib-head">
+      <div class="section-eyebrow">La bibliothèque</div>
+      <h2 class="section-title">Choisis par où <em>commencer</em>.</h2>
+      <p>Filtre selon ce dont tu as besoin aujourd'hui, puis ouvre ce qui t'appelle.</p>
     </div>
-
-    <!-- Ebook principal mis en avant -->
-    <div class="hero-product">
-      <div class="hero-product-cover">
-        <img src="ebook/ebook-cover.jpg" alt="Reset ton cœur — Le programme 21 jours" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:12px;" />
-      </div>
-      <div class="hero-product-info">
-        <div class="hero-product-tag">L'ebook · Le cœur du projet</div>
-        <h3>Le programme complet, en 21 jours.</h3>
-        <p>Vingt et un jours pour reconstruire ton cœur, retrouver ta paix intérieure, et avancer avec douceur. Une pratique guidée jour après jour — corps, esprit, âme — ancrée dans la spiritualité et soutenue par la connaissance de soi.</p>
-        <ul class="hero-product-features">
-          <li>21 jours de pratique guidée et progressive</li>
-          <li>Exercices d'écriture et d'introspection</li>
-          <li>Rituels spirituels quotidiens</li>
-        </ul>
-        <div class="hero-product-footer">
-          <a href="ebook.html" class="btn">
-            <span>Découvrir le programme</span>
-            <span class="arrow">→</span>
-          </a>
+    <div class="lib-filters" role="group" aria-label="Filtrer la bibliothèque">
+      <button type="button" class="lib-chip is-on" data-f="tout" aria-pressed="true">Tout</button>
+      <button type="button" class="lib-chip" data-f="offert" aria-pressed="false">Offert</button>
+      <button type="button" class="lib-chip" data-f="comprendre" aria-pressed="false">Comprendre mes blocages</button>
+      <button type="button" class="lib-chip" data-f="avancer" aria-pressed="false">Avancer jour après jour</button>
+    </div>
+    <div class="lib-grid">
+      <a class="lib-card" href="racines.html" data-tags="comprendre">
+        <div class="lib-img" style="--img:url(photos/iris.jpg)">
+          <span class="lib-badge">50 pages</span><span class="lib-price">25 €</span>
+          <div class="lib-over"><span class="lib-kicker">Le livre</span><h3>Les racines des blocages de la femme</h3></div>
         </div>
-      </div>
-    </div>
-
-    <!-- Deuxième livre : Les racines -->
-    <div class="book-card">
-      <div class="book-card-info">
-        <div class="book-card-tag">Le livre · Comprendre tes blocages</div>
-        <h3>Les racines des blocages de la femme.</h3>
-        <p>Comprendre, à la lumière du Coran et de la psychologie, pourquoi tu aimes mal, pourquoi tu portes ce que tu n'as pas choisi, pourquoi tu n'oses pas. Avec les femmes du Coran pour guides, pour descendre à la racine et revenir à toi.</p>
-        <ul class="book-card-features">
-          <li>Double regard : psychologie et révélation</li>
-          <li>Neuf femmes du Coran comme repères vivants</li>
-          <li>Un auto-diagnostic et un protocole de purification</li>
-        </ul>
-        <div class="book-card-footer">
-          <div class="book-card-price">25€</div>
-          <a href="racines.html" class="btn">
-            <span>Recevoir le livre</span>
-            <span class="arrow">→</span>
-          </a>
+        <div class="lib-body"><p>Comprendre, à la lumière du Coran et de la psychologie, pourquoi tu aimes mal, pourquoi tu portes ce que tu n'as pas choisi, pourquoi tu n'oses pas.</p><span class="lib-btn">Découvrir le livre <span aria-hidden="true">→</span></span></div>
+      </a>
+      <a class="lib-card" href="ebook.html" data-tags="avancer">
+        <div class="lib-img" style="--img:url(photos/orchidees-eucalyptus.jpg)">
+          <span class="lib-badge">21 jours</span><span class="lib-price">25 €</span>
+          <div class="lib-over"><span class="lib-kicker">Le programme</span><h3>Reset ton cœur en 21 jours</h3></div>
         </div>
-      </div>
-      <div class="book-card-cover">
-        <span class="book-card-badge">Nouveau</span>
-        <img src="racines/racines-cover.jpg" alt="Couverture du livre Les racines des blocages de la femme" />
-      </div>
-    </div>
-
-    <!-- Bridge vers freebie -->
-    <div class="freebie-bridge">
-      <div class="freebie-bridge-text">
-        <div class="section-eyebrow">Pour commencer en douceur</div>
-        <h3>Tu hésites ? Commence par <em>recevoir</em>.</h3>
-        <p>Reset ton corps avec la Sunnah est une ressource gratuite — un protocole de 7 jours pour réaligner ton corps, ton esprit et ton âme. Une porte d'entrée vers l'univers Reset ton cœur.</p>
-        <a href="mini-guide.html" class="btn btn-outline">
-          <span>Recevoir le mini-guide gratuit</span>
-          <span class="arrow">→</span>
-        </a>
-      </div>
-      <div class="freebie-bridge-cover">
-        <img src="mini-guide-cover.png" alt="Reset ton corps avec la Sunnah — Mini-guide gratuit" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:12px;" />
-      </div>
+        <div class="lib-body"><p>Six chapitres pour comprendre ton cœur, puis un protocole de 21 jours en trois phases : le réveiller, le stabiliser, le purifier.</p><span class="lib-btn">Découvrir le programme <span aria-hidden="true">→</span></span></div>
+      </a>
+      <a class="lib-card" href="pack.html" data-tags="comprendre avancer">
+        <div class="lib-img" style="--img:url(photos/roses-prune.jpg)">
+          <span class="lib-badge">2 livres</span><span class="lib-price">39 €</span>
+          <div class="lib-over"><span class="lib-kicker">Le parcours complet</span><h3>Les deux livres</h3></div>
+        </div>
+        <div class="lib-body"><p>Les racines pour comprendre d'où viennent tes blocages, le programme pour en sortir jour après jour.</p><span class="lib-btn">Découvrir le parcours <span aria-hidden="true">→</span></span></div>
+      </a>
+      <a class="lib-card" href="blocages.html" data-tags="offert comprendre">
+        <div class="lib-img" style="--img:url(photos/feuillage-prune.jpg)">
+          <span class="lib-badge">7 pages</span><span class="lib-price">Offert</span>
+          <div class="lib-over"><span class="lib-kicker">Guide offert</span><h3>Ce que tu répètes</h3></div>
+        </div>
+        <div class="lib-body"><p>La blessure cachée sous les blocages de la femme. Quatre minutes de lecture pour voir où creuser.</p><span class="lib-btn">Le recevoir <span aria-hidden="true">→</span></span></div>
+      </a>
+      <a class="lib-card" href="mini-guide.html" data-tags="offert avancer">
+        <div class="lib-img" style="--img:url(photos/niche-verte.jpg)">
+          <span class="lib-badge">7 jours</span><span class="lib-price">Offert</span>
+          <div class="lib-over"><span class="lib-kicker">Guide offert</span><h3>Reset ton corps avec la Sunnah</h3></div>
+        </div>
+        <div class="lib-body"><p>Un protocole de 7 jours pour réaligner ton corps, ton esprit et ton âme, ancré dans la Sunnah.</p><span class="lib-btn">Le recevoir <span aria-hidden="true">→</span></span></div>
+      </a>
+      <a class="lib-card" href="quiz.html" data-tags="offert comprendre">
+        <div class="lib-img" style="--img:url(photos/palmier-prune.jpg)">
+          <span class="lib-badge">2 min</span><span class="lib-price">Offert</span>
+          <div class="lib-over"><span class="lib-kicker">Le quiz</span><h3>Pourquoi tu n'arrives pas à changer ?</h3></div>
+        </div>
+        <div class="lib-body"><p>Sept questions pour comprendre ce qui influence ta vie aujourd'hui, et un profil parmi cinq.</p><span class="lib-btn">Faire le quiz <span aria-hidden="true">→</span></span></div>
+      </a>
     </div>
   </div>
 </section>
+
+<div class="ph-band" style="--img:url(photos/niche-ancienne.jpg)" aria-hidden="true"></div>
 
 <!-- MISSION 3 PILIERS -->
 <section class="mission-section reveal">
@@ -732,8 +719,6 @@
     </div>
   </div>
 </section>
-
-<div class="ph-band" style="--img:url(photos/niche-verte.jpg)" aria-hidden="true"></div>
 
 <!-- TÉMOIGNAGES (placeholder) -->
 <section class="testimonials-section reveal">
@@ -816,5 +801,6 @@
 </script>
 
 <script src="header.js"></script>
+<script src="interactions.js"></script>
 </body>
 </html>
