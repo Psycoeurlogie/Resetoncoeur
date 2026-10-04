@@ -11,7 +11,8 @@
     { "source": "/ebook", "destination": "/ebook.html", "permanent": false },
     { "source": "/mini-guide", "destination": "/mini-guide.html", "permanent": false },
     { "source": "/blocages", "destination": "/blocages.html", "permanent": false },
-    { "source": "/guide", "destination": "/blocages.html", "permanent": false }
+    { "source": "/guide", "destination": "/blocages.html", "permanent": false },
+    { "source": "/pack", "destination": "/pack.html", "permanent": false }
   ],
   "headers": [
     {
