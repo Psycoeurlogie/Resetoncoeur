@@ -1,0 +1,53 @@
+/* PHOTOS — la matière du site (palette prune et olive).
+   Chaque bloc reçoit son image par la variable --img, posée dans le HTML. */
+
+/* Haut de page : photo sur la moitié droite, fondue dans le fond aubergine */
+.ph-hero {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 50%;
+  background: var(--img) center / cover no-repeat;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 55%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 55%);
+  opacity: .9; z-index: 0; pointer-events: none;
+}
+.ph-host > .wrap, .ph-host > .container, .ph-host > .hero-inner { position: relative; z-index: 1; }
+.home-hero .ph-hero {
+  width: 46%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 75%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 75%);
+}
+
+/* Bandes couleur pierre : l'accent vert clair y serait illisible */
+.author em, .bento-price em, .newsletter-section em, .fullbleed:not(.ph-quote) em { color: #5F6B45 !important; }
+.bento-price .pack-link, .bento-price small, .bento-price .old { color: #5A4A52 !important; }
+.bento-price .new { color: #36142D !important; }
+.bento-price .new small { color: #5A4A52 !important; }
+
+/* Barre d'achat flottante : texte clair sur fond sombre */
+.buybar { color: #ECE4D5 !important; }
+
+/* Citation pleine largeur posée sur une photo */
+.ph-quote {
+  background: linear-gradient(rgba(30, 10, 25, .66), rgba(30, 10, 25, .66)), var(--img) center / cover no-repeat !important;
+  color: #ECE4D5 !important;
+}
+.ph-quote blockquote, .ph-quote cite { color: #ECE4D5 !important; }
+.ph-quote blockquote em { color: #C7CFAE !important; }
+
+/* Respiration entre deux sections */
+.ph-band {
+  height: clamp(260px, 52vh, 560px);
+  background: var(--img) center / cover no-repeat;
+}
+
+/* Triptyque : garde le format portrait des photos */
+.ph-strip { display: grid; grid-template-columns: repeat(3, 1fr); }
+.ph-strip div { aspect-ratio: 3 / 4; background: var(--img) center / cover no-repeat; }
+
+@media (max-width: 760px) {
+  .ph-hero {
+    width: 100%; opacity: .32;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+    mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+  }
+  .ph-band { height: 42vh; }
+}

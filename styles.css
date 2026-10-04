@@ -1,15 +1,15 @@
 /* PSYCŒURLOGIE — STYLES GLOBAUX */
 
 :root {
-  --ivory: #f7f1ea;
-  --ivory-deep: #ede4d8;
-  --rose: #d4a5a0;
-  --rose-soft: #e8c8c4;
-  --burgundy: #5c2a2f;
-  --burgundy-deep: #3d1c20;
-  --ink: #2a1d1f;
-  --ink-soft: #5a4a4c;
-  --gold: #b8956a;
+  --ivory: #36142d;
+  --ivory-deep: #2c0f24;
+  --rose: #a9b684;
+  --rose-soft: #c7cfae;
+  --burgundy: #e8decb;
+  --burgundy-deep: #d6c9b2;
+  --ink: #ece4d5;
+  --ink-soft: #c8bdae;
+  --gold: #c9a76e;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,8 +43,8 @@ nav {
   display: flex; justify-content: space-between; align-items: center;
   z-index: 100;
   backdrop-filter: blur(12px);
-  background: rgba(247, 241, 234, 0.85);
-  border-bottom: 1px solid rgba(92, 42, 47, 0.08);
+  background: rgba(54, 20, 45, 0.85);
+  border-bottom: 1px solid rgba(232, 222, 203, 0.08);
 }
 .logo {
   font-family: 'Cormorant Garamond', serif;
@@ -123,7 +123,7 @@ nav {
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn span { position: relative; z-index: 1; }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(92, 42, 47, 0.4); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(232, 222, 203, 0.4); }
 .btn:hover::before { transform: translateY(0); }
 .btn .arrow { transition: transform 0.3s ease; position: relative; z-index: 1; }
 .btn:hover .arrow { transform: translateX(4px); }
@@ -138,7 +138,7 @@ nav {
 
 /* FOOTER */
 footer {
-  border-top: 1px solid rgba(92, 42, 47, 0.1);
+  border-top: 1px solid rgba(232, 222, 203, 0.1);
   padding: 64px 0 40px;
   background: var(--ivory-deep);
   position: relative; z-index: 2;
@@ -169,7 +169,7 @@ footer {
 .footer-col a:hover { color: var(--burgundy); }
 .footer-bottom {
   padding-top: 32px;
-  border-top: 1px solid rgba(92, 42, 47, 0.1);
+  border-top: 1px solid rgba(232, 222, 203, 0.1);
   display: flex; justify-content: space-between; align-items: center;
   font-size: 13px; color: var(--ink-soft);
 }
@@ -216,8 +216,8 @@ section { padding: 120px 0; position: relative; }
     align-items: flex-start;
     gap: 0;
     width: 100%;
-    background: rgba(247, 241, 234, 0.97);
-    border-top: 1px solid rgba(92, 42, 47, 0.08);
+    background: rgba(54, 20, 45, 0.97);
+    border-top: 1px solid rgba(232, 222, 203, 0.08);
     padding: 16px 0 20px;
     order: 3;
   }
@@ -227,7 +227,7 @@ section { padding: 120px 0; position: relative; }
     padding: 12px 0;
     font-size: 16px;
     width: 100%;
-    border-bottom: 1px solid rgba(92, 42, 47, 0.06);
+    border-bottom: 1px solid rgba(232, 222, 203, 0.06);
   }
   .nav-links a:last-child { border-bottom: none; }
   .nav-cta {

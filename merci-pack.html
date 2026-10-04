@@ -45,8 +45,8 @@
   .confirm-badge {
     display: inline-flex;
     align-items: center; gap: 10px;
-    background: rgba(184, 149, 106, 0.12);
-    border: 1px solid rgba(184, 149, 106, 0.3);
+    background: rgba(201, 167, 110, 0.12);
+    border: 1px solid rgba(201, 167, 110, 0.3);
     color: var(--gold);
     padding: 10px 20px;
     border-radius: 100px;
@@ -93,11 +93,11 @@
   /* CARTE TÉLÉCHARGEMENT PRINCIPALE */
   .download-card {
     background: var(--ivory);
-    border: 1px solid rgba(92, 42, 47, 0.15);
+    border: 1px solid rgba(232, 222, 203, 0.15);
     border-radius: 12px;
     padding: 56px 48px;
     margin-bottom: 32px;
-    box-shadow: 0 40px 80px -20px rgba(92, 42, 47, 0.15);
+    box-shadow: 0 40px 80px -20px rgba(232, 222, 203, 0.15);
     opacity: 0;
     animation: fadeUp 1s ease 0.5s forwards;
     position: relative;
@@ -115,7 +115,7 @@
     display: flex; align-items: center; gap: 32px;
     margin-bottom: 40px;
     padding-bottom: 40px;
-    border-bottom: 1px solid rgba(92, 42, 47, 0.1);
+    border-bottom: 1px solid rgba(232, 222, 203, 0.1);
     text-align: left;
   }
   .download-cover {
@@ -125,12 +125,12 @@
     border-radius: 4px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 16px 32px -8px rgba(92, 42, 47, 0.4);
+    box-shadow: 0 16px 32px -8px rgba(232, 222, 203, 0.4);
   }
   .download-cover::before {
     content: '';
     position: absolute; inset: 8px;
-    border: 1px solid rgba(247, 241, 234, 0.25);
+    border: 1px solid rgba(54, 20, 45, 0.25);
     border-radius: 2px;
   }
   .download-cover-text {
@@ -152,12 +152,12 @@
   }
   .download-product-info .paid-badge {
     display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(184, 149, 106, 0.1);
+    background: rgba(201, 167, 110, 0.1);
     color: var(--gold);
     font-size: 11px; font-weight: 500;
     letter-spacing: 0.15em; text-transform: uppercase;
     padding: 5px 12px; border-radius: 100px;
-    border: 1px solid rgba(184, 149, 106, 0.25);
+    border: 1px solid rgba(201, 167, 110, 0.25);
   }
 
   /* BOUTON TÉLÉCHARGEMENT PRINCIPAL */
@@ -181,11 +181,11 @@
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .download-btn:hover::before { transform: translateX(0); }
-  .download-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(92, 42, 47, 0.4); }
+  .download-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(232, 222, 203, 0.4); }
   .download-btn-icon {
     flex-shrink: 0;
     width: 48px; height: 48px;
-    background: rgba(247, 241, 234, 0.15);
+    background: rgba(54, 20, 45, 0.15);
     border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
     font-size: 22px;
@@ -220,7 +220,7 @@
     color: var(--ink);
     text-decoration: none;
     border-radius: 8px;
-    border: 1px solid rgba(92, 42, 47, 0.1);
+    border: 1px solid rgba(232, 222, 203, 0.1);
     transition: all 0.3s;
     margin-bottom: 12px;
   }
@@ -238,7 +238,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 18px; font-style: italic;
     color: var(--rose);
-    border: 1px solid rgba(92, 42, 47, 0.1);
+    border: 1px solid rgba(232, 222, 203, 0.1);
   }
   .download-bonus-btn:hover .download-bonus-icon {
     background: var(--rose-soft);
@@ -260,7 +260,7 @@
   .download-note {
     margin-top: 24px;
     padding: 16px 20px;
-    background: rgba(92, 42, 47, 0.04);
+    background: rgba(232, 222, 203, 0.04);
     border-radius: 6px;
     font-size: 13px; color: var(--ink-soft);
     line-height: 1.6; text-align: left;
@@ -311,7 +311,7 @@
     position: absolute;
     top: 30%; left: 50%; transform: translateX(-50%);
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(212, 165, 160, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(169, 182, 132, 0.15) 0%, transparent 70%);
     pointer-events: none;
   }
   .community-section .container { position: relative; z-index: 2; max-width: 680px; }
@@ -355,7 +355,7 @@
     padding: 40px;
     background: var(--ivory-deep);
     border-radius: 8px;
-    border: 1px solid rgba(92, 42, 47, 0.1);
+    border: 1px solid rgba(232, 222, 203, 0.1);
   }
   .email-reminder-icon {
     font-family: 'Cormorant Garamond', serif;
@@ -499,7 +499,7 @@
 </section>
 
 <!-- FOOTER MINIMAL — pas de nav de fuite -->
-<footer style="background: var(--ivory-deep); padding: 40px 0; text-align: center; border-top: 1px solid rgba(92,42,47,0.1); position: relative; z-index: 2;">
+<footer style="background: var(--ivory-deep); padding: 40px 0; text-align: center; border-top: 1px solid rgba(232, 222, 203, 0.1); position: relative; z-index: 2;">
   <div class="container">
     <a href="index.html" class="logo" style="display: inline-flex; margin-bottom: 16px;">Reset <em style="font-style: italic; color: var(--rose); margin-left: 4px;">ton cœur</em></a>
     <p style="font-size: 13px; color: var(--ink-soft);">© 2026 Reset ton cœur · Psycœurlogie · <a href="contact.html" style="color: var(--burgundy);">Besoin d'aide ?</a></p>

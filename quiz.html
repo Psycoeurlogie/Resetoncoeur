@@ -58,7 +58,7 @@
   left: -15%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(184,149,106,0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201, 167, 110, 0.2) 0%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
@@ -69,13 +69,13 @@
   z-index: 2;
   width: 100%;
   max-width: 700px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(236, 228, 213, 0.6);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(212, 165, 160, 0.22);
+  border: 1px solid rgba(169, 182, 132, 0.22);
   border-radius: 28px;
   padding: 56px 56px 48px;
-  box-shadow: 0 12px 64px -20px rgba(92, 42, 47, 0.14), 0 2px 8px rgba(92,42,47,0.04);
+  box-shadow: 0 12px 64px -20px rgba(232, 222, 203, 0.14), 0 2px 8px rgba(232, 222, 203, 0.04);
 }
 
 /* ── PROGRESS ────────────────────────────────────────────── */
@@ -105,7 +105,7 @@
 
 .progress-track {
   height: 3px;
-  background: rgba(212, 165, 160, 0.22);
+  background: rgba(169, 182, 132, 0.22);
   border-radius: 100px;
   overflow: hidden;
 }
@@ -169,8 +169,8 @@
 .chip {
   font-size: 13px;
   color: var(--ink-soft);
-  background: rgba(212, 165, 160, 0.12);
-  border: 1px solid rgba(212, 165, 160, 0.28);
+  background: rgba(169, 182, 132, 0.12);
+  border: 1px solid rgba(169, 182, 132, 0.28);
   border-radius: 100px;
   padding: 6px 16px;
   white-space: nowrap;
@@ -198,7 +198,7 @@
   gap: 15px;
   width: 100%;
   background: transparent;
-  border: 1px solid rgba(92, 42, 47, 0.13);
+  border: 1px solid rgba(232, 222, 203, 0.13);
   border-radius: 14px;
   padding: 16px 20px;
   cursor: pointer;
@@ -209,13 +209,13 @@
 
 .answer-btn:hover {
   border-color: var(--rose);
-  background: rgba(212, 165, 160, 0.07);
+  background: rgba(169, 182, 132, 0.07);
   transform: translateX(3px);
 }
 
 .answer-btn.selected {
   border-color: var(--burgundy);
-  background: rgba(92, 42, 47, 0.055);
+  background: rgba(232, 222, 203, 0.055);
 }
 
 .answer-dot {
@@ -223,7 +223,7 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 1.5px solid rgba(92, 42, 47, 0.28);
+  border: 1.5px solid rgba(232, 222, 203, 0.28);
   margin-top: 2px;
   transition: all 0.22s ease;
   position: relative;
@@ -301,9 +301,9 @@
 .form-field input {
   width: 100%;
   padding: 14px 18px;
-  border: 1px solid rgba(92, 42, 47, 0.18);
+  border: 1px solid rgba(232, 222, 203, 0.18);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(236, 228, 213, 0.75);
   font-family: 'Inter', sans-serif;
   font-size: 15px;
   color: var(--ink);
@@ -313,7 +313,7 @@
 
 .form-field input:focus {
   border-color: var(--burgundy);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(236, 228, 213, 0.95);
 }
 
 .form-field input::placeholder { color: var(--ink-soft); opacity: 0.55; }
@@ -361,8 +361,8 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
-  background: rgba(184, 149, 106, 0.1);
-  border: 1px solid rgba(184, 149, 106, 0.28);
+  background: rgba(201, 167, 110, 0.1);
+  border: 1px solid rgba(201, 167, 110, 0.28);
   border-radius: 100px;
   padding: 6px 18px;
   margin-bottom: 20px;
@@ -393,8 +393,8 @@
 }
 
 .result-box {
-  background: rgba(212, 165, 160, 0.07);
-  border: 1px solid rgba(212, 165, 160, 0.22);
+  background: rgba(169, 182, 132, 0.07);
+  border: 1px solid rgba(169, 182, 132, 0.22);
   border-radius: 18px;
   padding: 30px 32px;
   margin-bottom: 28px;
@@ -425,7 +425,7 @@
   color: var(--ink-soft);
   font-style: italic;
   padding-left: 16px;
-  border-left: 2px solid rgba(212, 165, 160, 0.5);
+  border-left: 2px solid rgba(169, 182, 132, 0.5);
 }
 
 .result-cta-section {
@@ -504,7 +504,7 @@
 .btn-next:hover:not(:disabled) {
   background: var(--burgundy-deep);
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px -8px rgba(92, 42, 47, 0.32);
+  box-shadow: 0 14px 30px -8px rgba(232, 222, 203, 0.32);
 }
 
 .btn-next:disabled {
@@ -857,7 +857,7 @@
         <p class="result-arabic" id="resultArabic" dir="rtl"></p>
         <div class="result-box">
           <div id="resultBody"></div>
-          <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(212,165,160,0.25)">
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(169, 182, 132, 0.25)">
             <p class="result-conseil-label">Conseil Tazkiya</p>
             <p class="result-conseil" id="resultConseil"></p>
           </div>

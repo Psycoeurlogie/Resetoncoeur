@@ -25,18 +25,18 @@
    Landing aimant à mails. Une seule action : donner son adresse.
    ════════════════════════════════════════════════════════ */
 :root {
-  --ivory: #f7f1ea;
-  --ivory-deep: #ede4d8;
-  --rose: #d4a5a0;
-  --rose-soft: #e8c8c4;
-  --burgundy: #5c2a2f;
-  --burgundy-deep: #3d1c20;
-  --ink: #2a1d1f;
-  --ink-soft: #5a4a4c;
-  --gold: #b8956a;
+  --ivory: #36142d;
+  --ivory-deep: #2c0f24;
+  --rose: #a9b684;
+  --rose-soft: #c7cfae;
+  --burgundy: #e8decb;
+  --burgundy-deep: #d6c9b2;
+  --ink: #ece4d5;
+  --ink-soft: #c8bdae;
+  --gold: #c9a76e;
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans: 'Hanken Grotesk', -apple-system, sans-serif;
-  --hairline: rgba(92, 42, 47, 0.14);
+  --hairline: rgba(232, 222, 203, 0.14);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -74,7 +74,7 @@ nav {
   display: flex; justify-content: space-between; align-items: center;
   padding: 18px clamp(20px, 4vw, 48px);
   backdrop-filter: blur(14px);
-  background: rgba(247, 241, 234, 0.78);
+  background: rgba(54, 20, 45, 0.78);
   border-bottom: 1px solid var(--hairline);
 }
 .logo {
@@ -107,12 +107,12 @@ nav {
 }
 .bloom-1 {
   width: 55vw; height: 55vw; max-width: 720px; max-height: 720px;
-  background: radial-gradient(circle, rgba(212,165,160,0.36), transparent 68%);
+  background: radial-gradient(circle, rgba(169, 182, 132, 0.36), transparent 68%);
   top: -14%; right: -14%;
 }
 .bloom-2 {
   width: 42vw; height: 42vw; max-width: 520px; max-height: 520px;
-  background: radial-gradient(circle, rgba(184,149,106,0.24), transparent 68%);
+  background: radial-gradient(circle, rgba(201, 167, 110, 0.24), transparent 68%);
   bottom: -16%; left: -12%;
 }
 .hero-watermark {
@@ -154,7 +154,7 @@ nav {
   flex: 1; min-width: 0;
   font-family: var(--sans); font-size: 16px;
   color: var(--ink);
-  background: rgba(255,255,255,0.72);
+  background: rgba(236, 228, 213, 0.72);
   border: 1px solid var(--hairline);
   border-radius: 100px;
   padding: 17px 24px;
@@ -193,7 +193,7 @@ nav {
 }
 .capture-msg.ok {
   display: block;
-  background: rgba(92,42,47,0.07);
+  background: rgba(232, 222, 203, 0.07);
   border: 1px solid var(--hairline);
   color: var(--burgundy);
 }
@@ -317,7 +317,7 @@ section { position: relative; }
   position: relative; overflow: hidden;
 }
 .final .bloom-1 {
-  background: radial-gradient(circle, rgba(212,165,160,0.2), transparent 68%);
+  background: radial-gradient(circle, rgba(169, 182, 132, 0.2), transparent 68%);
   top: -22%; right: -18%;
 }
 .final-inner { position: relative; z-index: 2; text-align: center; }
@@ -336,21 +336,21 @@ section { position: relative; }
 }
 .final .capture { max-width: 520px; margin: 0 auto; }
 .final .capture input[type="email"] {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(247,241,234,0.28);
+  background: rgba(236, 228, 213, 0.1);
+  border-color: rgba(54, 20, 45, 0.28);
   color: var(--ivory);
 }
 .final .capture input::placeholder { color: var(--rose-soft); opacity: 0.8; }
 .final .capture input[type="email"]:focus {
-  background: rgba(255,255,255,0.16);
+  background: rgba(236, 228, 213, 0.16);
   border-color: var(--rose-soft);
 }
 .final .capture button { background: var(--ivory); color: var(--burgundy); }
 .final .capture button:hover { background: #fff; }
 .final .capture-meta { color: var(--rose-soft); justify-content: center; }
 .final .capture-msg.ok {
-  background: rgba(247,241,234,0.12);
-  border-color: rgba(247,241,234,0.3);
+  background: rgba(54, 20, 45, 0.12);
+  border-color: rgba(54, 20, 45, 0.3);
   color: var(--ivory);
 }
 .final .capture-msg.err {
