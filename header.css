@@ -137,7 +137,7 @@
     border-top: 1px solid var(--rh-hairline); margin-top: 8px; border-radius: 0;
   }
   .rh-menu::before {
-    content: "Gratuit"; display: block; padding: 8px 0 4px;
+    content: "Guides gratuits"; display: block; padding: 8px 0 4px;
     font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rh-gold);
   }
   .rh-menu a { padding: 10px 0; }
