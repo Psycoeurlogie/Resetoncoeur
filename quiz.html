@@ -16,7 +16,7 @@
 <meta name="description" content="Un mini outil d'auto-réflexion inspiré des notions classiques des états du cœur en psychologie islamique et tazkiya. Pour comprendre ce qui influence ta vie aujourd'hui.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
 
@@ -204,7 +204,7 @@
   cursor: pointer;
   text-align: left;
   transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
 }
 
 .answer-btn:hover {
@@ -304,7 +304,7 @@
   border: 1px solid rgba(232, 222, 203, 0.18);
   border-radius: 12px;
   background: rgba(236, 228, 213, 0.75);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 15px;
   color: var(--ink);
   outline: none;
@@ -473,7 +473,7 @@
   color: var(--ink-soft);
   font-size: 14px;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   padding: 8px 0;
   display: flex;
   align-items: center;
@@ -493,7 +493,7 @@
   color: var(--ivory);
   border: none;
   border-radius: 100px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.025em;
@@ -548,12 +548,13 @@
 
 <link rel="stylesheet" href="header.css">
 <link rel="stylesheet" href="interactions.css">
+<link rel="stylesheet" href="marque.css">
 </head>
 <body>
 
 <!-- NAV -->
 <header class="rh" id="rh">
-  <a class="rh-logo" href="index.html">Reset <em>ton cœur</em></a>
+  <a class="rh-logo" href="index.html" aria-label="Psycœurlogie, accueil"><span class="pc-logo">Psyc<span class="pc-oe">œ</span>urlogie</span></a>
   <div class="rh-nav" role="navigation" aria-label="Le parcours">
     <div class="rh-steps">
       <a class="rh-step" href="racines.html"><span class="rh-num">1</span><span class="rh-txt"><span class="rh-lbl">Le livre</span><span class="rh-sub">Pourquoi tu bloques</span></span></a>
@@ -1069,5 +1070,6 @@ function renderResult(profileNum) {
 </script>
 <script src="header.js"></script>
 <script src="interactions.js"></script>
+<script src="marque.js"></script>
 </body>
 </html>

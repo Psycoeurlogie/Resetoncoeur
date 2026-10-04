@@ -15,7 +15,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Jost', sans-serif;
   background: var(--ivory);
   color: var(--ink);
   line-height: 1.6;

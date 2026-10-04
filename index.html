@@ -12,11 +12,11 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reset ton cœur — L'art de revenir à toi | by Psycœurlogie</title>
+<title>Psycœurlogie · Le cœur a une science. Et une âme.</title>
 <meta name="description" content="Reset ton cœur est un projet pensé pour les femmes qui veulent revenir à elles. Ebooks, rituels et chemins pour le corps, le cœur et l'âme.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
   /* HERO ACCUEIL */
@@ -573,12 +573,19 @@
 
 <link rel="stylesheet" href="header.css">
 <link rel="stylesheet" href="interactions.css">
+<link rel="stylesheet" href="marque.css">
 <link rel="stylesheet" href="photos.css">
 </head>
 <body>
+<div id="pc-intro" class="pc-intro" hidden aria-hidden="true">
+  <p>« Il existe des femmes qui portent des révolutions entières<br/>à l'intérieur de leur silence. »</p>
+  <small>Touche pour entrer</small>
+</div>
+<script>try{if(sessionStorage.getItem('pc-intro')!=='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.getElementById('pc-intro').hidden=false}catch(e){}</script>
+
 
 <header class="rh" id="rh">
-  <a class="rh-logo" href="index.html">Reset <em>ton cœur</em></a>
+  <a class="rh-logo" href="index.html" aria-label="Psycœurlogie, accueil"><span class="pc-logo">Psyc<span class="pc-oe">œ</span>urlogie</span></a>
   <div class="rh-nav" role="navigation" aria-label="Le parcours">
     <div class="rh-steps">
       <a class="rh-step" href="racines.html"><span class="rh-num">1</span><span class="rh-txt"><span class="rh-lbl">Le livre</span><span class="rh-sub">Pourquoi tu bloques</span></span></a>
@@ -605,26 +612,33 @@
   <div class="home-hero-bg"></div>
   <div class="container">
     <div class="home-hero-content">
-      <div class="hero-tag" style="font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rose); margin-bottom: 28px; font-weight: 500; opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;">— un projet de Psycœurlogie</div>
-      <h1>L'art de revenir <em>à toi</em>.</h1>
-      <p class="home-hero-sub">Reset ton cœur est un chemin pensé pour les femmes qui choisissent la douceur comme retour. Des ebooks, des rituels, des mots — pour le corps, le cœur, et l'âme.</p>
+      <div class="hero-tag" style="font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;">Psycœurlogie · par Majda</div>
+      <h1>Le cœur a une <em>science.</em><br/>Et une âme.</h1>
+      <p class="home-hero-sub">Pour les femmes musulmanes qui se sentent bloquées entre ce qu'elles sont et ce qu'elles savent pouvoir devenir. Psycœurlogie relie la psychologie et la psychologie islamique pour t'aider à comprendre ton cœur et à traverser tes blocages.</p>
       <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-        <a href="quiz.html" class="btn">
-          <span>Découvre ton profil</span>
+        <a href="#bibliotheque" class="btn">
+          <span>Par où commencer</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ebook.html" style="font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic; color:var(--rose); text-decoration:none; opacity:0; animation:fadeUp 1s ease 0.45s forwards;">Voir le programme</a>
+        <a href="quiz.html" style="font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--rose); text-decoration:none;">Découvre ton profil</a>
       </div>
-      <p class="home-hero-meta">Pour celles qui n'ont plus envie de se perdre.</p>
+      <p class="pc-hero-meta">Là où la psychologie rencontre le qalb.</p>
     </div>
   </div>
 </section>
 
-<!-- MANIFESTO -->
-<section class="manifesto-section reveal s-vert">
-  <div class="container-narrow">
-    <p class="manifesto-text">Prendre soin de soi est un acte d'obéissance. Quand le corps, l'esprit et l'âme s'alignent — l'adoration, la concentration et l'énergie deviennent naturelles.</p>
-    <p class="manifesto-attr">— Reset ton cœur</p>
+<!-- POUR QUI -->
+<section class="pc-sec s-vert reveal">
+  <div class="pc-wrap">
+    <span class="pc-label">Pour qui</span>
+    <h2 class="pc-h2">Tu es au bon endroit<br/>si tu te <em>reconnais ici.</em></h2>
+    <div class="pc-rec">
+      <div class="pc-rec-item"><p>Tu es une femme musulmane. Tu crois, tu pries, tu essaies. Et pourtant quelque chose en toi reste figé, répétitif, lourd, sans que tu saches exactement pourquoi.</p></div>
+      <div class="pc-rec-item"><p>Tu sens que tu es faite pour plus : plus de profondeur, plus d'alignement entre ce que tu crois et ce que tu vis. Mais tu ne sais pas par où commencer.</p></div>
+      <div class="pc-rec-item"><p>Tu as lu des livres, écouté des podcasts. Et tu es toujours là, dans le même schéma, avec la même fatigue émotionnelle.</p></div>
+      <div class="pc-rec-item"><p>Tu portes des émotions que tu n'arrives pas à nommer, des blessures que ni la foi seule ni la psychologie seule n'ont su toucher.</p></div>
+      <div class="pc-rec-item"><p>Tu veux changer, vraiment, mais tu as besoin d'un cadre rigoureux, qui respecte ton intelligence, ta foi et ta complexité.</p></div>
+    </div>
   </div>
 </section>
 
@@ -691,71 +705,86 @@
 
 <div class="ph-band" style="--img:url(photos/niche-ancienne.jpg)" aria-hidden="true"></div>
 
-<!-- MISSION 3 PILIERS -->
-<section class="mission-section reveal s-vert">
-  <div class="container">
-    <div style="text-align: center;">
-      <div class="section-eyebrow">La mission</div>
-      <h2 class="section-title" style="margin: 0 auto 24px;">Trois territoires, <em>un seul retour</em>.</h2>
-      <p style="font-size: 17px; color: var(--ink-soft); max-width: 620px; margin: 0 auto; line-height: 1.7;">Tout ce que crée Psycœurlogie nourrit l'un de ces trois territoires — souvent les trois en même temps.</p>
+<!-- CE QUE FAIT PSYCŒURLOGIE -->
+<section class="pc-sec s-vert reveal">
+  <div class="pc-wrap">
+    <span class="pc-label">Ce que fait Psycœurlogie</span>
+    <h2 class="pc-h2">Une approche qui unit<br/>ce qu'on présente souvent<br/>comme <em>opposé.</em></h2>
+    <div class="pc-what">
+      <div class="pc-what-card"><span class="pc-what-ic">ψ</span><h3>La psychologie</h3><p>Les outils de la psychologie cognitive, comportementale et émotionnelle, pour comprendre comment tes schémas et tes blessures fonctionnent réellement.</p></div>
+      <div class="pc-what-card"><span class="pc-what-ic">◌</span><h3>La psychologie islamique</h3><p>Le qalb, la tazkiya, les enseignements du Prophète ﷺ sur l'âme : une sagesse de plus de mille ans qui parle à ton cœur de croyante, pas seulement à ton intellect.</p></div>
+      <div class="pc-what-card"><span class="pc-what-ic">◈</span><h3>Reset ton cœur</h3><p>Le projet fondateur. Deux livres pour aller de la compréhension à la pratique : les racines de tes blocages, puis un protocole de 21 jours.</p></div>
     </div>
+    <div class="pc-note"><p>Ce n'est pas de la motivation. Ce n'est pas de la spiritualité en surface.<br/>C'est un travail sur le cœur, méthodique et profond.</p></div>
+  </div>
+</section>
 
-    <div class="mission-grid">
-      <div class="mission-item">
-        <div class="mission-symbol">i.</div>
-        <h4>Le corps</h4>
-        <p>Restaurer ton énergie, ton sommeil, ton rythme — par des micro-habitudes ancrées dans la Sunnah.</p>
-      </div>
-      <div class="mission-item">
-        <div class="mission-symbol">ii.</div>
-        <h4>Le cœur</h4>
-        <p>Accueillir ce que tu portes. Comprendre ce qui s'est cassé. Reconstruire ce qui mérite de l'être.</p>
-      </div>
-      <div class="mission-item">
-        <div class="mission-symbol">iii.</div>
-        <h4>L'âme</h4>
-        <p>Réaligner tes journées avec ce qui plaît à Allah — pour que chaque action devienne adoration.</p>
-      </div>
+<!-- VOIX OFF -->
+<section class="pc-voix">
+  <div class="pc-voix-text reveal">
+    Il y a des femmes qui prient pour changer<br/>et qui ne comprennent pas pourquoi rien ne bouge.<br/><br/>
+    Il y a des femmes qui lisent tous les livres,<br/>écoutent tous les podcasts,<br/>et restent pourtant figées<br/>dans la même version d'elles-mêmes.<br/><br/>
+    Ce n'est pas un manque de foi.<br/>Ce n'est pas un manque de volonté.<br/><br/>
+    <strong>C'est un cœur qui attend d'être compris<br/>avant de pouvoir se transformer.</strong>
+    <div class="pc-voix-sig">Majda · Psycœurlogie</div>
+  </div>
+</section>
+
+<!-- ORIGINE -->
+<section class="pc-sec reveal">
+  <div class="pc-wrap pc-origin">
+    <div><span class="pc-label">Origine</span><span class="pc-big" aria-hidden="true">M</span></div>
+    <div class="pc-origin-body">
+      <h2 class="pc-h2">Avant d'étudier<br/>la psychologie, j'étais<br/>déjà une <em>cherchante.</em></h2>
+      <p>Milan. Une enfant aux racines marocaines dans une ville italienne. L'arabe à la maison, l'italien dans la rue : deux langues maternelles, deux façons de ressentir. Très tôt, j'ai compris que parler la langue de quelqu'un, c'est entrer dans son monde intérieur.</p>
+      <p>Paris, ensuite. La psychologie à l'université Paris 8 et, en parallèle, la psychologie islamique à Al Balagh. Deux mondes que beaucoup considèrent opposés. Pour moi, ils se complètent comme deux mains qui tiennent le même cœur.</p>
+      <div class="pc-pull"><p>« Ce n'est pas un manque de foi qui les bloquait. C'était l'absence de langage pour comprendre ce qui se passait dans leur cœur. »</p></div>
+      <a class="pc-link" href="manifesto.html">Lire l'histoire complète →</a>
     </div>
   </div>
 </section>
 
-<!-- TÉMOIGNAGES (placeholder) -->
-<section class="testimonials-section reveal">
-  <div class="container">
-    <div class="testimonials-intro">
-      <div class="section-eyebrow">Elles en parlent</div>
-      <h2 class="section-title" style="margin: 0 auto;">Des sœurs, des <em>chemins</em>, des retours.</h2>
-    </div>
-    <div class="testimonial-placeholder">
-      <p>Les premiers témoignages des sœurs qui ont commencé leur reset arriveront bientôt ici.</p>
-      <small>À venir</small>
-    </div>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
+<!-- NEWSLETTER : liste Brevo 17 « Lettres · inscriptions du site » -->
 <section class="newsletter-section reveal">
   <div class="container">
-    <div class="section-eyebrow">Recevoir les lettres</div>
-    <h2 class="section-title">Une lettre, de temps en <em>temps</em>.</h2>
-    <p class="newsletter-text">Pas de spam, pas de pression. Juste des mots doux, des rappels, et les nouvelles créations Psycœurlogie. Quand le cœur en a besoin.</p>
-    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Formulaire à connecter à un outil email type Brevo, ConvertKit ou Mailchimp');">
-      <input type="email" placeholder="Ton adresse email" required>
-      <button type="submit">M'inscrire</button>
+    <div class="section-eyebrow">Les lettres de Majda</div>
+    <h2 class="section-title">Une lettre, <em>chaque semaine.</em></h2>
+    <p class="newsletter-text">Un sujet, expliqué simplement : ce qu'en disent le Coran et la Sunnah, et ce qu'en dit la psychologie. Rien de plus.</p>
+    <form class="newsletter-form" id="nl-form" novalidate>
+      <input type="email" id="nl-email" placeholder="Ton adresse email" required autocomplete="email">
+      <button type="submit" id="nl-btn">M'inscrire</button>
     </form>
-    <p class="newsletter-meta">Tu peux te désinscrire à tout moment.</p>
+    <p class="newsletter-meta" id="nl-msg" role="status">Tu peux te désinscrire à tout moment.</p>
   </div>
 </section>
+<script>
+(function () {
+  var f = document.getElementById('nl-form'), e = document.getElementById('nl-email'),
+      b = document.getElementById('nl-btn'), m = document.getElementById('nl-msg');
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.value.trim())) { m.textContent = 'Vérifie ton adresse email.'; return; }
+    b.disabled = true; b.textContent = 'Un instant…';
+    fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: e.value.trim(), listId: 17 }) })
+      .then(function (r) {
+        if (!r.ok) throw new Error();
+        f.style.display = 'none';
+        m.textContent = 'C\'est noté. Ta première lettre arrive avec la prochaine. Bi idhni\'llah.';
+      })
+      .catch(function () { b.disabled = false; b.textContent = 'M\'inscrire'; m.textContent = 'Une erreur est survenue. Réessaie dans un instant.'; });
+  });
+})();
+</script>
 
 <!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">Reset <em>ton cœur</em></a>
-        <p>L'art de revenir à toi. Un projet pour les femmes qui choisissent la douceur comme chemin.</p>
-        <p style="margin-top: 16px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose);">— un projet de Psycœurlogie</p>
+        <a href="index.html" class="logo"><span class="pc-logo">Psyc<span class="pc-oe">œ</span>urlogie</span></a>
+        <p>Là où la psychologie rencontre le qalb.</p>
+        <p style="margin-top: 16px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold);">Par Majda · La psychologie du changement</p>
       </div>
       <div class="footer-col">
         <h5>Le projet</h5>
@@ -802,5 +831,6 @@
 
 <script src="header.js"></script>
 <script src="interactions.js"></script>
+<script src="marque.js"></script>
 </body>
 </html>

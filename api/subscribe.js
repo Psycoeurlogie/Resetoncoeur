@@ -4,7 +4,7 @@ const ALLOWED_ORIGINS = [
   'https://resetoncoeur.vercel.app'
 ];
 
-const ALLOWED_LIST_IDS = [9, 10, 11, 12, 13, 14];
+const ALLOWED_LIST_IDS = [9, 10, 11, 12, 13, 14, 17]; // 17 : lettres hebdomadaires (formulaire de l'accueil)
 
 // Aimants à mails livrés immédiatement par email transactionnel.
 // Clé envoyée par la landing page -> id du template Brevo qui porte le lien de téléchargement.
