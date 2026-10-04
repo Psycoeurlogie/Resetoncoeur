@@ -87,6 +87,14 @@ footer .logo .pc-logo { font-size: 20px; }
 .pc-link { display: inline-block; margin-top: 8px; color: #C9A76E; text-decoration: none; letter-spacing: .12em; text-transform: uppercase; font-size: 12px; border-bottom: 1px solid rgba(201,167,110,.4); padding-bottom: 4px; }
 .pc-link:hover { border-color: #C9A76E; }
 
+/* Portrait de Majda : cadre décalé en or, grand « M » en filigrane derrière */
+.pc-portrait { position: relative; margin: 8px 0 0; max-width: 340px; }
+.pc-portrait .pc-big { position: absolute; left: -40px; top: -10px; z-index: 0; pointer-events: none; }
+.pc-portrait img { position: relative; z-index: 1; display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; }
+.pc-ph { position: relative; display: block; }
+.pc-ph::after { content: ""; position: absolute; z-index: 0; inset: 18px -18px -18px 18px; border: 1px solid rgba(201, 167, 110, 0.55); }
+.pc-portrait figcaption { position: relative; z-index: 1; margin-top: 30px; font-size: 11px; letter-spacing: .4em; text-transform: uppercase; color: #C9A76E; }
+
 /* ---------- Promesse avant / après ---------- */
 .pc-promise { max-width: 980px; }
 .pc-pr { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 20px; padding: 24px 0; border-bottom: 1px solid rgba(236, 228, 213, 0.14); align-items: start; }
@@ -123,6 +131,7 @@ footer .logo .pc-logo { font-size: 20px; }
   .pc-what { grid-template-columns: 1fr; }
   .pc-origin { grid-template-columns: 1fr; gap: 10px; }
   .pc-big { font-size: 110px; }
+  .pc-portrait { max-width: 280px; margin: 10px 0 40px; }
   .pc-pr { grid-template-columns: 1fr; gap: 6px; }
   .pc-pr-arrow { display: none; }
   .pc-pr-a { padding-left: 16px; border-left: 2px solid #C9A76E; }
