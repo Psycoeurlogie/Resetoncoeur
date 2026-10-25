@@ -1,7 +1,7 @@
 /* HEADER COMMUN — le parcours en deux étapes.
    Classes préfixées rh- : styles.css et les pages de vente stylent déjà `nav` et `.logo`. */
 .rh {
-  --rh-ivory: #36142d;
+  --rh-ivory: #2a1c27;
   --rh-rose: #a9b684;
   --rh-burgundy: #e8decb;
   --rh-burgundy-deep: #d6c9b2;
@@ -12,7 +12,7 @@
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; gap: 28px;
   padding: 14px clamp(20px, 4vw, 48px);
-  background: rgba(54, 20, 45, 0.86);
+  background: rgba(42, 28, 39, 0.86);
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--rh-hairline);
   font-family: inherit;

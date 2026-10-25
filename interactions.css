@@ -35,12 +35,12 @@
   transition: background .3s, color .3s, border-color .3s;
 }
 .lib-chip:hover { border-color: #C9A76E; }
-.lib-chip.is-on { background: #ECE4D5; color: #36142D; border-color: #ECE4D5; }
+.lib-chip.is-on { background: #ECE4D5; color: #2a1c27; border-color: #ECE4D5; }
 
 .lib-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .lib-card {
   display: flex; flex-direction: column; text-decoration: none; color: inherit;
-  border-radius: 18px; overflow: hidden; background: #2C0F24;
+  border-radius: 18px; overflow: hidden; background: #211620;
   border: 1px solid rgba(236, 228, 213, 0.1);
   transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s, opacity .4s;
 }
@@ -48,7 +48,7 @@
 .lib-card.is-hidden { display: none; }
 .lib-img {
   position: relative; aspect-ratio: 4 / 5; overflow: hidden;
-  background: #1E0A19;
+  background: #160f14;
 }
 .lib-img::before {
   content: ""; position: absolute; inset: 0;
@@ -58,15 +58,15 @@
 .lib-card:hover .lib-img::before { transform: scale(1.06); }
 .lib-img::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(20, 6, 16, 0.15) 30%, rgba(20, 6, 16, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(14, 9, 12, 0.15) 30%, rgba(14, 9, 12, 0.85) 100%);
 }
 .lib-badge, .lib-price {
   position: absolute; top: 14px; z-index: 2;
   font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
   padding: 6px 11px; border-radius: 999px;
 }
-.lib-badge { left: 14px; background: rgba(20, 6, 16, 0.6); color: #ECE4D5; backdrop-filter: blur(6px); }
-.lib-price { right: 14px; background: #ECE4D5; color: #36142D; font-weight: 600; }
+.lib-badge { left: 14px; background: rgba(14, 9, 12, 0.6); color: #ECE4D5; backdrop-filter: blur(6px); }
+.lib-price { right: 14px; background: #ECE4D5; color: #2a1c27; font-weight: 600; }
 .lib-over { position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 2; }
 .lib-kicker { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #C9A76E; }
 .lib-over h3 {
@@ -81,7 +81,7 @@
   border: 1px solid rgba(236, 228, 213, 0.3); border-radius: 999px; padding: 13px 18px;
   color: #ECE4D5; transition: background .35s, color .35s, border-color .35s;
 }
-.lib-card:hover .lib-btn { background: #ECE4D5; color: #36142D; border-color: #ECE4D5; }
+.lib-card:hover .lib-btn { background: #ECE4D5; color: #2a1c27; border-color: #ECE4D5; }
 
 @media (max-width: 980px) { .lib-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) {
@@ -120,11 +120,11 @@
 /* Sections vertes (eucalyptus foncé) : les italiques passent en mauve, pour répondre au vert des sections prune */
 .s-vert { background-color: #2F352A !important; background-image: none !important; }
 .s-vert em { color: #D9AFCB !important; }
-.s-vert .lib-card, .s-vert .bento-cell:not(.bento-price) { background: #3A1A31; }
+.s-vert .lib-card, .s-vert .bento-cell:not(.bento-price) { background: #31232e; }
 footer { background-color: #23281F !important; background-image: none !important; }
 
 /* Cartes des livres : la vraie couverture, pas une photo d'ambiance */
-.lib-img--livre { background: radial-gradient(circle at 50% 40%, #4A1D3F 0%, #2C0F24 80%); display: flex; align-items: center; justify-content: center; }
+.lib-img--livre { background: radial-gradient(circle at 50% 40%, #3a2a37 0%, #211620 80%); display: flex; align-items: center; justify-content: center; }
 .lib-img--livre::before, .lib-img--livre::after { display: none; }
 .lib-img--livre img {
   width: 58%; aspect-ratio: 1000 / 1414; object-fit: cover; border-radius: 3px;

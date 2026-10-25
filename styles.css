@@ -1,8 +1,8 @@
 /* PSYCŒURLOGIE — STYLES GLOBAUX */
 
 :root {
-  --ivory: #36142d;
-  --ivory-deep: #2c0f24;
+  --ivory: #2a1c27;
+  --ivory-deep: #211620;
   --rose: #a9b684;
   --rose-soft: #c7cfae;
   --burgundy: #e8decb;
@@ -43,7 +43,7 @@ nav {
   display: flex; justify-content: space-between; align-items: center;
   z-index: 100;
   backdrop-filter: blur(12px);
-  background: rgba(54, 20, 45, 0.85);
+  background: rgba(42, 28, 39, 0.85);
   border-bottom: 1px solid rgba(232, 222, 203, 0.08);
 }
 .logo {
@@ -216,7 +216,7 @@ section { padding: 120px 0; position: relative; }
     align-items: flex-start;
     gap: 0;
     width: 100%;
-    background: rgba(54, 20, 45, 0.97);
+    background: rgba(42, 28, 39, 0.97);
     border-top: 1px solid rgba(232, 222, 203, 0.08);
     padding: 16px 0 20px;
     order: 3;
