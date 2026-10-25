@@ -138,3 +138,6 @@ footer .logo .pc-logo { font-size: 20px; }
   .pc-pr-head { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .pc-intro { display: none; } }
+
+/* Aucune bande visible à droite sur smartphone : les halos qui dépassent sont rognés */
+html, body { overflow-x: clip; max-width: 100%; }
