@@ -122,3 +122,19 @@
 .s-vert em { color: #D9AFCB !important; }
 .s-vert .lib-card, .s-vert .bento-cell:not(.bento-price) { background: #3A1A31; }
 footer { background-color: #23281F !important; background-image: none !important; }
+
+/* Cartes des livres : la vraie couverture, pas une photo d'ambiance */
+.lib-img--livre { background: radial-gradient(circle at 50% 40%, #4A1D3F 0%, #2C0F24 80%); display: flex; align-items: center; justify-content: center; }
+.lib-img--livre::before, .lib-img--livre::after { display: none; }
+.lib-img--livre img {
+  width: 58%; aspect-ratio: 1000 / 1414; object-fit: cover; border-radius: 3px;
+  box-shadow: 0 28px 40px -18px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(236, 228, 213, 0.12);
+  transition: transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.lib-card:hover .lib-img--livre img { transform: translateY(-6px) scale(1.03); }
+.lib-img--livre .lib-duo-a, .lib-img--livre .lib-duo-b { position: absolute; width: 46%; }
+.lib-img--livre .lib-duo-a { left: 7%; top: 22%; transform: rotate(-5deg); }
+.lib-img--livre .lib-duo-b { right: 7%; top: 28%; transform: rotate(4deg); }
+.lib-card:hover .lib-img--livre .lib-duo-a { transform: rotate(-6deg) translateY(-6px); }
+.lib-card:hover .lib-img--livre .lib-duo-b { transform: rotate(5deg) translateY(-6px); }
+.lib-titre h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 28px; line-height: 1.1; color: #ECE4D5; margin-top: 8px; }
