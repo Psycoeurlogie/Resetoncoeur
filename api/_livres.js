@@ -17,4 +17,5 @@ export const PRODUITS_PAR_LIEN = {
   plink_1TW5NrBO4RXS4DkAS9VECyJp: ['base'],
   plink_1TwAqjBO4RXS4DkANeO99RoD: ['racines'],
   plink_1UMyLDBO4RXS4DkAgbKPJD5y: ['racines', 'base'], // pack, les deux livres
+  plink_1UacUbBO4RXS4DkAlW4PQma4: ['racines'], // TEMPORAIRE : lien de test à 0 € (11/11/2026), à retirer
 };
