@@ -68,7 +68,10 @@ export default async function handler(req, res) {
 
   const session = evenement.data.object;
   // Paiement différé pas encore encaissé : on livrera sur async_payment_succeeded.
-  if (session.payment_status !== 'paid') return res.status(200).json({ attente: true });
+  // « no_payment_required » = achat à 0 € avec un code promo à 100 % : on livre aussi.
+  if (!['paid', 'no_payment_required'].includes(session.payment_status)) {
+    return res.status(200).json({ attente: true });
+  }
 
   const produits = PRODUITS_PAR_LIEN[session.payment_link];
   if (!produits) {

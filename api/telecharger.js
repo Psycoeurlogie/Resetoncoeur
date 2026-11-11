@@ -5,13 +5,11 @@
 // confirmer que la session existe ET qu'elle est payée. Ce n'est qu'alors qu'on renvoie
 // le lien Drive. Les liens ne sont JAMAIS dans le HTML : ils vivent ici, côté serveur.
 //
-// Cas particulier « pack » (les deux livres, 39€) : on renvoie les deux liens, mais seulement si
-// la session a réellement payé au moins le prix du pack. Sans ce contrôle, une session de 25€
-// (un seul livre) suffirait à ouvrir les deux.
+// Le livre demandé doit correspondre au lien de paiement de la session : sans ce contrôle, une
+// session à 25 € d'un livre ouvrirait l'autre livre (ou le pack) en changeant `?produit=`.
+// Contrôler le lien plutôt que le montant laisse passer un achat à 0 € par code promo.
 
-import { LIENS } from './_livres.js';
-
-const PACK_MIN_CENTIMES = 3900;
+import { LIENS, PRODUITS_PAR_LIEN } from './_livres.js';
 
 export default async function handler(req, res) {
   const produit = String((req.query && req.query.produit) || '');
@@ -41,7 +39,12 @@ export default async function handler(req, res) {
     );
 
     if (!r.ok) {
-      // 404 = session inconnue, 401 = clé invalide, etc.
+      // 401/403 = clé refusée par Stripe : c'est une panne de configuration, pas une cliente
+      // inconnue. Elle a tourné en silence du 9 août au 11 novembre 2026, d'où ce log.
+      console.error('telecharger Stripe a répondu', r.status);
+      if (r.status === 401 || r.status === 403) {
+        return res.status(500).json({ ok: false, error: 'config_invalide' });
+      }
       return res.status(403).json({ ok: false, error: 'session_introuvable' });
     }
 
@@ -52,18 +55,16 @@ export default async function handler(req, res) {
       return res.status(403).json({ ok: false, error: 'paiement_non_confirme' });
     }
 
+    const achetes = PRODUITS_PAR_LIEN[session.payment_link] || [];
+    const autorise = estPack ? achetes.length === 2 : achetes.includes(produit);
+    if (!autorise) {
+      return res.status(403).json({ ok: false, error: 'produit_non_achete' });
+    }
+
     // Paiement confirmé : on livre le lien correspondant au produit demandé.
     res.setHeader('Cache-Control', 'no-store');
 
     if (estPack) {
-      // Adaptive Pricing est actif : une cliente hors zone euro paie dans sa devise, et
-      // `currency_conversion` porte alors le montant d'origine, en euros.
-      const conv = session.currency_conversion;
-      const devise = conv ? conv.source_currency : session.currency;
-      const montant = conv ? conv.amount_total : session.amount_total;
-      if (devise !== 'eur' || !(montant >= PACK_MIN_CENTIMES)) {
-        return res.status(403).json({ ok: false, error: 'montant_insuffisant' });
-      }
       return res.status(200).json({ ok: true, urls: { racines: LIENS.racines, base: LIENS.base } });
     }
 
