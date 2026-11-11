@@ -9,10 +9,7 @@
 // la session a réellement payé au moins le prix du pack. Sans ce contrôle, une session de 25€
 // (un seul livre) suffirait à ouvrir les deux.
 
-const LIENS = {
-  base: 'https://drive.google.com/uc?export=download&id=1nh3KJu94lEkh3RUje2N-IWUn0Ft4UXPC',
-  racines: 'https://drive.google.com/uc?export=download&id=1s0moHrI6nZXX0RNRIUMMYbXqNFF2Lxm7',
-};
+import { LIENS } from './_livres.js';
 
 const PACK_MIN_CENTIMES = 3900;
 
